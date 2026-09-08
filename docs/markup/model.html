@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e2319">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>KUPOLLA M — Купольний будинок 64 м² | KUPOLLA</title>
+  <meta name="description" content="KUPOLLA M — купольний будинок 64 м², діаметр 9 м. Преміальне виконання, енергоефективність A+, монтаж 10 днів. Вартість від €65 000.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/kupolla-1.css">
+  <link rel="stylesheet" href="../../css/kupolla-2.css">
+  <link rel="stylesheet" href="../../css/kupolla-3.css">
+  <link rel="stylesheet" href="../../css/kupolla-model.css">
+</head>
+<body>
+
+<!-- HEADER (shared) -->
+<header id="header" class="kp-header">
+  <div class="kp-container">
+    <div class="kp-header__inner">
+      <a href="index.html" class="kp-logo">KUPOLLA</a>
+      <nav class="kp-nav">
+        <a href="index.html#benefits" class="kp-nav__link">Про компанію</a>
+        <a href="index.html#models" class="kp-nav__link kp-nav__link--active">Модельний ряд</a>
+        <a href="configurator.html" class="kp-nav__link">Конфігуратор</a>
+        <a href="index.html#technologies" class="kp-nav__link">Технології</a>
+        <a href="index.html#benefits" class="kp-nav__link">Галерея</a>
+        <a href="index.html" class="kp-nav__link">Блог</a>
+        <a href="index.html" class="kp-nav__link">FAQ</a>
+        <a href="index.html#contact" class="kp-nav__link">Контакти</a>
+      </nav>
+      <div class="kp-header__actions">
+        <div class="kp-lang" id="langSwitcher">
+          <button class="kp-lang__btn" id="langTrigger" aria-expanded="false">
+            <span id="currentLang">UK</span>
+            <svg class="kp-lang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="kp-lang__dropdown" id="langDropdown">
+            <a href="#" class="kp-lang__option active" data-lang="UK">🇺🇦 Українська</a>
+            <a href="#" class="kp-lang__option" data-lang="EN">🇬🇧 English</a>
+            <a href="#" class="kp-lang__option" data-lang="SK">🇸🇰 Slovenčina</a>
+            <a href="#" class="kp-lang__option" data-lang="CS">🇨🇿 Čeština</a>
+            <a href="#" class="kp-lang__option" data-lang="NL">🇳🇱 Nederlands</a>
+            <a href="#" class="kp-lang__option" data-lang="FR">🇫🇷 Français</a>
+          </div>
+        </div>
+        <button class="kp-btn kp-btn--primary" onclick="openConsultModal()">Отримати консультацію</button>
+        <button class="kp-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="kp-mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="kp-mobile-menu__nav">
+    <a href="index.html" class="kp-mobile-menu__link">Головна</a>
+    <a href="index.html#models" class="kp-mobile-menu__link">Модельний ряд</a>
+    <a href="configurator.html" class="kp-mobile-menu__link">Конфігуратор</a>
+    <a href="index.html#technologies" class="kp-mobile-menu__link">Технології</a>
+    <a href="index.html#contact" class="kp-mobile-menu__link">Контакти</a>
+  </nav>
+  <div class="kp-mobile-menu__bottom">
+    <button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal(); closeMobileMenu()">Отримати консультацію</button>
+    <div class="kp-mobile-menu__langs">
+      <a href="#" class="kp-mlang active">UK</a><a href="#" class="kp-mlang">EN</a>
+      <a href="#" class="kp-mlang">SK</a><a href="#" class="kp-mlang">CS</a>
+      <a href="#" class="kp-mlang">NL</a><a href="#" class="kp-mlang">FR</a>
+    </div>
+  </div>
+</div>
+
+<main class="kp-model-page">
+
+  <!-- BREADCRUMBS -->
+  <div class="kp-breadcrumbs-wrap">
+    <div class="kp-container">
+      <nav class="kp-breadcrumbs" aria-label="Хлібні крихти">
+        <a href="index.html" class="kp-bc__item">Головна</a>
+        <span class="kp-bc__sep" aria-hidden="true">›</span>
+        <a href="index.html#models" class="kp-bc__item">Модельний ряд</a>
+        <span class="kp-bc__sep" aria-hidden="true">›</span>
+        <span class="kp-bc__item kp-bc__item--cur" aria-current="page">KUPOLLA M</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MODEL HERO -->
+  <section class="kp-mhero">
+    <div class="kp-container">
+      <div class="kp-mhero__inner">
+        <div class="kp-mhero__info kp-reveal">
+          <div class="kp-mhero__badge">Хіт продажів</div>
+          <h1 class="kp-mhero__title">KUPOLLA M</h1>
+          <div class="kp-mhero__meta">
+            <span class="kp-mhero__area">64 м²</span>
+            <span class="kp-mhero__dot" aria-hidden="true">·</span>
+            <span class="kp-mhero__diam">Діаметр 9 м</span>
+            <span class="kp-mhero__dot" aria-hidden="true">·</span>
+            <span class="kp-mhero__rooms">2–3 кімнати</span>
+          </div>
+          <p class="kp-mhero__desc">Оптимальна модель для комфортного сімейного проживання, глемпінгу та готельних комплексів. Ідеальне поєднання площі, вартості та функціональності.</p>
+          <div class="kp-mhero__stats">
+            <div class="kp-mhero__stat"><span>A+</span><small>Енергоефективність</small></div>
+            <div class="kp-mhero__stat"><span>10</span><small>Днів монтаж</small></div>
+            <div class="kp-mhero__stat"><span>25</span><small>Років гарантія</small></div>
+          </div>
+          <div class="kp-mhero__price">Вартість від <strong>€65 000</strong></div>
+          <div class="kp-mhero__actions">
+            <button class="kp-btn kp-btn--primary kp-btn--lg" onclick="document.getElementById('modelForm').scrollIntoView({behavior:'smooth'})">Замовити розрахунок</button>
+            <a href="configurator.html?model=m" class="kp-btn kp-btn--ghost kp-btn--lg">Налаштувати в конфігураторі</a>
+          </div>
+        </div>
+
+        <!-- GALLERY SLIDER -->
+        <div class="kp-slider kp-reveal" id="modelSlider" aria-label="Галерея KUPOLLA M">
+          <div class="kp-slider__track">
+            <div class="kp-slide kp-slide--1 active" role="img" aria-label="KUPOLLA M — вид зовні, день">
+              <div class="kp-slide__label">Екстер'єр — денне освітлення</div>
+            </div>
+            <div class="kp-slide kp-slide--2" role="img" aria-label="KUPOLLA M — вечірнє освітлення">
+              <div class="kp-slide__label">Екстер'єр — вечір</div>
+            </div>
+            <div class="kp-slide kp-slide--3" role="img" aria-label="KUPOLLA M — інтер'єр вітальні">
+              <div class="kp-slide__label">Інтер'єр — вітальня</div>
+            </div>
+            <div class="kp-slide kp-slide--4" role="img" aria-label="KUPOLLA M — спальня">
+              <div class="kp-slide__label">Інтер'єр — спальня</div>
+            </div>
+            <div class="kp-slide kp-slide--5" role="img" aria-label="KUPOLLA M — аерофото">
+              <div class="kp-slide__label">Вид зверху</div>
+            </div>
+          </div>
+          <button class="kp-slider__arrow kp-slider__arrow--prev" id="slidePrev" aria-label="Попередній слайд">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="kp-slider__arrow kp-slider__arrow--next" id="slideNext" aria-label="Наступний слайд">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+          <div class="kp-slider__dots" id="sliderDots" role="tablist"></div>
+          <div class="kp-slider__thumbs" id="sliderThumbs" aria-label="Мініатюри"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOOR PLAN -->
+  <section class="kp-section kp-floorplan">
+    <div class="kp-container">
+      <div class="kp-section__hd">
+        <span class="kp-label">Планування</span>
+        <h2 class="kp-section__title">План поверху та зонування</h2>
+      </div>
+      <div class="kp-floorplan__inner">
+        <div class="kp-floorplan__svg-wrap kp-reveal">
+          <svg class="kp-fp-svg" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="План поверху KUPOLLA M">
+            <!-- Outer dome wall -->
+            <circle cx="220" cy="220" r="198" fill="#f5f2ec" stroke="#0e2319" stroke-width="3"/>
+            <!-- Entry corridor bottom -->
+            <path d="M 190 400 L 190 370 L 250 370 L 250 400" stroke="#0e2319" stroke-width="1.5" fill="#eceae4"/>
+            <!-- Horizontal wall divider (upper zone) -->
+            <line x1="75" y1="195" x2="365" y2="195" stroke="#0e2319" stroke-width="1.5"/>
+            <!-- Vertical wall (splits bedrooms) -->
+            <line x1="220" y1="57" x2="220" y2="192" stroke="#0e2319" stroke-width="1.5"/>
+            <!-- Bathroom wall (upper right) -->
+            <path d="M 220 57 Q 290 57 340 110 L 340 192" stroke="#0e2319" stroke-width="1.5" fill="none"/>
+            <!-- Kitchen nook right -->
+            <line x1="310" y1="195" x2="310" y2="310" stroke="#0e2319" stroke-width="1.5"/>
+            <!-- Room zone fills -->
+            <path d="M 76 196 Q 60 140 100 90 Q 145 57 220 57 L 220 195 Z" fill="rgba(14,35,25,.04)"/>
+            <path d="M 220 57 Q 290 57 340 110 L 340 192 L 220 195 Z" fill="rgba(202,187,172,.12)"/>
+            <path d="M 76 196 L 310 196 L 310 310 Q 240 370 190 370 L 190 196 Z" fill="rgba(202,201,189,.08)"/>
+            <path d="M 310 196 L 362 196 Q 390 250 370 310 Q 345 360 310 370 L 310 196 Z" fill="rgba(14,35,25,.04)"/>
+            <!-- Furniture — Bedroom 1 (upper left) -->
+            <rect x="90" y="110" width="58" height="72" rx="4" fill="none" stroke="#0e2319" stroke-width="1" opacity=".5"/>
+            <rect x="90" y="108" width="58" height="18" rx="2" fill="#0e2319" opacity=".12"/>
+            <!-- Furniture — Bathroom (upper right) -->
+            <rect x="240" y="80" width="60" height="40" rx="20" fill="none" stroke="#0e2319" stroke-width="1" opacity=".5"/>
+            <rect x="240" y="130" width="32" height="42" rx="6" fill="none" stroke="#0e2319" stroke-width="1" opacity=".5"/>
+            <!-- Furniture — Sofa (living) -->
+            <rect x="110" y="230" width="140" height="48" rx="8" fill="none" stroke="#0e2319" stroke-width="1" opacity=".4"/>
+            <rect x="110" y="230" width="140" height="16" rx="4" fill="#0e2319" opacity=".1"/>
+            <!-- Table -->
+            <ellipse cx="205" cy="305" rx="30" ry="22" fill="none" stroke="#0e2319" stroke-width="1" opacity=".4"/>
+            <!-- Kitchen counter right -->
+            <rect x="315" y="205" width="44" height="90" rx="4" fill="none" stroke="#0e2319" stroke-width="1" opacity=".5"/>
+            <!-- Compass -->
+            <text x="395" y="65" font-family="Inter,sans-serif" font-size="11" fill="#0e2319" opacity=".5" text-anchor="middle">N</text>
+            <line x1="395" y1="70" x2="395" y2="55" stroke="#0e2319" stroke-width="1" opacity=".5"/>
+            <!-- Zone labels -->
+            <text x="148" y="140" font-family="Inter,sans-serif" font-size="10" fill="#0e2319" opacity=".7" text-anchor="middle">Спальня 1</text>
+            <text x="148" y="151" font-family="Inter,sans-serif" font-size="9" fill="#5a6255" opacity=".7" text-anchor="middle">≈16 м²</text>
+            <text x="280" y="130" font-family="Inter,sans-serif" font-size="10" fill="#0e2319" opacity=".7" text-anchor="middle">Санвузол</text>
+            <text x="280" y="141" font-family="Inter,sans-serif" font-size="9" fill="#5a6255" opacity=".7" text-anchor="middle">≈6 м²</text>
+            <text x="195" y="270" font-family="Inter,sans-serif" font-size="10" fill="#0e2319" opacity=".7" text-anchor="middle">Вітальня / Спальня 2</text>
+            <text x="195" y="281" font-family="Inter,sans-serif" font-size="9" fill="#5a6255" opacity=".7" text-anchor="middle">≈28 м²</text>
+            <text x="338" y="260" font-family="Inter,sans-serif" font-size="10" fill="#0e2319" opacity=".7" text-anchor="middle">Кухня</text>
+            <text x="338" y="271" font-family="Inter,sans-serif" font-size="9" fill="#5a6255" opacity=".7" text-anchor="middle">≈10 м²</text>
+            <text x="220" y="390" font-family="Inter,sans-serif" font-size="10" fill="#0e2319" opacity=".7" text-anchor="middle">Вхід</text>
+            <!-- Dimension line -->
+            <line x1="22" y1="220" x2="418" y2="220" stroke="#cabbac" stroke-width="1" stroke-dasharray="4 3" opacity=".6"/>
+            <text x="220" y="215" font-family="Inter,sans-serif" font-size="9" fill="#cabbac" text-anchor="middle">9 м (діаметр)</text>
+          </svg>
+        </div>
+        <div class="kp-floorplan__legend kp-reveal">
+          <h3 class="kp-floorplan__legend-title">Зонування</h3>
+          <ul class="kp-floorplan__zones">
+            <li class="kp-fzone"><span class="kp-fzone__dot" style="background:rgba(14,35,25,.12)"></span><span class="kp-fzone__name">Спальня 1</span><span class="kp-fzone__area">≈16 м²</span></li>
+            <li class="kp-fzone"><span class="kp-fzone__dot" style="background:rgba(202,187,172,.3)"></span><span class="kp-fzone__name">Санвузол</span><span class="kp-fzone__area">≈6 м²</span></li>
+            <li class="kp-fzone"><span class="kp-fzone__dot" style="background:rgba(202,201,189,.2)"></span><span class="kp-fzone__name">Вітальня / Спальня 2</span><span class="kp-fzone__area">≈28 м²</span></li>
+            <li class="kp-fzone"><span class="kp-fzone__dot" style="background:rgba(14,35,25,.06)"></span><span class="kp-fzone__name">Кухня-ніша</span><span class="kp-fzone__area">≈10 м²</span></li>
+            <li class="kp-fzone"><span class="kp-fzone__dot" style="background:#eceae4"></span><span class="kp-fzone__name">Вхідна зона</span><span class="kp-fzone__area">≈4 м²</span></li>
+          </ul>
+          <p class="kp-floorplan__note">Планування є рекомендованим. Кастомне зонування доступне в комплектації Преміум.</p>
+          <a href="configurator.html?model=m" class="kp-btn kp-btn--ghost kp-btn--sm" style="margin-top:1rem">Змінити планування</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH SPECS -->
+  <section class="kp-section kp-specs">
+    <div class="kp-container">
+      <div class="kp-section__hd">
+        <span class="kp-label">Технічні характеристики</span>
+        <h2 class="kp-section__title">Інженерні параметри</h2>
+      </div>
+      <div class="kp-specs__grid kp-reveal">
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+          <span class="kp-spec__label">Діаметр</span>
+          <span class="kp-spec__val">9 м</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="17 7 12 2 7 7"/><polyline points="17 17 12 22 7 17"/></svg></div>
+          <span class="kp-spec__label">Висота куполу</span>
+          <span class="kp-spec__val">5.4 м</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div>
+          <span class="kp-spec__label">Загальна площа</span>
+          <span class="kp-spec__val">64 м²</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L3 9v12h18V9L12 3z"/></svg></div>
+          <span class="kp-spec__label">Матеріал каркасу</span>
+          <span class="kp-spec__val">CLT-панелі</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <span class="kp-spec__label">Утеплення</span>
+          <span class="kp-spec__val">Мін. вата 200 мм</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M10 6V4a2 2 0 014 0v2"/></svg></div>
+          <span class="kp-spec__label">Вікна</span>
+          <span class="kp-spec__val">3-шарове, U=0.6</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <span class="kp-spec__label">Монтаж</span>
+          <span class="kp-spec__val">10–14 днів</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg></div>
+          <span class="kp-spec__label">Фундамент</span>
+          <span class="kp-spec__val">Гвинтові палі</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <span class="kp-spec__label">Снігове навантаження</span>
+          <span class="kp-spec__val">500 кг/м²</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg></div>
+          <span class="kp-spec__label">Вітростійкість</span>
+          <span class="kp-spec__val">до 200 км/год</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <span class="kp-spec__label">Клас енергоефективності</span>
+          <span class="kp-spec__val kp-spec__val--accent">A+</span>
+        </div>
+        <div class="kp-spec">
+          <div class="kp-spec__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <span class="kp-spec__label">Гарантія на каркас</span>
+          <span class="kp-spec__val">25 років</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIGURATIONS TABLE -->
+  <section class="kp-section kp-configs" id="configs">
+    <div class="kp-container">
+      <div class="kp-section__hd">
+        <span class="kp-label">Комплектації</span>
+        <h2 class="kp-section__title">Оберіть рівень</h2>
+        <p class="kp-section__sub">Три рівні комплектації для різних потреб та бюджетів</p>
+      </div>
+      <div class="kp-configs__table kp-reveal">
+        <div class="kp-ct__head">
+          <div class="kp-ct__feat-col">Характеристика</div>
+          <div class="kp-ct__tier">
+            <span class="kp-ct__tier-name">Базова</span>
+            <span class="kp-ct__tier-price">від €65 000</span>
+          </div>
+          <div class="kp-ct__tier kp-ct__tier--std">
+            <span class="kp-ct__tier-badge">Популярна</span>
+            <span class="kp-ct__tier-name">Стандарт</span>
+            <span class="kp-ct__tier-price">від €82 000</span>
+          </div>
+          <div class="kp-ct__tier">
+            <span class="kp-ct__tier-name">Преміум</span>
+            <span class="kp-ct__tier-price">від €108 000</span>
+          </div>
+        </div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">CLT-каркас із сертиф. деревини</div><div class="kp-ct__v">✓</div><div class="kp-ct__v kp-ct__v--std">✓</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Утеплення 200 мм мін. вата</div><div class="kp-ct__v">✓</div><div class="kp-ct__v kp-ct__v--std">✓</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Стандартні вікна (2-шарові)</div><div class="kp-ct__v">✓</div><div class="kp-ct__v kp-ct__v--std">—</div><div class="kp-ct__v">—</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Панорамні вікна (3-шарові)</div><div class="kp-ct__v">—</div><div class="kp-ct__v kp-ct__v--std">✓</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Тераса 12 м²</div><div class="kp-ct__v">—</div><div class="kp-ct__v kp-ct__v--std">✓</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Вбудована сантехніка</div><div class="kp-ct__v">—</div><div class="kp-ct__v kp-ct__v--std">✓</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Система «Розумний будинок»</div><div class="kp-ct__v">—</div><div class="kp-ct__v kp-ct__v--std">—</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Кастомне планування</div><div class="kp-ct__v">—</div><div class="kp-ct__v kp-ct__v--std">—</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__row"><div class="kp-ct__feat">Вбудована кліматична система</div><div class="kp-ct__v">—</div><div class="kp-ct__v kp-ct__v--std">—</div><div class="kp-ct__v">✓</div></div>
+        <div class="kp-ct__foot">
+          <div class="kp-ct__feat-col"></div>
+          <div class="kp-ct__cta"><button class="kp-btn kp-btn--ghost kp-btn--sm" onclick="document.getElementById('modelForm').scrollIntoView({behavior:'smooth'})">Обрати</button></div>
+          <div class="kp-ct__cta"><button class="kp-btn kp-btn--primary kp-btn--sm" onclick="document.getElementById('modelForm').scrollIntoView({behavior:'smooth'})">Обрати</button></div>
+          <div class="kp-ct__cta"><button class="kp-btn kp-btn--ghost kp-btn--sm" onclick="document.getElementById('modelForm').scrollIntoView({behavior:'smooth'})">Обрати</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE CTA BLOCK -->
+  <section class="kp-price-cta">
+    <div class="kp-container">
+      <div class="kp-price-cta__inner kp-reveal">
+        <div class="kp-price-cta__content">
+          <span class="kp-label kp-label--gold">Вартість KUPOLLA M</span>
+          <div class="kp-price-cta__num">від <em>€65 000</em></div>
+          <p class="kp-price-cta__note">Ціна включає: каркас, утеплення, покрівлю, вікна, монтаж. Фундамент, доставка та внутрішнє оздоблення — за тарифом.</p>
+        </div>
+        <div class="kp-price-cta__actions">
+          <button class="kp-btn kp-btn--gold kp-btn--lg" onclick="document.getElementById('modelForm').scrollIntoView({behavior:'smooth'})">Отримати точний розрахунок</button>
+          <a href="configurator.html?model=m" class="kp-btn kp-btn--ghost-light kp-btn--lg">Налаштувати в конфігураторі</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODEL INQUIRY FORM -->
+  <section class="kp-section kp-model-form" id="modelForm">
+    <div class="kp-container">
+      <div class="kp-model-form__inner">
+        <div class="kp-model-form__info kp-reveal">
+          <span class="kp-label">Заявка на KUPOLLA M</span>
+          <h2 class="kp-section__title">Розрахунок вартості під ваш проєкт</h2>
+          <p class="kp-model-form__desc">Вкажіть бажану комплектацію та контакти — ми підготуємо детальну комерційну пропозицію протягом 24 годин.</p>
+        </div>
+        <div class="kp-model-form__fw kp-reveal">
+          <form class="kp-form" id="modelInquiryForm" novalidate>
+            <input type="hidden" name="model" value="KUPOLLA M">
+            <div class="kp-form__row">
+              <div class="kp-form__fld">
+                <label for="mfName" class="kp-form__lbl">Ваше ім'я *</label>
+                <input type="text" id="mfName" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name">
+              </div>
+              <div class="kp-form__fld">
+                <label for="mfPhone" class="kp-form__lbl">Телефон *</label>
+                <input type="tel" id="mfPhone" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel">
+              </div>
+            </div>
+            <div class="kp-form__fld">
+              <label for="mfEmail" class="kp-form__lbl">Email *</label>
+              <input type="email" id="mfEmail" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email">
+            </div>
+            <div class="kp-form__fld">
+              <label for="mfConfig" class="kp-form__lbl">Комплектація</label>
+              <select id="mfConfig" name="config" class="kp-form__inp kp-form__select">
+                <option value="">Оберіть комплектацію...</option>
+                <option value="base">Базова — від €65 000</option>
+                <option value="standard" selected>Стандарт — від €82 000</option>
+                <option value="premium">Преміум — від €108 000</option>
+              </select>
+            </div>
+            <label class="kp-checkbox">
+              <input type="checkbox" name="gdpr" required>
+              <span class="kp-checkbox__mark"></span>
+              <span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку персональних даних</a></span>
+            </label>
+            <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">
+              Надіслати заявку
+              <svg class="kp-btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <p class="kp-form__note">Відповідаємо протягом 24 годин у робочі дні</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED MODELS -->
+  <section class="kp-section kp-related">
+    <div class="kp-container">
+      <div class="kp-section__hd">
+        <span class="kp-label">Схожі моделі</span>
+        <h2 class="kp-section__title">Також вас може зацікавити</h2>
+      </div>
+      <div class="kp-related__grid">
+        <a href="model.html?slug=kupolla-s" class="kp-rcard kp-reveal">
+          <div class="kp-rcard__img kp-rcard__img--s"></div>
+          <div class="kp-rcard__body"><span class="kp-rcard__name">KUPOLLA S</span><span class="kp-rcard__area">36 м²</span><span class="kp-rcard__price">від €35 000</span></div>
+        </a>
+        <a href="model.html?slug=kupolla-l" class="kp-rcard kp-reveal">
+          <div class="kp-rcard__img kp-rcard__img--l"></div>
+          <div class="kp-rcard__body"><span class="kp-rcard__name">KUPOLLA L</span><span class="kp-rcard__area">120 м²</span><span class="kp-rcard__price">від €120 000</span></div>
+        </a>
+        <a href="configurator.html" class="kp-rcard kp-rcard--cta kp-reveal">
+          <div class="kp-rcard__cta-inner">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 8L40 16v16L24 40 8 32V16z" stroke="currentColor" stroke-width="1.5"/><path d="M24 16v16M16 24h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Зібрати свою<br>власну модель</span>
+            <span class="kp-rcard__cta-link">Відкрити конфігуратор →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER (shared) -->
+<footer class="kp-footer">
+  <div class="kp-container">
+    <div class="kp-footer__top">
+      <div class="kp-footer__brand">
+        <a href="index.html" class="kp-logo kp-logo--inv">KUPOLLA</a>
+        <p class="kp-footer__tag">Преміальні купольні будинки для сучасного способу життя</p>
+        <div class="kp-footer__socials">
+          <a href="#" class="kp-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="kp-social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <nav class="kp-footer__nav">
+        <div class="kp-footer__col"><h4 class="kp-footer__col-h">Продукт</h4><a href="index.html#models" class="kp-footer__lnk">Модельний ряд</a><a href="configurator.html" class="kp-footer__lnk">Конфігуратор</a><a href="index.html#technologies" class="kp-footer__lnk">Технології</a></div>
+        <div class="kp-footer__col"><h4 class="kp-footer__col-h">Компанія</h4><a href="index.html#benefits" class="kp-footer__lnk">Про нас</a><a href="index.html" class="kp-footer__lnk">Галерея</a><a href="index.html" class="kp-footer__lnk">Блог</a></div>
+        <div class="kp-footer__col"><h4 class="kp-footer__col-h">Контакти</h4><a href="index.html#contact" class="kp-footer__lnk">Написати нам</a><a href="#" class="kp-footer__lnk">FAQ</a></div>
+      </nav>
+    </div>
+    <div class="kp-footer__bot">
+      <p class="kp-footer__copy">© 2026 KUPOLLA. Всі права захищено.</p>
+      <div class="kp-footer__legal"><a href="#" class="kp-footer__leg-lnk">Конфіденційність</a><a href="#" class="kp-footer__leg-lnk">Умови</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="kp-modal" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="kp-modal__bd" onclick="closeConsultModal()"></div>
+  <div class="kp-modal__box">
+    <button class="kp-modal__close" onclick="closeConsultModal()" aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="kp-modal__hd"><h2 class="kp-modal__title" id="modalTitle">Безкоштовна консультація</h2><p class="kp-modal__desc">Менеджер зв'яжеться протягом 24 годин.</p></div>
+    <form class="kp-form" id="modalForm" novalidate>
+      <input type="hidden" name="source" value="KUPOLLA M — modal">
+      <div class="kp-form__fld"><label for="mdName" class="kp-form__lbl">Ваше ім'я *</label><input type="text" id="mdName" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name"></div>
+      <div class="kp-form__fld"><label for="mdPhone" class="kp-form__lbl">Телефон *</label><input type="tel" id="mdPhone" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel"></div>
+      <label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку даних</a></span></label>
+      <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">Надіслати</button>
+    </form>
+  </div>
+</div>
+
+<div class="kp-mobile-cta" id="mobileCta">
+  <button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal()">Замовити консультацію</button>
+</div>
+
+<script src="../../js/kupolla.js"></script>
+<script src="../../js/kupolla-model.js"></script>
+</body>
+</html>

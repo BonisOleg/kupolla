@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block body_class %}kp-body--home{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section id="hero" class="kp-hero">
+  <div class="kp-hero__bg" aria-hidden="true">
+    <picture class="kp-hero__photo">
+      <source media="(max-width: 767px)" srcset="{% static 'images/hero/kupolla-dome-mobile.webp' %}">
+      <img src="{% static 'images/hero/kupolla-dome-forest.webp' %}" alt="" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
+    {# Відео вмикається лише JS (js/kupolla.js:initHeroVideo) — після перевірки
+       prefers-reduced-motion/Data Saver і успішного autoplay. До того часу
+       і при будь-якій відмові лишається статичне фото вище (без стрибків макету). #}
+    <video
+      class="kp-hero__video"
+      id="heroVideo"
+      data-src="{% static 'videos/glamping-concept-loop.mp4' %}"
+      muted loop playsinline webkit-playsinline="true"
+      disablepictureinpicture disableremoteplayback
+      preload="none"
+      aria-hidden="true"
+    ></video>
+  </div>
+  <div class="kp-container">
+    <div class="kp-hero__content">
+      <div class="kp-hero__badge">{% trans "Виробник купольних будинків" %}</div>
+      <h1 class="kp-hero__title">{% trans "Купольні будинки" %}<br><em>{% trans "нового покоління" %}</em></h1>
+      <p class="kp-hero__desc">{% trans "Рішення для готелів, курортів і глемпінгів, де дизайн, якість і функціональність працюють разом." %}</p>
+      <div class="kp-hero__stats">
+        <div class="kp-stat"><span class="kp-stat__num">4</span><span class="kp-stat__lbl">{% trans "сезони експлуатації" %}</span></div>
+        <div class="kp-stat__div"></div>
+        <div class="kp-stat"><span class="kp-stat__num">96 {% trans "міс." %}</span><span class="kp-stat__lbl">{% trans "гарантія на конструкцію" %}</span></div>
+        <div class="kp-stat__div"></div>
+        <div class="kp-stat"><span class="kp-stat__num">1 {% trans "рік" %}</span><span class="kp-stat__lbl">{% trans "термін окупності" %}</span></div>
+      </div>
+      <div class="kp-hero__actions">
+        <button class="kp-btn kp-btn--gold kp-btn--lg" data-modal-trigger="consult">{% trans "Отримати консультацію" %}</button>
+        <a href="{% url 'catalog:detail' slug='kupolla-s' %}" class="kp-btn kp-btn--ghost-light kp-btn--lg">{% trans "Дізнатись про купол" %}</a>
+      </div>
+    </div>
+  </div>
+  <div class="kp-hero__scroll" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits" class="kp-section kp-benefits">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Чому KUPOLLA" %}</span>
+      <h2 class="kp-section__title">{% trans "Переваги купольних будинків" %}</h2>
+      <p class="kp-section__sub">{% trans "Поєднання передових технологій та природних матеріалів для вашого комфорту" %}</p>
+    </div>
+    <div class="kp-benefits__grid">
+      <div class="kp-bcard kp-reveal">
+        <div class="kp-bcard__icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 40V20L24 8l16 12v20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 40V28h8v12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="24" cy="18" r="2.5" fill="currentColor" opacity="0.3"/></svg></div>
+        <h3 class="kp-bcard__title">{% trans "Новий формат гостинності" %}</h3>
+        <p class="kp-bcard__desc">{% trans "Створюйте унікальні простори, які стають головною перевагою вашого туристичного об'єкта." %}</p>
+      </div>
+      <div class="kp-bcard kp-reveal">
+        <div class="kp-bcard__icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 34l10-10 8 6 14-16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 14h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3 class="kp-bcard__title">{% trans "Інвестиція в додатковий дохід" %}</h3>
+        <p class="kp-bcard__desc">{% trans "Збільшуйте номерний фонд та отримуйте нові можливості монетизації території." %}</p>
+      </div>
+      <div class="kp-bcard kp-reveal">
+        <div class="kp-bcard__icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="6" y="26" width="12" height="14" stroke="currentColor" stroke-width="1.5"/><rect x="20" y="18" width="12" height="22" stroke="currentColor" stroke-width="1.5"/><rect x="34" y="10" width="8" height="30" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3 class="kp-bcard__title">{% trans "Швидке масштабування" %}</h3>
+        <p class="kp-bcard__desc">{% trans "Розширюйте готель чи глемпінг поступово, адаптуючись до потреб ринку." %}</p>
+      </div>
+      <div class="kp-bcard kp-reveal">
+        <div class="kp-bcard__icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 7C24 7 12 17 12 27c0 6.6 5.4 11 12 11s12-4.4 12-11C36 17 24 7 24 7z" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3 class="kp-bcard__title">{% trans "Мінімальний вплив на природу" %}</h3>
+        <p class="kp-bcard__desc">{% trans "Компактна модульна конструкція дозволяє зберігати особливості локації та природний ландшафт." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product" class="kp-section kp-product">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Наш продукт" %}</span>
+      <h2 class="kp-section__title">{% trans "Модельний ряд KUPOLLA" %}</h2>
+      <p class="kp-section__sub">{% trans "Три готові рішення під ваш проєкт та бюджет — від компактного глемпінгу до преміальної резиденції" %}</p>
+    </div>
+
+    <div class="kp-catalog__grid kp-catalog__grid--home">
+      {% for dome in models %}
+      <article class="kp-mcard kp-catalog-card kp-reveal{% if dome.is_featured %} kp-mcard--feat{% endif %}">
+        <div class="kp-mcard__img{% if dome.size_cat == 'small' %} kp-mcard__img--s{% elif dome.size_cat == 'medium' %} kp-mcard__img--m{% else %} kp-mcard__img--l{% endif %}">
+          {% with dome.images.first as img %}
+          {% if img %}
+          <img src="{{ img.image.url }}" alt="{{ dome.name }}" loading="lazy">
+          {% elif dome.slug == 'kupolla-s' %}
+          <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="{{ dome.name }}" loading="lazy">
+          {% endif %}
+          {% endwith %}
+          {% if dome.is_featured %}
+          <span class="kp-mcard__badge kp-mcard__badge--gold">{% trans "Хіт продажів" %}</span>
+          {% endif %}
+        </div>
+        <div class="kp-mcard__body">
+          <div class="kp-mcard__meta">
+            <span class="kp-mcard__name">{{ dome.name }}</span>
+            <span class="kp-mcard__area">{{ dome.area_m2 }} м²</span>
+          </div>
+          {% if dome.short_description %}
+          <p class="kp-mcard__desc">{{ dome.short_description }}</p>
+          {% endif %}
+          {% if dome.price_from %}
+          <div class="kp-mcard__foot">
+            <span class="kp-mcard__price">{% trans "від" %} €{{ dome.price_from|floatformat:0 }}</span>
+          </div>
+          {% endif %}
+          <div class="kp-catalog-card__actions">
+            <a href="{{ dome.get_absolute_url }}" class="kp-btn kp-btn--sm kp-btn--primary">{% trans "Детальніше" %}</a>
+          </div>
+        </div>
+      </article>
+      {% empty %}
+      <div class="kp-product__card kp-reveal">
+        <a href="{% url 'catalog:list' %}" class="kp-product__media">
+          <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="KUPOLLA" loading="lazy" width="960" height="640">
+        </a>
+        <div class="kp-product__body">
+          <div class="kp-product__meta">
+            <h3 class="kp-product__name">KUPOLLA</h3>
+            <span class="kp-product__area">36 м² · Ø 6.8 {% trans "м" %}</span>
+          </div>
+          <p class="kp-product__desc">{% trans "Геодезичний купольний будинок для глемпінгу, відпочинку та гостьового проживання." %}</p>
+          <div class="kp-product__actions">
+            <a href="{% url 'catalog:list' %}" class="kp-btn kp-btn--primary kp-btn--lg">{% trans "Детальніше про купол" %}</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="kp-section__ft kp-center-lg">
+      <a href="{% url 'catalog:list' %}" class="kp-btn kp-btn--primary kp-btn--lg">{% trans "Весь модельний ряд" %}</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO REVIEW -->
+<section id="video-review" class="kp-section kp-video-review">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Відеогляд" %}</span>
+      <h2 class="kp-section__title">{% trans "Подивіться на купол зблизька" %}</h2>
+      <p class="kp-section__sub">{% trans "Короткий огляд простору та атмосфери KUPOLLA" %}</p>
+    </div>
+    <div class="kp-video-review__grid">
+      {% get_current_language as CUR_LANG %}
+      {% if CUR_LANG == 'en' %}
+      <figure class="kp-video-review__item kp-video-review__item--primary kp-reveal">
+        <video class="kp-video-review__video" controls playsinline preload="metadata" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
+          <source src="{% static 'videos/dome-review-en.mp4' %}" type="video/mp4">
+        </video>
+        <figcaption class="kp-video-review__cap">English</figcaption>
+      </figure>
+      <figure class="kp-video-review__item kp-reveal">
+        <video class="kp-video-review__video" controls playsinline preload="none" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
+          <source src="{% static 'videos/dome-review-uk.mp4' %}" type="video/mp4">
+        </video>
+        <figcaption class="kp-video-review__cap">Українська</figcaption>
+      </figure>
+      {% else %}
+      <figure class="kp-video-review__item kp-video-review__item--primary kp-reveal">
+        <video class="kp-video-review__video" controls playsinline preload="metadata" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
+          <source src="{% static 'videos/dome-review-uk.mp4' %}" type="video/mp4">
+        </video>
+        <figcaption class="kp-video-review__cap">Українська</figcaption>
+      </figure>
+      <figure class="kp-video-review__item kp-reveal">
+        <video class="kp-video-review__video" controls playsinline preload="none" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
+          <source src="{% static 'videos/dome-review-en.mp4' %}" type="video/mp4">
+        </video>
+        <figcaption class="kp-video-review__cap">English</figcaption>
+      </figure>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section id="technologies" class="kp-section kp-tech">
+  <div class="kp-container">
+    <div class="kp-tech__hd kp-reveal">
+      <span class="kp-label kp-label--gold">{% trans "Технології та матеріали" %}</span>
+      <h2 class="kp-section__title kp-section__title--light">{% trans "Engineering Excellence" %}<br>{% trans "(Відмінна інженерія)" %}</h2>
+      <p class="kp-tech__desc">{% trans "Спроєктовано для довготривалої експлуатації." %}</p>
+    </div>
+    <div class="kp-tech__cards">
+      <div class="kp-tcard kp-reveal">
+        <span class="kp-tcard__eyebrow">Structural Engineering</span>
+        <h3 class="kp-tcard__title">{% trans "Інженерна конструкція" %}</h3>
+        <p class="kp-tcard__desc">{% trans "Кожен купол проєктується як модульна система, що поєднує високу жорсткість конструкції, точність виробництва та можливість швидкого монтажу." %}</p>
+      </div>
+      <div class="kp-tcard kp-reveal">
+        <span class="kp-tcard__eyebrow">Premium Materials</span>
+        <h3 class="kp-tcard__title">{% trans "Преміальні матеріали" %}</h3>
+        <p class="kp-tcard__desc">{% trans "Ми використовуємо матеріали, які відповідають вимогам професійного готельного сектору щодо довговічності, енергоефективності та естетики." %}</p>
+      </div>
+      <div class="kp-tcard kp-reveal">
+        <span class="kp-tcard__eyebrow">Energy Performance</span>
+        <h3 class="kp-tcard__title">{% trans "Енергоефективність" %}</h3>
+        <p class="kp-tcard__desc">{% trans "Багатошарова конструкція забезпечує високий рівень теплоізоляції, комфортний мікроклімат у будь-яку пору року та зниження експлуатаційних витрат." %}</p>
+      </div>
+      <div class="kp-tcard kp-reveal">
+        <span class="kp-tcard__eyebrow">Factory Precision</span>
+        <h3 class="kp-tcard__title">{% trans "Заводське виробництво" %}</h3>
+        <p class="kp-tcard__desc">{% trans "Основні елементи виготовляються у контрольованих виробничих умовах, що гарантує стабільну якість та прогнозований монтаж на об'єкті." %}</p>
+      </div>
+    </div>
+    <div class="kp-tech__cta kp-reveal">
+      <a href="{% url 'technologies:index' %}" class="kp-btn kp-btn--gold">{% trans "Дізнатись більше про технології" %}</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+{% if latest_posts %}
+<section id="blog-preview" class="kp-section kp-blog-preview">
+  <div class="kp-container">
+    <div class="kp-blog-preview__hd">
+      <h2 class="kp-blog-preview__title">{% trans "Останні новини" %}<br>KUPOLLA</h2>
+      <p class="kp-blog-preview__sub">{% trans "Наші нові проєкти та новини з виробництва, якими ми регулярно ділимось на нашому сайті." %}</p>
+    </div>
+    <div class="kp-blog-preview__grid">
+      {% for post in latest_posts %}
+      <a href="{{ post.get_absolute_url }}" class="kp-blog-card kp-reveal">
+        <div class="kp-blog-card__media">
+          {% if post.cover_image %}
+          <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" width="400" height="260">
+          {% else %}
+          <img src="{% static 'images/illustrations/dome-blog-hero.svg' %}" alt="{{ post.title }}" loading="lazy" width="400" height="260">
+          {% endif %}
+        </div>
+        <div class="kp-blog-card__body">
+          <h3 class="kp-blog-card__title">{{ post.title }}</h3>
+          {% if post.excerpt %}<p class="kp-blog-card__desc">{{ post.excerpt|truncatewords:18 }}</p>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="kp-blog-preview__cta">
+      <a href="{% url 'blog:list' %}" class="kp-btn kp-btn--outline">{% trans "Усі статті блогу" %}</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- CONTACT FORM -->
+<section id="contact" class="kp-section kp-contact">
+  <div class="kp-container">
+    <div class="kp-contact__inner">
+      <div class="kp-contact__copy">
+        <span class="kp-label">{% trans "Зв'яжіться з нами" %}</span>
+        <h2 class="kp-section__title">{% trans "Отримати консультацію" %}</h2>
+        <p class="kp-section__sub">{% trans "Залиште заявку — менеджер зв'яжеться з вами протягом 24 годин." %}</p>
+      </div>
+      <div class="kp-contact__form">
+        <div id="contactFormResponse"></div>
+        <form class="kp-form"
+              id="contactForm"
+              data-qa="lead-form"
+              novalidate
+              hx-post="{% url 'lead_create' %}"
+              hx-target="#contactFormResponse"
+              hx-swap="innerHTML">
+          {% csrf_token %}
+          {% include "partials/honeypot.html" %}
+          <input type="hidden" name="form_type" value="contact">
+          <div class="kp-form__fld">
+            <label for="cName" class="kp-form__lbl">{% trans "Ваше ім'я" %} *</label>
+            <input type="text" id="cName" name="name" class="kp-form__inp" placeholder="{% trans 'Іван Петренко' %}" required autocomplete="name">
+          </div>
+          <div class="kp-form__fld">
+            <label for="cPhone" class="kp-form__lbl">{% trans "Телефон" %} *</label>
+            <input type="tel" id="cPhone" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="kp-form__fld">
+            <label for="cEmail" class="kp-form__lbl">{% trans "Email" %}</label>
+            <input type="email" id="cEmail" name="email" class="kp-form__inp" placeholder="ivan@example.com" autocomplete="email">
+          </div>
+          {% include "partials/location_fields.html" with id_prefix="c" %}
+          <div class="kp-form__fld">
+            <label for="cMsg" class="kp-form__lbl">{% trans "Повідомлення" %}</label>
+            <textarea id="cMsg" name="message" class="kp-form__inp kp-form__ta" rows="3" placeholder="{% trans 'Ваше повідомлення...' %}"></textarea>
+          </div>
+          <label class="kp-checkbox">
+            <input type="checkbox" name="gdpr_consent" required>
+            <span class="kp-checkbox__mark"></span>
+            <span class="kp-checkbox__txt">{% trans "Я погоджуюсь на обробку персональних даних відповідно до GDPR" %}</span>
+          </label>
+          <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">
+            {% trans "Надіслати заявку" %}
+            <svg class="kp-btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <p class="kp-form__note">{% trans "Відповідаємо протягом 24 годин у робочі дні" %}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

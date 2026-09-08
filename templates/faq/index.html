@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
+{% endblock %}
+
+{% block seo_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for group in groups %}{% for item in group.items.all %}
+    {
+      "@type": "Question",
+      "name": "{{ item.question|escapejs }}",
+      "acceptedAnswer": {"@type": "Answer", "text": "{{ item.answer|striptags|escapejs }}"}
+    }{% if not forloop.last or not forloop.parentloop.last %},{% endif %}
+    {% endfor %}{% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">FAQ</span>
+    </nav>
+  </div>
+</div>
+
+<section class="kp-inner-hero kp-inner-hero--faq">
+  <div class="kp-container kp-inner-hero__layout">
+    <div class="kp-inner-hero__content">
+      <span class="kp-inner-hero__badge">{% trans "Часті запитання" %}</span>
+      <h1 class="kp-inner-hero__title">{% trans "Відповіді на" %}<br><em>{% trans "ваші запитання" %}</em></h1>
+      <p class="kp-inner-hero__desc">{% trans "Зібрали найпоширеніші питання про купольні будинки KUPOLLA." %}</p>
+    </div>
+    <div class="kp-inner-hero__illustration" aria-hidden="true">
+      <img src="{% static 'images/illustrations/dome-faq-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section class="kp-section kp-faq-section">
+  <div class="kp-container">
+
+    {% for group in groups %}
+    {% if group.items.all %}
+    <div class="kp-faq-group">
+      <h2 class="kp-faq-group__title">{{ group.name }}</h2>
+      <div class="kp-accordion" role="list">
+        {% for item in group.items.all %}
+        {% if item.is_published %}
+        <div class="kp-acc-item" role="listitem">
+          <button class="kp-acc-trigger" aria-expanded="false">
+            <span class="kp-acc-q">{{ item.question }}</span>
+            <span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="kp-acc-body">
+            <div class="kp-acc-body__clip">
+              <div class="kp-prose">{{ item.answer|safe }}</div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% empty %}
+
+    <!-- Монтаж -->
+    <div class="kp-faq-group">
+      <h2 class="kp-faq-group__title">{% trans "Монтаж та виробництво" %}</h2>
+      <div class="kp-accordion">
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Скільки часу займає монтаж купольного будинку?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Монтаж каркасу займає від 3 до 7 робочих днів залежно від розміру моделі. Повний цикл включаючи утеплення, вікна та зовнішнє оздоблення — 10–14 днів. Це один з найшвидших способів побудувати повноцінне житло." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Які умови потрібні для монтажу? Чи потрібен фундамент?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Для більшості ґрунтів ми використовуємо гвинтові палі — швидко, без земляних робіт та придатно для складного рельєфу. Для постійного проживання рекомендуємо стрічковий або плитний фундамент. Наші інженери рекомендують оптимальне рішення після аналізу геології ділянки." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Чи можна встановити купол на схилі або нерівній ділянці?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Так, гвинтові палі дозволяють компенсувати нахил до 15°. Для більших ухилів ми проєктуємо висоту паль індивідуально. Це дає змогу зберегти природний рельєф без масштабних земляних робіт." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Хто проводить монтаж? Чи можу я зробити це самостійно?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Монтаж проводить наша сертифікована бригада. Ми не рекомендуємо самостійний монтаж, оскільки від якості збірки залежить довговічність конструкції та дія гарантії. Монтажники доїжджають до будь-якої точки Європи." %}</p></div></div></div>
+      </div>
+    </div>
+
+    <!-- Ціна -->
+    <div class="kp-faq-group">
+      <h2 class="kp-faq-group__title">{% trans "Ціноутворення та оплата" %}</h2>
+      <div class="kp-accordion">
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Що включає ціна «від...»?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Базова ціна включає: CLT-каркас, утеплення 200 мм, зовнішнє покриття, вікна та двері стандартної комплектації, монтаж каркасу. Не включено: фундамент, внутрішнє оздоблення, доставка, підведення комунікацій, тераса (якщо не обрана як опція)." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Як здійснюється оплата? Чи є розстрочка?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Стандартна схема: 30% передоплата при підписанні договору, 50% перед відвантаженням, 20% після завершення монтажу. Ми також співпрацюємо з банками-партнерами для фінансування через кредит або лізинг." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Чи змінюється ціна після укладення договору?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Ціна фіксується у договорі на момент підписання та не підлягає перегляду. Будь-які зміни в конфігурації після підписання договору оформляються додатковою угодою з фіксованою вартістю змін." %}</p></div></div></div>
+      </div>
+    </div>
+
+    <!-- Дозволи -->
+    <div class="kp-faq-group">
+      <h2 class="kp-faq-group__title">{% trans "Дозволи та документи" %}</h2>
+      <div class="kp-accordion">
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Чи потрібен дозвіл на будівництво для купола?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Залежить від країни, площі та класифікації об'єкта. Для тимчасових конструкцій (до 50 м²) у більшості країн ЄС дозвіл не потрібен або достатньо повідомлення. Для постійного житла — стандартна процедура отримання будівельного дозволу. Ми надаємо повний пакет проєктної документації для подачі." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Яку документацію ви надаєте?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Ми надаємо: архітектурний проєкт, конструктивні розрахунки, специфікації матеріалів, сертифікати відповідності CE, паспорт об'єкта, інструкцію з технічного обслуговування. За запитом — підготовка пакету для отримання будівельного дозволу." %}</p></div></div></div>
+      </div>
+    </div>
+
+    <!-- Експлуатація -->
+    <div class="kp-faq-group">
+      <h2 class="kp-faq-group__title">{% trans "Експлуатація та обслуговування" %}</h2>
+      <div class="kp-accordion">
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Як часто потрібне технічне обслуговування?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Рекомендуємо щорічний огляд у перші 5 років, далі — кожні 3 роки. Основне обслуговування: перевірка герметичності стиків, стан покриття та з'єднувачів. Ми пропонуємо контракт на технічне обслуговування з виїздом спеціалістів." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Чи придатний купол для проживання взимку?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Так, повністю. Система утеплення 200 мм та клас A+ забезпечують комфортне проживання при температурах до -30°C. Купол відмінно підходить для скандинавського та альпійського клімату. Витрати на опалення нижчі за традиційний будинок на 30%." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Чи можна розширити або змінити купол після встановлення?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "Купол може бути розширений через добудову тераси або з'єднання двох куполів тунелем. Внутрішнє перепланування можливе без обмежень — несучу функцію виконує тільки зовнішній каркас. Ми консультуємо щодо можливих модифікацій." %}</p></div></div></div>
+        <div class="kp-acc-item"><button class="kp-acc-trigger" aria-expanded="false"><span class="kp-acc-q">{% trans "Що відбувається після закінчення терміну служби?" %}</span><span class="kp-acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="kp-acc-body"><div class="kp-acc-body__clip"><p class="kp-acc-a">{% trans "CLT-деревина та сталеві з'єднувачі повністю переробляються. Термін служби конструкції при правильному обслуговуванні — 50+ років. Купол може бути демонтований та переміщений на інше місце без суттєвих втрат матеріалів." %}</p></div></div></div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</section>
+
+<!-- FAQ CTA -->
+<section class="kp-section kp-faq-cta">
+  <div class="kp-container">
+    <div class="kp-faq-cta__inner">
+      <div>
+        <h2 class="kp-faq-cta__title">{% trans "Залишились запитання?" %}</h2>
+        <div class="kp-faq-cta__phones">
+          <a class="kp-faq-cta__phone" href="tel:+380671737578">
+            <span class="kp-faq-cta__phone-lbl">{% trans "Україна" %}</span>
+            <span>{{ site_settings.phone|default:"+38 067 173 75 78" }}</span>
+          </a>
+          <a class="kp-faq-cta__phone" href="tel:+420737306111">
+            <span class="kp-faq-cta__phone-lbl">{% trans "Європа та інші країни" %}</span>
+            <span>{{ site_settings.phone_eu|default:"+420 737 306 111" }}</span>
+          </a>
+        </div>
+      </div>
+      <div class="kp-faq-cta__actions">
+        <button class="kp-btn kp-btn--primary kp-btn--lg" data-modal-trigger="consult">{% trans "Написати нам" %}</button>
+        <a href="{% url 'contacts:index' %}" class="kp-btn kp-btn--ghost kp-btn--lg">{% trans "Контакти" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kp-section kp-section--white">
+  <div class="kp-container kp-container--md">
+    <div class="kp-faq__fallback">
+      <h2>{% trans "Є ще питання?" %}</h2>
+      <div id="faqFormResponse"></div>
+      <form class="kp-form kp-form--compact"
+            data-qa="lead-form"
+            novalidate
+            hx-post="{% url 'lead_create' %}"
+            hx-target="#faqFormResponse"
+            hx-swap="innerHTML">
+        {% csrf_token %}
+        {% include "partials/honeypot.html" %}
+        <input type="hidden" name="form_type" value="faq">
+        <div class="kp-form__fld">
+          <label for="faqName" class="kp-form__lbl">{% trans "Ім'я" %} *</label>
+          <input type="text" id="faqName" name="name" class="kp-form__inp" required autocomplete="name">
+        </div>
+        <div class="kp-form__fld">
+          <label for="faqPhone" class="kp-form__lbl">{% trans "Телефон" %} *</label>
+          <input type="tel" id="faqPhone" name="phone" class="kp-form__inp" required autocomplete="tel" inputmode="tel">
+        </div>
+        {% include "partials/location_fields.html" with id_prefix="faq" %}
+        <div class="kp-form__fld">
+          <label for="faqMsg" class="kp-form__lbl">{% trans "Ваше питання" %}</label>
+          <textarea id="faqMsg" name="message" class="kp-form__inp kp-form__ta" rows="3"></textarea>
+        </div>
+        <label class="kp-checkbox">
+          <input type="checkbox" name="gdpr_consent" required>
+          <span class="kp-checkbox__mark"></span>
+          <span class="kp-checkbox__txt">{% trans "Згода на обробку даних" %}</span>
+        </label>
+        <button type="submit" class="kp-btn kp-btn--primary">{% trans "Надіслати питання" %}</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-pages.js' %}" defer></script>
+{% endblock %}

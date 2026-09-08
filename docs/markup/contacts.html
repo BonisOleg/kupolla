@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e2319">
+  <title>Контакти — KUPOLLA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/kupolla-1.css"><link rel="stylesheet" href="../../css/kupolla-2.css"><link rel="stylesheet" href="../../css/kupolla-3.css"><link rel="stylesheet" href="../../css/kupolla-pages-1.css"><link rel="stylesheet" href="../../css/kupolla-pages-2.css">
+</head>
+<body class="kp-inner-page kp-contacts-page">
+<header id="header" class="kp-header"><div class="kp-container"><div class="kp-header__inner">
+  <a href="index.html" class="kp-logo">KUPOLLA</a>
+  <nav class="kp-nav"><a href="about.html" class="kp-nav__link">Про компанію</a><a href="models.html" class="kp-nav__link">Модельний ряд</a><a href="configurator.html" class="kp-nav__link">Конфігуратор</a><a href="technologies.html" class="kp-nav__link">Технології</a><a href="gallery.html" class="kp-nav__link">Галерея</a><a href="blog.html" class="kp-nav__link">Блог</a><a href="faq.html" class="kp-nav__link">FAQ</a><a href="contacts.html" class="kp-nav__link kp-nav__link--active">Контакти</a></nav>
+  <div class="kp-header__actions"><div class="kp-lang" id="langSwitcher"><button class="kp-lang__btn" id="langTrigger" aria-expanded="false"><span id="currentLang">UK</span><svg class="kp-lang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="kp-lang__dropdown"><a href="#" class="kp-lang__option active" data-lang="UK">🇺🇦 Українська</a><a href="#" class="kp-lang__option" data-lang="EN">🇬🇧 English</a></div></div><button class="kp-btn kp-btn--primary" onclick="document.getElementById('ctForm').scrollIntoView({behavior:'smooth'})">Написати нам</button><button class="kp-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button></div>
+</div></div></header>
+<div class="kp-mobile-menu" id="mobileMenu" aria-hidden="true"><nav class="kp-mobile-menu__nav"><a href="about.html" class="kp-mobile-menu__link">Про компанію</a><a href="models.html" class="kp-mobile-menu__link">Модельний ряд</a><a href="faq.html" class="kp-mobile-menu__link">FAQ</a><a href="contacts.html" class="kp-mobile-menu__link">Контакти</a></nav><div class="kp-mobile-menu__bottom"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="document.getElementById('ctForm').scrollIntoView({behavior:'smooth'});closeMobileMenu()">Написати нам</button></div></div>
+
+<main>
+  <div class="kp-breadcrumbs-wrap"><div class="kp-container"><nav class="kp-breadcrumbs"><a href="index.html" class="kp-bc__item">Головна</a><span class="kp-bc__sep">›</span><span class="kp-bc__item kp-bc__item--cur">Контакти</span></nav></div></div>
+  <section class="kp-inner-hero kp-inner-hero--contacts"><div class="kp-container kp-inner-hero__layout"><div class="kp-inner-hero__content"><span class="kp-inner-hero__badge">Зв'яжіться з нами</span><h1 class="kp-inner-hero__title">Ми завжди<br><em>на зв'язку</em></h1><p class="kp-inner-hero__desc">Маєте питання або хочете розпочати проєкт? Заповніть форму або зв'яжіться зручним способом — відповімо протягом 24 годин.</p></div><div class="kp-inner-hero__illustration" aria-hidden="true"><img src="/static/images/illustrations/dome-contacts-hero.svg" alt="" width="420" height="270" loading="eager" decoding="async"></div></div></section>
+
+  <section class="kp-section kp-contacts"><div class="kp-container"><div class="kp-contacts__inner">
+    <!-- LEFT -->
+    <div class="kp-contact-info kp-reveal">
+      <div class="kp-contact-info__group">
+        <h3 class="kp-contact-info__title">Контактні дані</h3>
+        <div class="kp-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div><div class="kp-contact-row__label">Телефон</div><div class="kp-contact-row__val"><a href="tel:+380XXXXXXXXX">+380 (XX) XXX-XX-XX</a></div></div></div>
+        <div class="kp-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div><div class="kp-contact-row__label">Email</div><div class="kp-contact-row__val"><a href="mailto:info@kupolla.com">info@kupolla.com</a></div></div></div>
+        <div class="kp-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div><div class="kp-contact-row__label">Адреса</div><div class="kp-contact-row__val">Україна, вул. Виробнича 1, м. Київ</div></div></div>
+      </div>
+      <div class="kp-contact-info__group">
+        <h3 class="kp-contact-info__title">Месенджери</h3>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+          <a href="#" class="kp-btn kp-btn--ghost kp-btn--sm" style="gap:.5rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Telegram</a>
+          <a href="#" class="kp-btn kp-btn--ghost kp-btn--sm" style="gap:.5rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>WhatsApp</a>
+          <a href="#" class="kp-btn kp-btn--ghost kp-btn--sm" style="gap:.5rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg>Instagram</a>
+        </div>
+      </div>
+      <div class="kp-contact-info__group">
+        <h3 class="kp-contact-info__title">Графік роботи</h3>
+        <div class="kp-contact-hours">
+          <div class="kp-contact-hours__row"><span class="kp-contact-hours__day">Пн–Пт</span><span class="kp-contact-hours__time">9:00 — 18:00</span></div>
+          <div class="kp-contact-hours__row"><span class="kp-contact-hours__day">Субота</span><span class="kp-contact-hours__time">10:00 — 15:00</span></div>
+          <div class="kp-contact-hours__row"><span class="kp-contact-hours__day">Неділя</span><span class="kp-contact-hours__time">Вихідний</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="kp-contacts-map kp-reveal">
+      <div class="kp-contacts-map__frame"><div class="kp-contacts-map__pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>KUPOLLA — Київ, Україна</span></div></div>
+      <div class="kp-contacts-form" id="ctForm">
+        <h3 style="font-family:var(--f-serif);font-size:1.375rem;color:var(--c-dark);margin-bottom:1.25rem">Напишіть нам</h3>
+        <form class="kp-form" novalidate>
+          <div class="kp-form__row"><div class="kp-form__fld"><label class="kp-form__lbl">Ваше ім'я *</label><input type="text" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name"></div><div class="kp-form__fld"><label class="kp-form__lbl">Телефон *</label><input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel"></div></div>
+          <div class="kp-form__fld"><label class="kp-form__lbl">Email *</label><input type="email" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email"></div>
+          <div class="kp-form__fld"><label class="kp-form__lbl">Повідомлення *</label><textarea name="message" class="kp-form__ta" placeholder="Опишіть ваш запит..." rows="4" required></textarea></div>
+          <label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку персональних даних</a></span></label>
+          <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">Надіслати повідомлення<svg class="kp-btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          <p class="kp-form__note">Відповідаємо протягом 24 годин у робочі дні</p>
+        </form>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- Requisites -->
+  <section class="kp-section kp-requisites"><div class="kp-container">
+    <div class="kp-section__hd" style="text-align:left;margin-bottom:1.5rem"><h2 class="kp-section__title">Реквізити компанії</h2></div>
+    <div class="kp-req-grid kp-reveal">
+      <div class="kp-req-item"><div class="kp-req-item__label">Повна назва</div><div class="kp-req-item__val">ТОВ «КУПОЛА ПРЕМІУМ»</div></div>
+      <div class="kp-req-item"><div class="kp-req-item__label">ЄДРПОУ</div><div class="kp-req-item__val">XXXXXXXX</div></div>
+      <div class="kp-req-item"><div class="kp-req-item__label">Платник ПДВ</div><div class="kp-req-item__val">XXXXXXXXXX</div></div>
+      <div class="kp-req-item"><div class="kp-req-item__label">Юридична адреса</div><div class="kp-req-item__val">01001, м. Київ, вул. Виробнича, 1</div></div>
+      <div class="kp-req-item"><div class="kp-req-item__label">IBAN</div><div class="kp-req-item__val">UA XXXXXXXXXXXXXXXXXXXX</div></div>
+      <div class="kp-req-item"><div class="kp-req-item__label">Банк</div><div class="kp-req-item__val">АТ «Банк КУПОЛА»</div></div>
+    </div>
+  </div></section>
+</main>
+
+<footer class="kp-footer"><div class="kp-container"><div class="kp-footer__top"><div class="kp-footer__brand"><a href="index.html" class="kp-logo kp-logo--inv">KUPOLLA</a><p class="kp-footer__tag">Преміальні купольні будинки</p><div class="kp-footer__socials"><a href="#" class="kp-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg></a></div></div><nav class="kp-footer__nav"><div class="kp-footer__col"><h4 class="kp-footer__col-h">Продукт</h4><a href="models.html" class="kp-footer__lnk">Моделі</a><a href="configurator.html" class="kp-footer__lnk">Конфігуратор</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Компанія</h4><a href="about.html" class="kp-footer__lnk">Про нас</a><a href="gallery.html" class="kp-footer__lnk">Галерея</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Підтримка</h4><a href="faq.html" class="kp-footer__lnk">FAQ</a><a href="blog.html" class="kp-footer__lnk">Блог</a></div></nav></div><div class="kp-footer__bot"><p class="kp-footer__copy">© 2026 KUPOLLA. Всі права захищено.</p><div class="kp-footer__legal"><a href="#" class="kp-footer__leg-lnk">Конфіденційність</a><a href="#" class="kp-footer__leg-lnk">Умови</a></div></div></div></footer>
+<div class="kp-modal" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="kp-modal__bd" onclick="closeConsultModal()"></div><div class="kp-modal__box"><button class="kp-modal__close" onclick="closeConsultModal()" aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class="kp-modal__hd"><h2 class="kp-modal__title" id="modalTitle">Консультація</h2></div><form class="kp-form" id="modalForm" novalidate><div class="kp-form__fld"><label class="kp-form__lbl">Ваше ім'я *</label><input type="text" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name"></div><div class="kp-form__fld"><label class="kp-form__lbl">Телефон *</label><input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel"></div><label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку даних</a></span></label><button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">Надіслати</button></form></div></div>
+<div class="kp-mobile-cta" id="mobileCta"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal()">Написати нам</button></div>
+<script src="../../js/kupolla.js"></script><script src="../../js/kupolla-pages.js"></script>
+</body></html>

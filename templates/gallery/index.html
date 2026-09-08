@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">{% trans "Галерея" %}</span>
+    </nav>
+  </div>
+</div>
+
+<section class="kp-inner-hero kp-inner-hero--gallery">
+  <div class="kp-container kp-inner-hero__layout">
+    <div class="kp-inner-hero__content">
+      <span class="kp-inner-hero__badge">{% trans "Реалізовані проєкти" %}</span>
+      <h1 class="kp-inner-hero__title">{% trans "Галерея" %}<br><em>{% trans "наших об'єктів" %}</em></h1>
+      <p class="kp-inner-hero__desc">{% trans "Фото нашого геодезичного купола KUPOLLA у природному оточенні." %}</p>
+    </div>
+    <div class="kp-inner-hero__illustration" aria-hidden="true">
+      <img src="{% static 'images/illustrations/dome-gallery-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section class="kp-section kp-gallery">
+  <div class="kp-container">
+
+    {% if dome_photos or production_photos %}
+    <div class="kp-gallery-tabs" role="tablist" aria-label="{% trans 'Розділи галереї' %}">
+      <button type="button" class="kp-gallery-tab active" data-filter="dome">{% trans "Купол" %}</button>
+      <button type="button" class="kp-gallery-tab" data-filter="production">{% trans "Виробництво" %}</button>
+    </div>
+
+    <div class="kp-gallery-grid" id="galleryGrid">
+      {% for photo in dome_photos %}
+      <div class="kp-gallery-item kp-reveal" data-cat="dome">
+        <button class="kp-gallery-item__btn" data-lightbox="{{ photo.image.url }}" data-alt="{{ photo.alt|default:photo.title }}" aria-label="{% trans 'Переглянути' %} {{ photo.title }}">
+          <img src="{{ photo.image.url }}" alt="{{ photo.alt|default:photo.title }}" loading="lazy" class="kp-gallery-item__img">
+          {% if photo.title %}
+          <span class="kp-gallery-item__cap">{{ photo.title }}</span>
+          {% endif %}
+        </button>
+      </div>
+      {% endfor %}
+      {% for photo in production_photos %}
+      <div class="kp-gallery-item kp-reveal" data-cat="production" style="display:none; opacity:0;">
+        <button class="kp-gallery-item__btn" data-lightbox="{{ photo.image.url }}" data-alt="{{ photo.alt|default:photo.title }}" aria-label="{% trans 'Переглянути' %} {{ photo.title }}">
+          <img src="{{ photo.image.url }}" alt="{{ photo.alt|default:photo.title }}" loading="lazy" class="kp-gallery-item__img">
+          {% if photo.title %}
+          <span class="kp-gallery-item__cap">{{ photo.title }}</span>
+          {% endif %}
+        </button>
+      </div>
+      {% endfor %}
+      {% if not production_photos %}
+      <div class="kp-gallery-item kp-gallery-item--placeholder" data-cat="production" style="display:none; opacity:0;">
+        <div class="kp-gallery-item__placeholder">
+          <span>{% trans "Фото виробництва додамо найближчим часом" %}</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% else %}
+    {% trans "Інтер'єр вітальні" as gallery_cap_interior_living %}
+    {% trans "Мінімалістичний інтер'єр" as gallery_cap_minimal_interior %}
+    <div class="kp-gallery-grid" id="galleryGrid">
+      <a class="kp-gallery-item" data-caption="KUPOLLA — {% trans 'Лісовий глемпінг' %}">
+        <img src="{% static 'images/gallery/glamping-forest-kupolla-s.webp' %}" alt="KUPOLLA — {% trans 'Лісовий глемпінг' %}" loading="lazy" class="kp-gallery-item__img" width="800" height="600">
+        <div class="kp-gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+      </a>
+      <a class="kp-gallery-item" data-caption="KUPOLLA — {% trans 'Панорамний фасад' %}">
+        <div class="kp-gallery-item__bg kp-gi--2 kp-gi-ratio-portrait"></div>
+        <div class="kp-gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      </a>
+      <a class="kp-gallery-item" data-caption="KUPOLLA — {% trans 'Планування 36 м²' %}">
+        <img src="{% static 'images/plans/kupolla-s-floor-plan.webp' %}" alt="KUPOLLA — {% trans 'Планування' %}" loading="lazy" class="kp-gallery-item__img kp-gallery-item__img--sq" width="800" height="800">
+        <div class="kp-gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      </a>
+      <a class="kp-gallery-item" data-caption="KUPOLLA — {% trans 'В оточенні соснового лісу' %}">
+        <img src="{% static 'images/gallery/glamping-forest-kupolla-s.webp' %}" alt="KUPOLLA — {% trans 'Сосновий ліс' %}" loading="lazy" class="kp-gallery-item__img kp-gallery-item__img--sq" width="800" height="800">
+        <div class="kp-gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      </a>
+      <a class="kp-gallery-item" data-caption="KUPOLLA — {% trans 'Деревʼяна тераса' %}">
+        <div class="kp-gallery-item__bg kp-gi--5 kp-gi-ratio-wide"></div>
+        <div class="kp-gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      </a>
+      <a class="kp-gallery-item" data-caption="KUPOLLA — {{ gallery_cap_interior_living }}">
+        <div class="kp-gallery-item__bg kp-gi--6 kp-gi-ratio-portrait"></div>
+        <div class="kp-gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      </a>
+    </div>
+    <div class="kp-center-lg">
+      <button class="kp-btn kp-btn--ghost kp-btn--lg" data-modal-trigger="consult">{% trans "Отримати консультацію" %}</button>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="kp-lightbox" id="kpLightbox" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="kp-lightbox__bd" id="lightboxClose"></div>
+  <div class="kp-lightbox__box">
+    <button class="kp-lightbox__close" id="lightboxCloseBtn" aria-label="{% trans 'Закрити' %}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img src="" alt="" class="kp-lightbox__img" id="lightboxImg">
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-pages.js' %}" defer></script>
+{% endblock %}

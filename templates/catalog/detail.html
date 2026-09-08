@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-model.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-model-2.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-model-3.css' %}">
+{% endblock %}
+
+{% block seo_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ dome.name|escapejs }}",
+  "description": "{{ dome.short_description|default:dome.description|striptags|truncatechars:160|escapejs }}"
+  {% if dome.price_from %}
+  ,"offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "price": "{{ dome.price_from }}"
+  }
+  {% endif %}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article class="kp-model-page">
+  <div class="kp-container">
+
+    <nav class="kp-breadcrumb" aria-label="{% trans 'Хлібні крихти' %}">
+      <a href="{% url 'core:home' %}">{% trans "Головна" %}</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{{ dome.name }}</span>
+    </nav>
+
+    <div class="kp-model__layout">
+      <!-- Gallery -->
+      <div class="kp-model__gallery kp-model__gallery--{{ dome.slug }}{% if not dome.images.all %} kp-model__gallery--empty{% endif %}">
+        {% with dome.images.all as images %}
+        {% if images %}
+        <div class="kp-model__slider" id="modelSlider">
+          {% for img in images %}
+          <div class="kp-model__slide{% if forloop.first %} active{% endif %}">
+            <img src="{{ img.image.url }}" alt="{{ img.alt|default:dome.name }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+          </div>
+          {% endfor %}
+        </div>
+        {% if images|length > 1 %}
+        <div class="kp-model__thumbs">
+          {% for img in images %}
+          <button class="kp-model__thumb{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.counter0 }}" aria-label="{% trans 'Фото' %} {{ forloop.counter }}">
+            <img src="{{ img.image.url }}" alt="" loading="lazy">
+          </button>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% elif dome.slug == 'kupolla-s' or dome.slug == 'kupolla' %}
+        <div class="kp-model__slider" id="modelSlider">
+          <div class="kp-model__slide active">
+            <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="{{ dome.name }}" loading="eager">
+          </div>
+        </div>
+        {% endif %}
+        {% endwith %}
+      </div>
+
+      <!-- Info -->
+      <div class="kp-model__info">
+        <header class="kp-model__head">
+          {% if dome.is_featured %}
+          <span class="kp-model__badge kp-model__badge--gold">{% trans "Хіт продажів" %}</span>
+          {% elif dome.purpose == 'glamping' %}
+          <span class="kp-model__badge">{% trans "Глемпінг" %}</span>
+          {% elif dome.purpose == 'commercial' %}
+          <span class="kp-model__badge">{% trans "Комерція" %}</span>
+          {% endif %}
+
+          <h1 class="kp-model__title">{{ dome.name }}</h1>
+
+          <div class="kp-model__meta">
+            <span class="kp-model__meta-item">{{ dome.area_m2 }} м²</span>
+            <span class="kp-model__meta-dot" aria-hidden="true">·</span>
+            <span class="kp-model__meta-item">{% trans "Діаметр" %} {{ dome.diameter }} {% trans "м" %}</span>
+            <span class="kp-model__meta-dot" aria-hidden="true">·</span>
+            <span class="kp-model__meta-item">{% trans "Висота" %} {{ dome.height_m }} {% trans "м" %}</span>
+          </div>
+
+          {% if dome.description %}
+          <div class="kp-model__desc kp-prose">{{ dome.description|safe }}</div>
+          {% endif %}
+
+          <div class="kp-model__stats">
+            <div class="kp-model__stat">
+              <span>A+</span>
+              <small>{% trans "Енергоефективність" %}</small>
+            </div>
+            <div class="kp-model__stat">
+              <span>25</span>
+              <small>{% trans "Років гарантія" %}</small>
+            </div>
+            <div class="kp-model__stat">
+              <span>{{ dome.insulation_mm }}</span>
+              <small>{% trans "мм утеплення" %}</small>
+            </div>
+          </div>
+
+          {% if dome.price_from %}
+          <p class="kp-model__price">{% trans "Вартість від" %} <strong>€{{ dome.price_from|floatformat:0 }}</strong></p>
+          {% endif %}
+
+          <div class="kp-model__actions">
+            <button class="kp-btn kp-btn--primary kp-btn--lg" data-modal-trigger="consult">{% trans "Отримати консультацію" %}</button>
+            <a href="{% url 'configurator:index' %}" class="kp-btn kp-btn--outline kp-btn--lg">{% trans "Налаштувати комплектацію" %}</a>
+          </div>
+        </header>
+
+        {% if dome.floor_plan_image or dome.floor_plan_note or dome.slug == 'kupolla-s' or dome.slug == 'kupolla' %}
+        <div class="kp-model__plan" id="plan">
+          <h2 class="kp-model__plan-title">{% trans "Планування" %}</h2>
+          {% if dome.floor_plan_image %}
+          <img src="{{ dome.floor_plan_image.url }}" alt="{% trans 'Планування' %} {{ dome.name }}" class="kp-model__plan-img" loading="lazy">
+          {% elif dome.slug == 'kupolla-s' or dome.slug == 'kupolla' %}
+          <img src="{% static 'images/plans/concept-floorplan-top.webp' %}" alt="{% trans 'Планування' %} {{ dome.name }}" class="kp-model__plan-img" loading="lazy" width="1200" height="1200">
+          {% endif %}
+          {% if dome.floor_plan_note %}
+          <div class="kp-prose kp-model__plan-note">{{ dome.floor_plan_note|safe }}</div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Specs -->
+        {% if dome.specs.all %}
+        <div class="kp-model__specs">
+          <h2 class="kp-model__specs-title">{% trans "Технічні характеристики" %}</h2>
+          <dl class="kp-specs-list">
+            <div class="kp-specs-list__row"><dt>{% trans "Площа" %}</dt><dd>{{ dome.area_m2 }} м²</dd></div>
+            <div class="kp-specs-list__row"><dt>{% trans "Діаметр" %}</dt><dd>{{ dome.diameter }} м</dd></div>
+            <div class="kp-specs-list__row"><dt>{% trans "Висота" %}</dt><dd>{{ dome.height_m }} м</dd></div>
+            <div class="kp-specs-list__row"><dt>{% trans "Утеплення" %}</dt><dd>{{ dome.insulation_mm }} мм</dd></div>
+            {% for spec in dome.specs.all %}
+            <div class="kp-specs-list__row"><dt>{{ spec.key }}</dt><dd>{{ spec.value }}</dd></div>
+            {% endfor %}
+          </dl>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {% if dome.price_base or dome.price_standard or dome.price_premium %}
+    <section class="kp-model__tiers">
+      <h2 class="kp-model__tiers-title">{% trans "Комплектації" %}</h2>
+      <div class="kp-tier-table">
+        <div class="kp-tier-table__head">
+          <div class="kp-tier-table__feat-col"></div>
+          {% if dome.price_base %}<div class="kp-tier-table__col">{% trans "Базова" %}</div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat">{% trans "Стандарт" %}<span class="kp-tier-table__badge">{% trans "Хіт" %}</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col">{% trans "Преміум" %}</div>{% endif %}
+        </div>
+        <div class="kp-tier-table__price-row">
+          <div class="kp-tier-table__feat-col kp-tier-table__feat-col--sm">{% trans "Ціна від" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col kp-tier-table__price">€{{ dome.price_base|floatformat:0 }}</div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat kp-tier-table__price">€{{ dome.price_standard|floatformat:0 }}</div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col kp-tier-table__price">€{{ dome.price_premium|floatformat:0 }}</div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "CLT каркас" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Утеплення 200 мм" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Стандартні вікна" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Монтаж каркасу" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Панорамні вікна" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--no">—</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Тераса (6 м²)" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--no">—</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Система опалення" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--no">—</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Підлогове опалення" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--no">—</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--no">—</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+        <div class="kp-tier-table__row">
+          <div class="kp-tier-table__feat-col">{% trans "Smart Home" %}</div>
+          {% if dome.price_base %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--no">—</span></div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat"><span class="kp-tier-check kp-tier-check--no">—</span></div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col"><span class="kp-tier-check kp-tier-check--yes">✓</span></div>{% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Inquiry form -->
+    <section class="kp-model__inquiry">
+      <h2 class="kp-model__inquiry-title">{% trans "Заявка на консультацію по моделі" %}</h2>
+      <div id="modelFormResponse"></div>
+      <form class="kp-form kp-form--wide"
+            data-qa="lead-form"
+            novalidate
+            hx-post="{% url 'lead_create' %}"
+            hx-target="#modelFormResponse"
+            hx-swap="innerHTML">
+        {% csrf_token %}
+        {% include "partials/honeypot.html" %}
+        <input type="hidden" name="form_type" value="model">
+        <input type="hidden" name="dome_model" value="{{ dome.pk }}">
+        <div class="kp-form__row">
+          <div class="kp-form__fld">
+            <label for="miqName" class="kp-form__lbl">{% trans "Ім'я" %} *</label>
+            <input type="text" id="miqName" name="name" class="kp-form__inp" required autocomplete="name">
+          </div>
+          <div class="kp-form__fld">
+            <label for="miqPhone" class="kp-form__lbl">{% trans "Телефон" %} *</label>
+            <input type="tel" id="miqPhone" name="phone" class="kp-form__inp" required autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="kp-form__fld">
+            <label for="miqEmail" class="kp-form__lbl">{% trans "Email" %}</label>
+            <input type="email" id="miqEmail" name="email" class="kp-form__inp" autocomplete="email">
+          </div>
+        </div>
+        {% include "partials/location_fields.html" with id_prefix="miq" %}
+        {% if dome.price_base or dome.price_standard or dome.price_premium %}
+        <div class="kp-form__fld">
+          <label for="miqTier" class="kp-form__lbl">{% trans "Комплектація" %}</label>
+          <select id="miqTier" name="tier" class="kp-form__inp">
+            <option value="">{% trans "Оберіть комплектацію" %}</option>
+            {% if dome.price_base %}<option value="base">{% trans "Базова" %} — €{{ dome.price_base|floatformat:0 }}</option>{% endif %}
+            {% if dome.price_standard %}<option value="standard">{% trans "Стандарт" %} — €{{ dome.price_standard|floatformat:0 }}</option>{% endif %}
+            {% if dome.price_premium %}<option value="premium">{% trans "Преміум" %} — €{{ dome.price_premium|floatformat:0 }}</option>{% endif %}
+          </select>
+        </div>
+        {% endif %}
+        <label class="kp-checkbox">
+          <input type="checkbox" name="gdpr_consent" required>
+          <span class="kp-checkbox__mark"></span>
+          <span class="kp-checkbox__txt">{% trans "Згода на обробку даних" %}</span>
+        </label>
+        <button type="submit" class="kp-btn kp-btn--primary">{% trans "Надіслати заявку" %}</button>
+      </form>
+    </section>
+
+  </div>
+</article>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-model.js' %}" defer></script>
+{% endblock %}

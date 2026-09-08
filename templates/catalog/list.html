@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+
+{% block content %}
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">{% trans "Модельний ряд" %}</span>
+    </nav>
+  </div>
+</div>
+
+<section class="kp-inner-hero">
+  <div class="kp-container">
+    <div class="kp-inner-hero__content">
+      <span class="kp-inner-hero__badge">KUPOLLA</span>
+      <h1 class="kp-inner-hero__title">{% trans "Модельний ряд" %}</h1>
+      <p class="kp-inner-hero__desc">{% trans "Оберіть ідеальний купольний будинок для вашого проєкту" %}</p>
+    </div>
+  </div>
+</section>
+
+<section class="kp-section kp-catalog">
+  <div class="kp-container">
+    <div class="kp-catalog__filters" id="kpCatalogFilters">
+
+      <div class="kp-filters__group" data-filter-group="purpose">
+        <label class="kp-filters__label">{% trans "Призначення" %}</label>
+        <div class="kp-filters__btns">
+          <button type="button" class="kp-filter-btn{% if not selected_purpose %} active{% endif %}" data-filter-val="">{% trans "Усі" %}</button>
+          {% for code, label in purpose_choices %}
+          <button type="button" class="kp-filter-btn{% if selected_purpose == code %} active{% endif %}" data-filter-val="{{ code }}">{{ label }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="kp-filters__group" data-filter-group="size">
+        <label class="kp-filters__label">{% trans "Розмір" %}</label>
+        <div class="kp-filters__btns">
+          <button type="button" class="kp-filter-btn{% if not selected_size %} active{% endif %}" data-filter-val="">{% trans "Усі" %}</button>
+          {% for code, label in size_choices %}
+          <button type="button" class="kp-filter-btn{% if selected_size == code %} active{% endif %}" data-filter-val="{{ code }}">{{ label }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="kp-filters__group" data-filter-group="area">
+        <label class="kp-filters__label">{% trans "Площа" %}</label>
+        <div class="kp-filters__btns">
+          <button type="button" class="kp-filter-btn{% if not selected_area %} active{% endif %}" data-filter-val="">{% trans "Будь-яка" %}</button>
+          {% for code, label in area_ranges %}
+          <button type="button" class="kp-filter-btn{% if selected_area == code %} active{% endif %}" data-filter-val="{{ code }}">{{ label }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="kp-filters__group" data-filter-group="price">
+        <label class="kp-filters__label">{% trans "Ціна" %}</label>
+        <div class="kp-filters__btns">
+          <button type="button" class="kp-filter-btn{% if not selected_price %} active{% endif %}" data-filter-val="">{% trans "Будь-яка" %}</button>
+          {% for code, label in price_ranges %}
+          <button type="button" class="kp-filter-btn{% if selected_price == code %} active{% endif %}" data-filter-val="{{ code }}">{{ label }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="kp-catalog__grid" id="kpCatalogGrid" data-qa="product-grid">
+      {% for dome in models %}
+      <article class="kp-mcard kp-catalog-card kp-reveal{% if dome.is_featured %} kp-mcard--feat{% endif %}"
+               data-purpose="{{ dome.purpose }}"
+               data-size="{{ dome.size_cat }}"
+               data-area="{{ dome.area_m2 }}"
+               data-price="{{ dome.price_from|default:dome.price_base|default:0 }}">
+        <div class="kp-mcard__img{% if dome.slug == 'kupolla-xl' %} kp-mcard__img--xl{% elif dome.size_cat == 'small' %} kp-mcard__img--s{% elif dome.size_cat == 'medium' %} kp-mcard__img--m{% else %} kp-mcard__img--l{% endif %}">
+          {% with dome.images.first as img %}
+          {% if img %}
+          <img src="{{ img.image.url }}" alt="{{ dome.name }}" loading="lazy">
+          {% elif dome.slug == 'kupolla-s' %}
+          <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="{{ dome.name }}" loading="lazy">
+          {% endif %}
+          {% endwith %}
+          {% if dome.purpose == 'glamping' %}
+          <span class="kp-mcard__badge">{% trans "Глемпінг" %}</span>
+          {% elif dome.is_featured %}
+          <span class="kp-mcard__badge kp-mcard__badge--gold">{% trans "Хіт продажів" %}</span>
+          {% endif %}
+        </div>
+        <div class="kp-mcard__body">
+          <div class="kp-mcard__meta">
+            <span class="kp-mcard__name">{{ dome.name }}</span>
+            <span class="kp-mcard__area">{{ dome.area_m2 }} м²</span>
+          </div>
+          {% if dome.short_description %}
+          <p class="kp-mcard__desc">{{ dome.short_description }}</p>
+          {% endif %}
+          {% if dome.price_from %}
+          <div class="kp-mcard__foot">
+            <span class="kp-mcard__price">{% trans "від" %} €{{ dome.price_from|floatformat:0 }}</span>
+          </div>
+          {% endif %}
+          <div class="kp-catalog-card__actions">
+            <a href="{{ dome.get_absolute_url }}" class="kp-btn kp-btn--sm kp-btn--outline">{% trans "Детальніше" %}</a>
+            <a href="{% url 'configurator:index' %}?model={{ dome.slug }}" class="kp-btn kp-btn--sm kp-btn--ghost">{% trans "Налаштувати" %}</a>
+          </div>
+        </div>
+      </article>
+      {% empty %}
+      <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="glamping" data-size="small" data-area="36" data-price="35000">
+        <div class="kp-mcard__img kp-mcard__img--s">
+          <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="KUPOLLA S" loading="lazy">
+          <span class="kp-mcard__badge">{% trans "Глемпінг" %}</span>
+        </div>
+        <div class="kp-mcard__body">
+          <div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA S</span><span class="kp-mcard__area">36 м²</span></div>
+          <p class="kp-mcard__desc">{% trans "Ідеально для глемпінгу та романтичного відпочинку. Компактний, функціональний дизайн." %}</p>
+          <div class="kp-mcard__price">{% trans "від" %} €35 000</div>
+          <button class="kp-btn kp-btn--outline kp-btn--sm" data-modal-trigger="consult">{% trans "Отримати пропозицію" %}</button>
+        </div>
+      </div>
+      <div class="kp-mcard kp-mcard--feat kp-catalog-card kp-reveal" data-purpose="living" data-size="medium" data-area="64" data-price="65000">
+        <div class="kp-mcard__img kp-mcard__img--m">
+          <span class="kp-mcard__badge kp-mcard__badge--gold">{% trans "Хіт продажів" %}</span>
+        </div>
+        <div class="kp-mcard__body">
+          <div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA M</span><span class="kp-mcard__area">64 м²</span></div>
+          <p class="kp-mcard__desc">{% trans "Оптимальний вибір для сімейного проживання та невеликих туристичних комплексів." %}</p>
+          <div class="kp-mcard__price">{% trans "від" %} €65 000</div>
+          <button class="kp-btn kp-btn--outline kp-btn--sm" data-modal-trigger="consult">{% trans "Отримати пропозицію" %}</button>
+        </div>
+      </div>
+      <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="living" data-size="large" data-area="120" data-price="120000">
+        <div class="kp-mcard__img kp-mcard__img--l"></div>
+        <div class="kp-mcard__body">
+          <div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA L</span><span class="kp-mcard__area">120 м²</span></div>
+          <p class="kp-mcard__desc">{% trans "Просторий будинок для постійного проживання або преміального готельного номера." %}</p>
+          <div class="kp-mcard__price">{% trans "від" %} €120 000</div>
+          <button class="kp-btn kp-btn--outline kp-btn--sm" data-modal-trigger="consult">{% trans "Отримати пропозицію" %}</button>
+        </div>
+      </div>
+      <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="commercial" data-size="large" data-area="200" data-price="200000">
+        <div class="kp-mcard__img kp-mcard__img--xl"></div>
+        <div class="kp-mcard__body">
+          <div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA XL</span><span class="kp-mcard__area">200 м²</span></div>
+          <p class="kp-mcard__desc">{% trans "Преміальна резиденція або комерційний об'єкт. Максимальний простір та свобода планування." %}</p>
+          <div class="kp-mcard__price">{% trans "від" %} €200 000</div>
+          <button class="kp-btn kp-btn--outline kp-btn--sm" data-modal-trigger="consult">{% trans "Отримати пропозицію" %}</button>
+        </div>
+      </div>
+      {% endfor %}
+
+      <div id="kpCatalogEmpty" class="kp-catalog__empty" hidden>
+        <p>{% trans "За вашими фільтрами нічого не знайдено. Спробуйте змінити параметри пошуку." %}</p>
+        <button type="button" class="kp-btn kp-btn--outline" id="kpCatalogReset">{% trans "Скинути фільтри" %}</button>
+      </div>
+    </div>
+
+    <div class="kp-section__ft kp-center-lg">
+      <a href="{% url 'configurator:index' %}" class="kp-btn kp-btn--primary kp-btn--lg">{% trans "Налаштувати у конфігураторі" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-pages.js' %}" defer></script>
+{% endblock %}

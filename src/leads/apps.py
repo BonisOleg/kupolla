@@ -1,0 +1,10 @@
+from django.apps import AppConfig
+
+
+class LeadsConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'src.leads'
+    verbose_name = 'Заявки'
+
+    def ready(self):
+        import src.leads.signals  # noqa: F401

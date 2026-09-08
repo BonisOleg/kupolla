@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+
+{% block content %}
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">{% trans "Про компанію" %}</span>
+    </nav>
+  </div>
+</div>
+
+{# 1. Хто ми — заголовок + текст, фон: відео шоуруму #}
+<section class="kp-inner-hero kp-inner-hero--about kp-about-hero" id="who-we-are">
+  <div class="kp-about-hero__bg" aria-hidden="true">
+    <picture class="kp-about-hero__photo">
+      <source media="(max-width: 767px)" srcset="{% static 'images/hero/kupolla-dome-mobile.webp' %}">
+      <img src="{% static 'images/hero/kupolla-dome-forest.webp' %}" alt="" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
+    <video
+      class="kp-about-hero__video"
+      id="heroVideo"
+      data-src="{% static 'videos/glamping-concept-loop.mp4' %}"
+      muted loop playsinline webkit-playsinline="true"
+      disablepictureinpicture disableremoteplayback
+      preload="none"
+      aria-hidden="true"
+    ></video>
+    <div class="kp-about-hero__scrim"></div>
+  </div>
+  <div class="kp-container kp-about-hero__layout">
+    <div class="kp-about-hero__content">
+      <span class="kp-label kp-label--on-dark">{% trans "Хто ми" %}</span>
+      <h1 class="kp-about-hero__title">{% trans "KUPOLLA створює модульні купольні рішення для готелів, курортів та інвестиційних проєктів." %}</h1>
+      <div class="kp-about-hero__text">
+        <p>{% trans "Ми розвиваємо напрям купольної архітектури, поєднуючи сучасний дизайн із практичними вимогами комерційної експлуатації." %}</p>
+        <p>{% trans "Використання алюмінієвого композиту як основи зовнішньої оболонки дозволяє створювати конструкції з високими експлуатаційними характеристиками та виразною архітектурою." %}</p>
+      </div>
+      <a href="{% url 'technologies:index' %}" class="kp-btn kp-btn--gold kp-btn--lg">{% trans "Матеріали" %}</a>
+    </div>
+    <figure class="kp-about-hero__media kp-reveal">
+      <img src="{% static 'images/materials/aisi316_connectors_card.webp' %}" alt="{% trans 'Алюмінієвий композит та матеріали оболонки' %}" width="640" height="480" loading="eager" decoding="async">
+      <figcaption class="kp-about-hero__media-cap">{% trans "Композитна оболонка — основа зовнішнього покриття" %}</figcaption>
+    </figure>
+  </div>
+</section>
+
+{# 2. Команда #}
+<section class="kp-section kp-about-team" id="team">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Живі люди" %}</span>
+      <h2 class="kp-section__title">{% trans "Команда" %}</h2>
+      <p class="kp-section__sub">{% trans "Інженери, технологи та менеджери, які щодня створюють KUPOLLA" %}</p>
+    </div>
+    <div class="kp-team__grid">
+      {% for member in team_members %}
+      <div class="kp-team__card kp-reveal">
+        <div class="kp-team__photo">
+          {% if member.photo %}
+          <img src="{{ member.photo.url }}" alt="{{ member.name }}" loading="lazy">
+          {% else %}
+          <span class="kp-team__initials">{{ member.initials }}</span>
+          {% endif %}
+        </div>
+        <div class="kp-team__name">{{ member.name }}</div>
+        <div class="kp-team__role">{{ member.position }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# 3. Виробництво + Як ми працюємо #}
+<section class="kp-section kp-about-production" id="production">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Виробництво" %}</span>
+      <h2 class="kp-section__title">{% trans "Як ми працюємо" %}</h2>
+      <p class="kp-section__sub">{% trans "Від проєктування до монтажу — усі етапи під нашим контролем" %}</p>
+    </div>
+
+    <div class="kp-about-prod-feature kp-reveal">
+      <div class="kp-about-prod-feature__media">
+        <video
+          class="kp-about-prod-feature__video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="{% static 'images/gallery/concept/glamping-loop-poster.webp' %}"
+        >
+          <source src="{% static 'videos/dome-review-uk.mp4' %}" type="video/mp4">
+        </video>
+      </div>
+      <div class="kp-about-prod-feature__body">
+        <h3 class="kp-about-prod-feature__title">{% trans "Власне виробництво" %}</h3>
+        <p class="kp-about-prod-feature__desc">{% trans "Основні елементи виготовляються у контрольованих умовах заводу — це гарантує стабільну якість і прогнозований монтаж на об'єкті." %}</p>
+      </div>
+    </div>
+
+    <div class="kp-production__grid">
+      <article class="kp-production__card kp-reveal">
+        <div class="kp-production__img">
+          <img src="{% static 'images/plans/concept-floorplan-top.webp' %}" alt="" width="640" height="480" loading="lazy" decoding="async">
+        </div>
+        <div class="kp-production__body">
+          <div class="kp-production__title">{% trans "Проєктування" %}</div>
+          <p class="kp-production__desc">{% trans "Розробляємо індивідуальний проєкт та конструктивну документацію." %}</p>
+        </div>
+      </article>
+      <article class="kp-production__card kp-reveal">
+        <div class="kp-production__img">
+          <img src="{% static 'images/materials/triple_glass_card.webp' %}" alt="" width="640" height="480" loading="lazy" decoding="async">
+        </div>
+        <div class="kp-production__body">
+          <div class="kp-production__title">{% trans "Виробництво" %}</div>
+          <p class="kp-production__desc">{% trans "Виготовляємо елементи купола на власному заводі під контролем інженерів." %}</p>
+        </div>
+      </article>
+      <article class="kp-production__card kp-reveal">
+        <div class="kp-production__img">
+          <img src="{% static 'images/gallery/concept/concept-int-wall-detail.webp' %}" alt="" width="640" height="480" loading="lazy" decoding="async">
+        </div>
+        <div class="kp-production__body">
+          <div class="kp-production__title">{% trans "Контроль якості" %}</div>
+          <p class="kp-production__desc">{% trans "Перевіряємо кожен елемент перед відправкою на об'єкт." %}</p>
+        </div>
+      </article>
+      <article class="kp-production__card kp-reveal">
+        <div class="kp-production__img">
+          <img src="{% static 'images/gallery/concept/concept-ext-resort-day.webp' %}" alt="" width="640" height="480" loading="lazy" decoding="async">
+        </div>
+        <div class="kp-production__body">
+          <div class="kp-production__title">{% trans "Монтаж" %}</div>
+          <p class="kp-production__desc">{% trans "Встановлюємо купол на об'єкті силами власної монтажної бригади." %}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# 4. Шоурум #}
+<section class="kp-section kp-about-showroom" id="showroom">
+  <div class="kp-container">
+    <div class="kp-showroom__inner">
+      <div class="kp-reveal">
+        <span class="kp-label kp-label--gold">{% trans "Де нас знайти" %}</span>
+        <h2 class="kp-section__title kp-section__title--light">{% trans "Шоурум KUPOLLA" %}</h2>
+        <p class="kp-showroom__desc">{% trans "Запрошуємо познайомитися з KUPOLLA особисто. Відвідайте наш шоурум, щоб побачити конструкції, матеріали та якість виконання наживо." %}</p>
+        {% if site_settings.address %}
+        <a
+          class="kp-showroom__addr"
+          href="https://www.google.com/maps/search/?api=1&amp;query={{ site_settings.address|urlencode }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>{{ site_settings.address }}</span>
+        </a>
+        {% endif %}
+        <button class="kp-btn kp-btn--gold kp-btn--lg" data-modal-trigger="consult">{% trans "Запланувати візит" %}</button>
+      </div>
+      <div class="kp-showroom__media kp-reveal">
+        <img
+          src="{% static 'images/gallery/concept/concept-ext-mountain-lake.webp' %}"
+          alt="{% trans 'Шоурум KUPOLLA' %}"
+          width="800"
+          height="600"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+    </div>
+    {% if site_settings.map_embed_url %}
+    <div class="kp-showroom__map kp-reveal">
+      <iframe
+        src="{{ site_settings.map_embed_url }}"
+        title="{% trans 'Карта шоуруму KUPOLLA' %}"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{# 5. Запрошення + лід-форма #}
+<section class="kp-section kp-contact" id="visit">
+  <div class="kp-container">
+    <div class="kp-contact__inner">
+      <div class="kp-reveal">
+        <span class="kp-label">{% trans "Візит" %}</span>
+        <h2 class="kp-section__title">{% trans "Запрошуємо познайомитися з KUPOLLA особисто." %}</h2>
+        <p class="kp-contact__desc">{% trans "Залиште заявку — підберемо зручний час для візиту в шоурум або онлайн-консультації." %}</p>
+        <div class="kp-contact__details">
+          <div class="kp-contact__det">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>{% if site_settings.phone %}{{ site_settings.phone }}{% else %}+38 067 173 75 78{% endif %}</span>
+          </div>
+          {% if site_settings.phone_eu %}
+          <div class="kp-contact__det">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>{{ site_settings.phone_eu }}</span>
+          </div>
+          {% endif %}
+          <div class="kp-contact__det">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>{% if site_settings.email %}{{ site_settings.email }}{% else %}office@kupolla.com{% endif %}</span>
+          </div>
+        </div>
+      </div>
+      <div class="kp-contact__fw kp-reveal">
+        <div id="aboutFormResponse"></div>
+        <form class="kp-form" novalidate
+              data-qa="lead-form"
+              hx-post="{% url 'lead_create' %}"
+              hx-target="#aboutFormResponse"
+              hx-swap="innerHTML">
+          {% csrf_token %}
+          {% include "partials/honeypot.html" %}
+          <input type="hidden" name="form_type" value="about">
+          <div class="kp-form__row">
+            <div class="kp-form__fld">
+              <label class="kp-form__lbl">{% trans "Ваше ім'я" %} *</label>
+              <input type="text" name="name" class="kp-form__inp" placeholder="{% trans 'Іван Петренко' %}" required autocomplete="name">
+            </div>
+            <div class="kp-form__fld">
+              <label class="kp-form__lbl">{% trans "Телефон" %} *</label>
+              <input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="kp-form__fld">
+            <label class="kp-form__lbl">{% trans "Email" %} *</label>
+            <input type="email" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email">
+          </div>
+          {% include "partials/location_fields.html" with id_prefix="ab" %}
+          <div class="kp-form__fld">
+            <label class="kp-form__lbl">{% trans "Повідомлення" %}</label>
+            <textarea name="message" class="kp-form__ta" placeholder="{% trans 'Коли зручно відвідати шоурум...' %}" rows="3"></textarea>
+          </div>
+          <label class="kp-checkbox">
+            <input type="checkbox" name="gdpr_consent" required>
+            <span class="kp-checkbox__mark"></span>
+            <span class="kp-checkbox__txt">{% trans "Погоджуюсь на обробку персональних даних" %}</span>
+          </label>
+          <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">
+            {% trans "Запланувати візит" %}
+            <svg class="kp-btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-pages.js' %}" defer></script>
+{% endblock %}

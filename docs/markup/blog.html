@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e2319">
+  <title>Блог — Статті про купольні будинки | KUPOLLA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/kupolla-1.css"><link rel="stylesheet" href="../../css/kupolla-2.css"><link rel="stylesheet" href="../../css/kupolla-3.css"><link rel="stylesheet" href="../../css/kupolla-pages-1.css"><link rel="stylesheet" href="../../css/kupolla-pages-2.css">
+</head>
+<body class="kp-inner-page">
+<header id="header" class="kp-header"><div class="kp-container"><div class="kp-header__inner">
+  <a href="index.html" class="kp-logo">KUPOLLA</a>
+  <nav class="kp-nav"><a href="about.html" class="kp-nav__link">Про компанію</a><a href="models.html" class="kp-nav__link">Модельний ряд</a><a href="configurator.html" class="kp-nav__link">Конфігуратор</a><a href="technologies.html" class="kp-nav__link">Технології</a><a href="gallery.html" class="kp-nav__link">Галерея</a><a href="blog.html" class="kp-nav__link kp-nav__link--active">Блог</a><a href="faq.html" class="kp-nav__link">FAQ</a><a href="contacts.html" class="kp-nav__link">Контакти</a></nav>
+  <div class="kp-header__actions"><div class="kp-lang" id="langSwitcher"><button class="kp-lang__btn" id="langTrigger" aria-expanded="false"><span id="currentLang">UK</span><svg class="kp-lang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="kp-lang__dropdown"><a href="#" class="kp-lang__option active" data-lang="UK">🇺🇦 Українська</a><a href="#" class="kp-lang__option" data-lang="EN">🇬🇧 English</a></div></div><button class="kp-btn kp-btn--primary" onclick="openConsultModal()">Консультація</button><button class="kp-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button></div>
+</div></div></header>
+<div class="kp-mobile-menu" id="mobileMenu" aria-hidden="true"><nav class="kp-mobile-menu__nav"><a href="models.html" class="kp-mobile-menu__link">Модельний ряд</a><a href="blog.html" class="kp-mobile-menu__link">Блог</a><a href="faq.html" class="kp-mobile-menu__link">FAQ</a><a href="contacts.html" class="kp-mobile-menu__link">Контакти</a></nav><div class="kp-mobile-menu__bottom"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal();closeMobileMenu()">Консультація</button></div></div>
+
+<main>
+  <div class="kp-breadcrumbs-wrap"><div class="kp-container"><nav class="kp-breadcrumbs"><a href="index.html" class="kp-bc__item">Головна</a><span class="kp-bc__sep">›</span><span class="kp-bc__item kp-bc__item--cur">Блог</span></nav></div></div>
+  <section class="kp-inner-hero kp-inner-hero--blog"><div class="kp-container kp-inner-hero__layout"><div class="kp-inner-hero__content"><span class="kp-inner-hero__badge">Блог KUPOLLA</span><h1 class="kp-inner-hero__title">Знання,<br><em>натхнення, архітектура</em></h1><p class="kp-inner-hero__desc">Статті про купольні будинки, технології будівництва, дизайн інтер'єрів та екологічне проживання.</p></div><div class="kp-inner-hero__illustration" aria-hidden="true"><img src="/static/images/illustrations/dome-blog-hero.svg" alt="" width="420" height="270" loading="eager" decoding="async"></div></div></section>
+
+  <section class="kp-section kp-blog"><div class="kp-container">
+    <!-- Filters -->
+    <div class="kp-blog-filters">
+      <button class="kp-gallery-tab active kp-blog-tab" data-filter="all">Усі статті</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="tech">Технології</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="design">Дизайн</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="glamping">Глемпінг</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="eco">Екологія</button>
+    </div>
+
+    <!-- Featured -->
+    <a href="blog-post.html" class="kp-blog-featured kp-reveal">
+      <div class="kp-blog-featured__img kp-blog-featured__img--bg"></div>
+      <div class="kp-blog-featured__body"><span class="kp-blog-featured__cat">Технології</span><h2 class="kp-blog-featured__title">Чому геодезичний купол — ідеальна форма для енергоефективного будинку</h2><p class="kp-blog-featured__excerpt">Пояснюємо математику та фізику за геодезичною сферою, і чому ця форма дозволяє знизити витрати на опалення на 30% порівняно з прямокутними будівлями.</p><div class="kp-blog-featured__meta"><span>14 червня 2026</span><span>8 хв читання</span></div></div>
+    </a>
+
+    <!-- Grid -->
+    <div class="kp-blog-grid">
+      <a href="blog-post.html" class="kp-blog-card kp-reveal" data-cat="glamping"><div class="kp-blog-card__img kp-bi--1"></div><div class="kp-blog-card__body"><span class="kp-blog-card__cat">Глемпінг</span><h3 class="kp-blog-card__title">5 причин, чому купол — найкращий варіант для глемпінгу</h3><p class="kp-blog-card__excerpt">Розбираємо, чому туристичні комплекси по всій Європі переходять на купольні будиночки замість традиційних бунгало.</p><div class="kp-blog-card__meta"><span>10 черв. 2026</span><span>5 хв</span></div></div></a>
+      <a href="blog-post.html" class="kp-blog-card kp-reveal" data-cat="design"><div class="kp-blog-card__img kp-bi--2"></div><div class="kp-blog-card__body"><span class="kp-blog-card__cat">Дизайн</span><h3 class="kp-blog-card__title">Інтер'єр купольного будинку: як організувати простір без кутів</h3><p class="kp-blog-card__excerpt">Практичні поради від наших архітекторів щодо зонування, меблів та освітлення в круглому просторі.</p><div class="kp-blog-card__meta"><span>5 черв. 2026</span><span>6 хв</span></div></div></a>
+      <a href="blog-post.html" class="kp-blog-card kp-reveal" data-cat="eco"><div class="kp-blog-card__img kp-bi--3"></div><div class="kp-blog-card__body"><span class="kp-blog-card__cat">Екологія</span><h3 class="kp-blog-card__title">CLT vs традиційна деревина: що краще для екологічного будівництва?</h3><p class="kp-blog-card__excerpt">Порівнюємо вуглецевий слід, міцність та довговічність клеєної та звичайної деревини.</p><div class="kp-blog-card__meta"><span>28 трав. 2026</span><span>7 хв</span></div></div></a>
+      <a href="blog-post.html" class="kp-blog-card kp-reveal" data-cat="tech"><div class="kp-blog-card__img kp-bi--4"></div><div class="kp-blog-card__body"><span class="kp-blog-card__cat">Технології</span><h3 class="kp-blog-card__title">Гвинтові палі vs монолітний фундамент: що обрати під купол?</h3><p class="kp-blog-card__excerpt">Детальне порівняння двох типів фундаменту для різних умов ґрунту та клімату.</p><div class="kp-blog-card__meta"><span>20 трав. 2026</span><span>5 хв</span></div></div></a>
+      <a href="blog-post.html" class="kp-blog-card kp-reveal" data-cat="glamping"><div class="kp-blog-card__img kp-bi--5"></div><div class="kp-blog-card__body"><span class="kp-blog-card__cat">Глемпінг</span><h3 class="kp-blog-card__title">Як відкрити глемпінг з купольними будиночками: покроковий гайд</h3><p class="kp-blog-card__excerpt">Від ідеї до першого гостя: дозволи, інвестиції, маркетинг та вибір моделей куполів.</p><div class="kp-blog-card__meta"><span>15 трав. 2026</span><span>10 хв</span></div></div></a>
+      <a href="blog-post.html" class="kp-blog-card kp-reveal" data-cat="eco"><div class="kp-blog-card__img kp-bi--6"></div><div class="kp-blog-card__body"><span class="kp-blog-card__cat">Екологія</span><h3 class="kp-blog-card__title">Нульова енергія: як інтегрувати сонячні панелі в купольний будинок</h3><p class="kp-blog-card__excerpt">Практичний огляд рішень для автономного енергопостачання та накопичення енергії.</p><div class="kp-blog-card__meta"><span>8 трав. 2026</span><span>8 хв</span></div></div></a>
+    </div>
+    <div style="text-align:center;margin-top:3rem"><button class="kp-btn kp-btn--ghost kp-btn--lg">Більше статей</button></div>
+  </div></section>
+</main>
+
+<footer class="kp-footer"><div class="kp-container"><div class="kp-footer__top"><div class="kp-footer__brand"><a href="index.html" class="kp-logo kp-logo--inv">KUPOLLA</a><p class="kp-footer__tag">Преміальні купольні будинки</p></div><nav class="kp-footer__nav"><div class="kp-footer__col"><h4 class="kp-footer__col-h">Продукт</h4><a href="models.html" class="kp-footer__lnk">Моделі</a><a href="configurator.html" class="kp-footer__lnk">Конфігуратор</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Компанія</h4><a href="about.html" class="kp-footer__lnk">Про нас</a><a href="contacts.html" class="kp-footer__lnk">Контакти</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Контент</h4><a href="blog.html" class="kp-footer__lnk">Блог</a><a href="faq.html" class="kp-footer__lnk">FAQ</a></div></nav></div><div class="kp-footer__bot"><p class="kp-footer__copy">© 2026 KUPOLLA.</p></div></div></footer>
+<div class="kp-modal" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="kp-modal__bd" onclick="closeConsultModal()"></div><div class="kp-modal__box"><button class="kp-modal__close" onclick="closeConsultModal()" aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class="kp-modal__hd"><h2 class="kp-modal__title" id="modalTitle">Консультація</h2></div><form class="kp-form" id="modalForm" novalidate><div class="kp-form__fld"><label class="kp-form__lbl">Ваше ім'я *</label><input type="text" name="name" class="kp-form__inp" required autocomplete="name" placeholder="Іван Петренко"></div><div class="kp-form__fld"><label class="kp-form__lbl">Телефон *</label><input type="tel" name="phone" class="kp-form__inp" required autocomplete="tel" placeholder="+380 XX XXX XX XX"></div><label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку даних</a></span></label><button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">Надіслати</button></form></div></div>
+<div class="kp-mobile-cta" id="mobileCta"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal()">Консультація</button></div>
+<script src="../../js/kupolla.js"></script><script src="../../js/kupolla-pages.js"></script>
+</body></html>

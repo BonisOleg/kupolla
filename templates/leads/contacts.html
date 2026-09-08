@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-contacts.css' %}">
+{% endblock %}
+
+{% block content %}
+{% with phone=site_settings.phone|default:"+38 067 173 75 78" phone_eu=site_settings.phone_eu|default:"+420 737 306 111" email=site_settings.email|default:"office@kupolla.com" telegram=site_settings.telegram|default:"https://t.me/kupolla" instagram=site_settings.instagram|default:"https://instagram.com/kupolla" %}
+
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">{% trans "Контакти" %}</span>
+    </nav>
+  </div>
+</div>
+
+<section class="kp-inner-hero kp-inner-hero--contacts">
+  <div class="kp-container kp-inner-hero__layout">
+    <div class="kp-inner-hero__content">
+      <span class="kp-inner-hero__badge">{% trans "Зв'яжіться з нами" %}</span>
+      <h1 class="kp-inner-hero__title">{% trans "Ми завжди" %}<br><em>{% trans "на зв'язку" %}</em></h1>
+      <p class="kp-inner-hero__desc">{% trans "Маєте питання або хочете розпочати проєкт? Зателефонуйте або напишіть — зручний спосіб зв'язку нижче." %}</p>
+    </div>
+    <div class="kp-inner-hero__illustration" aria-hidden="true">
+      <img src="{% static 'images/illustrations/dome-contacts-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section class="kp-section kp-contacts">
+  <div class="kp-container">
+
+    <div class="kp-contacts__cards">
+      <a href="tel:+380671737578" class="kp-ct-card">
+        <span class="kp-ct-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </span>
+        <span class="kp-ct-card__body">
+          <span class="kp-ct-card__label">{% trans "Україна" %}</span>
+          <span class="kp-ct-card__val">{{ phone }}</span>
+        </span>
+      </a>
+
+      <a href="tel:+420737306111" class="kp-ct-card">
+        <span class="kp-ct-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </span>
+        <span class="kp-ct-card__body">
+          <span class="kp-ct-card__label">{% trans "Європа та інші країни" %}</span>
+          <span class="kp-ct-card__val">{{ phone_eu }}</span>
+        </span>
+      </a>
+
+      <a href="mailto:{{ email }}" class="kp-ct-card">
+        <span class="kp-ct-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </span>
+        <span class="kp-ct-card__body">
+          <span class="kp-ct-card__label">Email</span>
+          <span class="kp-ct-card__val">{{ email }}</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="kp-contacts-drive kp-reveal">
+      <div class="kp-contacts-drive__media">
+        <img
+          src="{% static 'images/gallery/concept/concept-ext-resort-day.webp' %}"
+          alt="{% trans 'Матеріали та фото KUPOLLA' %}"
+          width="960"
+          height="640"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+      <div class="kp-contacts-drive__body">
+        <span class="kp-label">{% trans "Матеріали" %}</span>
+        <h2 class="kp-contacts-drive__title">{% trans "Фото та файли проєкту" %}</h2>
+        <p class="kp-contacts-drive__desc">{% trans "Додаткові зображення та матеріали для ознайомлення — на Google Drive. Згодом додамо більше реальних фото." %}</p>
+        {% if site_settings.google_drive_url %}
+        <a href="{{ site_settings.google_drive_url }}" class="kp-btn kp-btn--primary" target="_blank" rel="noopener noreferrer">
+          {% trans "Відкрити Google Drive" %}
+        </a>
+        {% else %}
+        <p class="kp-contacts-drive__hint">{% trans "Посилання на Google Drive зʼявиться після надання клієнтом." %}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="kp-contacts__main">
+      <div class="kp-contacts-form-wrap" id="ctForm">
+        <header class="kp-contacts-form-wrap__hd">
+          <h2 class="kp-contacts-form-wrap__title">{% trans "Напишіть нам" %}</h2>
+          <p class="kp-contacts-form-wrap__sub">{% trans "Заповніть форму — менеджер зв'яжеться з вами протягом 24 годин у робочі дні." %}</p>
+        </header>
+        <div id="contactsFormResponse"></div>
+        <form class="kp-form" novalidate
+              data-qa="lead-form"
+              hx-post="{% url 'lead_create' %}"
+              hx-target="#contactsFormResponse"
+              hx-swap="innerHTML">
+          {% csrf_token %}
+          {% include "partials/honeypot.html" %}
+          <input type="hidden" name="form_type" value="contact">
+          <div class="kp-form__row">
+            <div class="kp-form__fld">
+              <label class="kp-form__lbl" for="ctName">{% trans "Ваше ім'я" %} *</label>
+              <input type="text" id="ctName" name="name" class="kp-form__inp" placeholder="{% trans 'Іван Петренко' %}" required autocomplete="name">
+            </div>
+            <div class="kp-form__fld">
+              <label class="kp-form__lbl" for="ctPhone">{% trans "Телефон" %} *</label>
+              <input type="tel" id="ctPhone" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel" inputmode="tel">
+            </div>
+          </div>
+          <div class="kp-form__fld">
+            <label class="kp-form__lbl" for="ctEmail">Email *</label>
+            <input type="email" id="ctEmail" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email" inputmode="email">
+          </div>
+          {% include "partials/location_fields.html" with id_prefix="ct" %}
+          <div class="kp-form__fld">
+            <label class="kp-form__lbl" for="ctMsg">{% trans "Повідомлення" %} *</label>
+            <textarea id="ctMsg" name="message" class="kp-form__ta" placeholder="{% trans 'Опишіть ваш запит...' %}" rows="5" required></textarea>
+          </div>
+          <label class="kp-checkbox">
+            <input type="checkbox" name="gdpr_consent" required>
+            <span class="kp-checkbox__mark"></span>
+            <span class="kp-checkbox__txt">{% trans "Погоджуюсь на обробку персональних даних" %}</span>
+          </label>
+          <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">
+            {% trans "Надіслати повідомлення" %}
+            <svg class="kp-btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <p class="kp-form__note">{% trans "Відповідаємо протягом 24 годин у робочі дні" %}</p>
+        </form>
+      </div>
+
+      <aside class="kp-contacts-aside">
+        <div class="kp-contacts-aside__block">
+          <h3 class="kp-contacts-aside__title">{% trans "Графік роботи" %}</h3>
+          {% if site_settings.working_hours %}
+          <div class="kp-contact-hours">
+            <div class="kp-contact-hours__row kp-contact-hours__row--single">
+              <span class="kp-contact-hours__time">{{ site_settings.working_hours }}</span>
+            </div>
+          </div>
+          {% else %}
+          <div class="kp-contact-hours">
+            <div class="kp-contact-hours__row">
+              <span class="kp-contact-hours__day">{% trans "Пн–Пт" %}</span>
+              <span class="kp-contact-hours__time">9:00 — 18:00</span>
+            </div>
+            <div class="kp-contact-hours__row">
+              <span class="kp-contact-hours__day">{% trans "Субота" %}</span>
+              <span class="kp-contact-hours__time">10:00 — 15:00</span>
+            </div>
+            <div class="kp-contact-hours__row">
+              <span class="kp-contact-hours__day">{% trans "Неділя" %}</span>
+              <span class="kp-contact-hours__time">{% trans "Вихідний" %}</span>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="kp-contacts-aside__block">
+          <h3 class="kp-contacts-aside__title">{% trans "Месенджери" %}</h3>
+          <div class="kp-contacts-social__grid">
+            <a href="{{ telegram }}" class="kp-contacts-social__link" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              Telegram
+            </a>
+            {% if site_settings.whatsapp %}
+            <a href="{{ site_settings.whatsapp }}" class="kp-contacts-social__link" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              WhatsApp
+            </a>
+            {% endif %}
+            <a href="{{ instagram }}" class="kp-contacts-social__link" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+
+        <div class="kp-contacts-aside__block kp-contacts-aside__promo">
+          <h3 class="kp-contacts-aside__title">{% trans "Швидка консультація" %}</h3>
+          <p>{% trans "Хочете розрахувати вартість купола або обговорити проєкт? Зателефонуйте — перша консультація безкоштовна." %}</p>
+          <a href="tel:+380671737578" class="kp-btn kp-btn--gold">
+            {% trans "Зателефонувати" %}
+          </a>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</section>
+
+<section class="kp-section kp-requisites">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <h2 class="kp-section__title">{% trans "Реквізити компанії" %}</h2>
+    </div>
+    <div class="kp-req-grid">
+      <div class="kp-req-item">
+        <div class="kp-req-item__label">{% trans "Повна назва" %}</div>
+        <div class="kp-req-item__val">{% if site_settings.company_name %}{{ site_settings.company_name }}{% else %}KUPOLLA{% endif %}</div>
+      </div>
+      {% if site_settings.company_code %}
+      <div class="kp-req-item">
+        <div class="kp-req-item__label">ЄДРПОУ</div>
+        <div class="kp-req-item__val">{{ site_settings.company_code }}</div>
+      </div>
+      {% endif %}
+      {% if site_settings.vat_number %}
+      <div class="kp-req-item">
+        <div class="kp-req-item__label">{% trans "Платник ПДВ" %}</div>
+        <div class="kp-req-item__val">{{ site_settings.vat_number }}</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endwith %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-pages.js' %}" defer></script>
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">{% trans "Блог" %}</span>
+    </nav>
+  </div>
+</div>
+
+<section class="kp-inner-hero kp-inner-hero--blog">
+  <div class="kp-container kp-inner-hero__layout">
+    <div class="kp-inner-hero__content">
+      <span class="kp-inner-hero__badge">{% trans "Блог KUPOLLA" %}</span>
+      <h1 class="kp-inner-hero__title">{% trans "Знання," %}<br><em>{% trans "натхнення, архітектура" %}</em></h1>
+      <p class="kp-inner-hero__desc">{% trans "Статті про купольні будинки, технології будівництва, дизайн інтер'єрів та екологічне проживання." %}</p>
+    </div>
+    <div class="kp-inner-hero__illustration" aria-hidden="true">
+      <img src="{% static 'images/illustrations/dome-blog-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section class="kp-section kp-blog">
+  <div class="kp-container">
+
+    {% if posts %}
+    {% if categories %}
+    <div class="kp-blog-tabs">
+      <a href="?" class="kp-blog-tab{% if not selected_category %} active{% endif %}">{% trans "Усі" %}</a>
+      {% for cat in categories %}
+      <a href="?category={{ cat.slug }}" class="kp-blog-tab{% if selected_category == cat.slug %} active{% endif %}">{{ cat.name }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="kp-blog-grid">
+      {% for post in posts %}
+      <article class="kp-blog-card kp-reveal">
+        {% if post.cover_image %}
+        <a href="{{ post.get_absolute_url }}" class="kp-blog-card__img-wrap">
+          <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" class="kp-blog-card__img" loading="lazy">
+        </a>
+        {% endif %}
+        <div class="kp-blog-card__body">
+          {% if post.category %}
+          <span class="kp-blog-card__cat">{{ post.category.name }}</span>
+          {% endif %}
+          <h2 class="kp-blog-card__title">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </h2>
+          {% if post.published_at %}
+          <time class="kp-blog-card__date" datetime="{{ post.published_at|date:'Y-m-d' }}">{{ post.published_at|date:"d.m.Y" }}</time>
+          {% endif %}
+          <p class="kp-blog-card__excerpt">{{ post.excerpt|truncatechars:160 }}</p>
+          <a href="{{ post.get_absolute_url }}" class="kp-btn kp-btn--sm kp-btn--ghost">{% trans "Читати" %} →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+    <nav class="kp-pagination" aria-label="{% trans 'Сторінки' %}">
+      {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="kp-page-btn">‹</a>
+      {% endif %}
+      <span class="kp-page-current">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="kp-page-btn">›</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+
+    {% else %}
+    <div class="kp-blog-filters">
+      <button class="kp-gallery-tab active kp-blog-tab" data-filter="all">{% trans "Усі статті" %}</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="tech">{% trans "Технології" %}</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="design">{% trans "Дизайн" %}</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="glamping">{% trans "Глемпінг" %}</button>
+      <button class="kp-gallery-tab kp-blog-tab" data-filter="eco">{% trans "Екологія" %}</button>
+    </div>
+
+    <div class="kp-blog-featured kp-reveal kp-cursor-default">
+      <div class="kp-blog-featured__img kp-blog-featured__img--bg"></div>
+      <div class="kp-blog-featured__body">
+        <span class="kp-blog-featured__cat">{% trans "Технології" %}</span>
+        <h2 class="kp-blog-featured__title">{% trans "Чому геодезичний купол — ідеальна форма для енергоефективного будинку" %}</h2>
+        <p class="kp-blog-featured__excerpt">{% trans "Пояснюємо математику та фізику за геодезичною сферою, і чому ця форма дозволяє знизити витрати на опалення на 30% порівняно з прямокутними будівлями." %}</p>
+        <div class="kp-blog-featured__meta"><span>14 {% trans "червня" %} 2026</span><span>8 {% trans "хв читання" %}</span></div>
+      </div>
+    </div>
+
+    <div class="kp-blog-grid">
+      <div class="kp-blog-card kp-reveal" data-cat="glamping">
+        <div class="kp-blog-card__img kp-bi--1"></div>
+        <div class="kp-blog-card__body">
+          <span class="kp-blog-card__cat">{% trans "Глемпінг" %}</span>
+          <h3 class="kp-blog-card__title">{% trans "5 причин, чому купол — найкращий варіант для глемпінгу" %}</h3>
+          <p class="kp-blog-card__excerpt">{% trans "Розбираємо, чому туристичні комплекси по всій Європі переходять на купольні будиночки замість традиційних бунгало." %}</p>
+          <div class="kp-blog-card__meta"><span>10 {% trans "черв." %} 2026</span><span>5 {% trans "хв" %}</span></div>
+        </div>
+      </div>
+      <div class="kp-blog-card kp-reveal" data-cat="design">
+        <div class="kp-blog-card__img kp-bi--2"></div>
+        <div class="kp-blog-card__body">
+          <span class="kp-blog-card__cat">{% trans "Дизайн" %}</span>
+          <h3 class="kp-blog-card__title">{% trans "Інтер'єр купольного будинку: як організувати простір без кутів" %}</h3>
+          <p class="kp-blog-card__excerpt">{% trans "Практичні поради від наших архітекторів щодо зонування, меблів та освітлення в круглому просторі." %}</p>
+          <div class="kp-blog-card__meta"><span>5 {% trans "черв." %} 2026</span><span>6 {% trans "хв" %}</span></div>
+        </div>
+      </div>
+      <div class="kp-blog-card kp-reveal" data-cat="eco">
+        <div class="kp-blog-card__img kp-bi--3"></div>
+        <div class="kp-blog-card__body">
+          <span class="kp-blog-card__cat">{% trans "Екологія" %}</span>
+          <h3 class="kp-blog-card__title">{% trans "CLT vs традиційна деревина: що краще для екологічного будівництва?" %}</h3>
+          <p class="kp-blog-card__excerpt">{% trans "Порівнюємо вуглецевий слід, міцність та довговічність клеєної та звичайної деревини." %}</p>
+          <div class="kp-blog-card__meta"><span>28 {% trans "трав." %} 2026</span><span>7 {% trans "хв" %}</span></div>
+        </div>
+      </div>
+      <div class="kp-blog-card kp-reveal" data-cat="tech">
+        <div class="kp-blog-card__img kp-bi--4"></div>
+        <div class="kp-blog-card__body">
+          <span class="kp-blog-card__cat">{% trans "Технології" %}</span>
+          <h3 class="kp-blog-card__title">{% trans "Гвинтові палі vs монолітний фундамент: що обрати під купол?" %}</h3>
+          <p class="kp-blog-card__excerpt">{% trans "Детальне порівняння двох типів фундаменту для різних умов ґрунту та клімату." %}</p>
+          <div class="kp-blog-card__meta"><span>20 {% trans "трав." %} 2026</span><span>5 {% trans "хв" %}</span></div>
+        </div>
+      </div>
+      <div class="kp-blog-card kp-reveal" data-cat="glamping">
+        <div class="kp-blog-card__img kp-bi--5"></div>
+        <div class="kp-blog-card__body">
+          <span class="kp-blog-card__cat">{% trans "Глемпінг" %}</span>
+          <h3 class="kp-blog-card__title">{% trans "Як відкрити глемпінг з купольними будиночками: покроковий гайд" %}</h3>
+          <p class="kp-blog-card__excerpt">{% trans "Від ідеї до першого гостя: дозволи, інвестиції, маркетинг та вибір моделей куполів." %}</p>
+          <div class="kp-blog-card__meta"><span>15 {% trans "трав." %} 2026</span><span>10 {% trans "хв" %}</span></div>
+        </div>
+      </div>
+      <div class="kp-blog-card kp-reveal" data-cat="eco">
+        <div class="kp-blog-card__img kp-bi--6"></div>
+        <div class="kp-blog-card__body">
+          <span class="kp-blog-card__cat">{% trans "Екологія" %}</span>
+          <h3 class="kp-blog-card__title">{% trans "Нульова енергія: як інтегрувати сонячні панелі в купольний будинок" %}</h3>
+          <p class="kp-blog-card__excerpt">{% trans "Практичний огляд рішень для автономного енергопостачання та накопичення енергії." %}</p>
+          <div class="kp-blog-card__meta"><span>8 {% trans "трав." %} 2026</span><span>8 {% trans "хв" %}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="kp-center-lg">
+      <button class="kp-btn kp-btn--ghost kp-btn--lg" data-modal-trigger="consult">{% trans "Підписатись на оновлення" %}</button>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-pages.js' %}" defer></script>
+{% endblock %}

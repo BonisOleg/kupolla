@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e2319">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Конфігуратор купольного будинку | KUPOLLA</title>
+  <meta name="description" content="Конфігуратор KUPOLLA: оберіть модель, діаметр, комплектацію та опції. Отримайте попередній розрахунок вартості онлайн.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/kupolla-1.css">
+  <link rel="stylesheet" href="../../css/kupolla-2.css">
+  <link rel="stylesheet" href="../../css/kupolla-3.css">
+  <link rel="stylesheet" href="../../css/kupolla-config.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header" class="kp-header">
+  <div class="kp-container">
+    <div class="kp-header__inner">
+      <a href="index.html" class="kp-logo">KUPOLLA</a>
+      <nav class="kp-nav">
+        <a href="index.html#benefits" class="kp-nav__link">Про компанію</a>
+        <a href="index.html#models" class="kp-nav__link">Модельний ряд</a>
+        <a href="configurator.html" class="kp-nav__link kp-nav__link--active">Конфігуратор</a>
+        <a href="index.html#technologies" class="kp-nav__link">Технології</a>
+        <a href="index.html" class="kp-nav__link">Галерея</a>
+        <a href="index.html" class="kp-nav__link">FAQ</a>
+        <a href="index.html#contact" class="kp-nav__link">Контакти</a>
+      </nav>
+      <div class="kp-header__actions">
+        <div class="kp-lang" id="langSwitcher">
+          <button class="kp-lang__btn" id="langTrigger" aria-expanded="false">
+            <span id="currentLang">UK</span>
+            <svg class="kp-lang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="kp-lang__dropdown">
+            <a href="#" class="kp-lang__option active" data-lang="UK">🇺🇦 Українська</a>
+            <a href="#" class="kp-lang__option" data-lang="EN">🇬🇧 English</a>
+            <a href="#" class="kp-lang__option" data-lang="SK">🇸🇰 Slovenčina</a>
+            <a href="#" class="kp-lang__option" data-lang="FR">🇫🇷 Français</a>
+          </div>
+        </div>
+        <button class="kp-btn kp-btn--primary" onclick="document.getElementById('cfgForm').scrollIntoView({behavior:'smooth'})">Отримати пропозицію</button>
+        <button class="kp-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="kp-mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="kp-mobile-menu__nav">
+    <a href="index.html" class="kp-mobile-menu__link">Головна</a>
+    <a href="index.html#models" class="kp-mobile-menu__link">Модельний ряд</a>
+    <a href="configurator.html" class="kp-mobile-menu__link">Конфігуратор</a>
+    <a href="index.html#contact" class="kp-mobile-menu__link">Контакти</a>
+  </nav>
+  <div class="kp-mobile-menu__bottom">
+    <button class="kp-btn kp-btn--primary kp-btn--full" onclick="document.getElementById('cfgForm').scrollIntoView({behavior:'smooth'}); closeMobileMenu()">Отримати пропозицію</button>
+    <div class="kp-mobile-menu__langs">
+      <a href="#" class="kp-mlang active">UK</a><a href="#" class="kp-mlang">EN</a><a href="#" class="kp-mlang">FR</a>
+    </div>
+  </div>
+</div>
+
+<main class="kp-cfg-page">
+
+  <!-- PAGE HEADER -->
+  <div class="kp-breadcrumbs-wrap">
+    <div class="kp-container">
+      <nav class="kp-breadcrumbs">
+        <a href="index.html" class="kp-bc__item">Головна</a>
+        <span class="kp-bc__sep">›</span>
+        <span class="kp-bc__item kp-bc__item--cur">Конфігуратор</span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="kp-cfg-hero">
+    <div class="kp-container">
+      <div class="kp-cfg-hero__inner">
+        <div>
+          <span class="kp-label">Конфігуратор KUPOLLA</span>
+          <h1 class="kp-cfg-hero__title">Налаштуйте<br><em>свій будинок</em></h1>
+          <p class="kp-cfg-hero__desc">4 кроки — і ви отримаєте персональний розрахунок вартості. Менеджер підтвердить деталі протягом 24 годин.</p>
+        </div>
+        <div class="kp-cfg-steps-indicator" id="stepsIndicator" aria-label="Прогрес конфігурації">
+          <div class="kp-csi__item active" data-step="1"><span class="kp-csi__num">1</span><span class="kp-csi__lbl">Модель</span></div>
+          <div class="kp-csi__line"></div>
+          <div class="kp-csi__item" data-step="2"><span class="kp-csi__num">2</span><span class="kp-csi__lbl">Діаметр</span></div>
+          <div class="kp-csi__line"></div>
+          <div class="kp-csi__item" data-step="3"><span class="kp-csi__num">3</span><span class="kp-csi__lbl">Комплектація</span></div>
+          <div class="kp-csi__line"></div>
+          <div class="kp-csi__item" data-step="4"><span class="kp-csi__num">4</span><span class="kp-csi__lbl">Опції</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIGURATOR LAYOUT -->
+  <div class="kp-cfg-layout">
+    <div class="kp-container">
+      <div class="kp-cfg-inner">
+
+        <!-- LEFT: STEPS -->
+        <div class="kp-cfg-steps">
+
+          <!-- STEP 1: Model -->
+          <div class="kp-cfg-step active" id="step1" data-step="1">
+            <div class="kp-cfg-step__hd">
+              <span class="kp-cfg-step__num">01</span>
+              <h2 class="kp-cfg-step__title">Оберіть базову модель</h2>
+            </div>
+            <div class="kp-cfg-models">
+              <label class="kp-cfg-model" for="modelS">
+                <input type="radio" id="modelS" name="model" value="S" data-price="35000" data-area="36">
+                <div class="kp-cfg-model__card">
+                  <div class="kp-cfg-model__img kp-cfg-model__img--s"></div>
+                  <div class="kp-cfg-model__info">
+                    <span class="kp-cfg-model__name">KUPOLLA S</span>
+                    <span class="kp-cfg-model__area">36 м²</span>
+                    <span class="kp-cfg-model__desc">Глемпінг, романтика, відпочинок</span>
+                    <span class="kp-cfg-model__price">від €35 000</span>
+                  </div>
+                  <span class="kp-cfg-model__check" aria-hidden="true"></span>
+                </div>
+              </label>
+              <label class="kp-cfg-model" for="modelM">
+                <input type="radio" id="modelM" name="model" value="M" data-price="65000" data-area="64" checked>
+                <div class="kp-cfg-model__card kp-cfg-model__card--sel">
+                  <div class="kp-cfg-model__img kp-cfg-model__img--m">
+                    <span class="kp-cfg-model__pop">Популярна</span>
+                  </div>
+                  <div class="kp-cfg-model__info">
+                    <span class="kp-cfg-model__name">KUPOLLA M</span>
+                    <span class="kp-cfg-model__area">64 м²</span>
+                    <span class="kp-cfg-model__desc">Сімейне проживання, туристичний комплекс</span>
+                    <span class="kp-cfg-model__price">від €65 000</span>
+                  </div>
+                  <span class="kp-cfg-model__check" aria-hidden="true">✓</span>
+                </div>
+              </label>
+              <label class="kp-cfg-model" for="modelL">
+                <input type="radio" id="modelL" name="model" value="L" data-price="120000" data-area="120">
+                <div class="kp-cfg-model__card">
+                  <div class="kp-cfg-model__img kp-cfg-model__img--l"></div>
+                  <div class="kp-cfg-model__info">
+                    <span class="kp-cfg-model__name">KUPOLLA L</span>
+                    <span class="kp-cfg-model__area">120 м²</span>
+                    <span class="kp-cfg-model__desc">Резиденція, преміум готель</span>
+                    <span class="kp-cfg-model__price">від €120 000</span>
+                  </div>
+                  <span class="kp-cfg-model__check" aria-hidden="true"></span>
+                </div>
+              </label>
+            </div>
+            <div class="kp-cfg-step__nav"><button class="kp-btn kp-btn--primary" onclick="goStep(2)">Далі: Діаметр →</button></div>
+          </div>
+
+          <!-- STEP 2: Diameter -->
+          <div class="kp-cfg-step" id="step2" data-step="2">
+            <div class="kp-cfg-step__hd">
+              <span class="kp-cfg-step__num">02</span>
+              <h2 class="kp-cfg-step__title">Оберіть діаметр</h2>
+            </div>
+            <p class="kp-cfg-step__hint">Діаметр визначає загальну площу та планувальні можливості будинку.</p>
+            <div class="kp-cfg-diams">
+              <label class="kp-cfg-diam" for="diam5">
+                <input type="radio" id="diam5" name="diameter" value="5" data-extra="0">
+                <div class="kp-cfg-diam__card"><span class="kp-cfg-diam__val">5 м</span><span class="kp-cfg-diam__area">≈20 м²</span><span class="kp-cfg-diam__note">Включено</span></div>
+              </label>
+              <label class="kp-cfg-diam" for="diam7">
+                <input type="radio" id="diam7" name="diameter" value="7" data-extra="10000" checked>
+                <div class="kp-cfg-diam__card kp-cfg-diam__card--sel"><span class="kp-cfg-diam__val">7 м</span><span class="kp-cfg-diam__area">≈40 м²</span><span class="kp-cfg-diam__note">+€10 000</span></div>
+              </label>
+              <label class="kp-cfg-diam" for="diam9">
+                <input type="radio" id="diam9" name="diameter" value="9" data-extra="25000">
+                <div class="kp-cfg-diam__card"><span class="kp-cfg-diam__val">9 м</span><span class="kp-cfg-diam__area">≈64 м²</span><span class="kp-cfg-diam__note">+€25 000</span></div>
+              </label>
+              <label class="kp-cfg-diam" for="diam12">
+                <input type="radio" id="diam12" name="diameter" value="12" data-extra="50000">
+                <div class="kp-cfg-diam__card"><span class="kp-cfg-diam__val">12 м</span><span class="kp-cfg-diam__area">≈115 м²</span><span class="kp-cfg-diam__note">+€50 000</span></div>
+              </label>
+            </div>
+            <div class="kp-cfg-step__nav">
+              <button class="kp-btn kp-btn--ghost" onclick="goStep(1)">← Назад</button>
+              <button class="kp-btn kp-btn--primary" onclick="goStep(3)">Далі: Комплектація →</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Configuration -->
+          <div class="kp-cfg-step" id="step3" data-step="3">
+            <div class="kp-cfg-step__hd">
+              <span class="kp-cfg-step__num">03</span>
+              <h2 class="kp-cfg-step__title">Рівень комплектації</h2>
+            </div>
+            <div class="kp-cfg-tiers">
+              <label class="kp-cfg-tier" for="tierBase">
+                <input type="radio" id="tierBase" name="tier" value="base" data-extra="0" data-name="Базова">
+                <div class="kp-cfg-tier__card">
+                  <span class="kp-cfg-tier__name">Базова</span>
+                  <span class="kp-cfg-tier__price">Включено</span>
+                  <ul class="kp-cfg-tier__list">
+                    <li>CLT-каркас та утеплення</li>
+                    <li>Стандартні вікна (2-шарові)</li>
+                    <li>Базова покрівля</li>
+                  </ul>
+                  <span class="kp-cfg-tier__check"></span>
+                </div>
+              </label>
+              <label class="kp-cfg-tier" for="tierStd">
+                <input type="radio" id="tierStd" name="tier" value="standard" data-extra="17000" data-name="Стандарт" checked>
+                <div class="kp-cfg-tier__card kp-cfg-tier__card--sel">
+                  <span class="kp-cfg-tier__pop">Популярна</span>
+                  <span class="kp-cfg-tier__name">Стандарт</span>
+                  <span class="kp-cfg-tier__price">+€17 000</span>
+                  <ul class="kp-cfg-tier__list">
+                    <li>Панорамні вікна (3-шарові)</li>
+                    <li>Тераса 12 м²</li>
+                    <li>Вбудована сантехніка</li>
+                  </ul>
+                  <span class="kp-cfg-tier__check">✓</span>
+                </div>
+              </label>
+              <label class="kp-cfg-tier" for="tierPrem">
+                <input type="radio" id="tierPrem" name="tier" value="premium" data-extra="43000" data-name="Преміум">
+                <div class="kp-cfg-tier__card">
+                  <span class="kp-cfg-tier__name">Преміум</span>
+                  <span class="kp-cfg-tier__price">+€43 000</span>
+                  <ul class="kp-cfg-tier__list">
+                    <li>Все зі Стандарту</li>
+                    <li>Система «Розумний будинок»</li>
+                    <li>Кастомне планування</li>
+                    <li>Кліматична система</li>
+                  </ul>
+                  <span class="kp-cfg-tier__check"></span>
+                </div>
+              </label>
+            </div>
+            <div class="kp-cfg-step__nav">
+              <button class="kp-btn kp-btn--ghost" onclick="goStep(2)">← Назад</button>
+              <button class="kp-btn kp-btn--primary" onclick="goStep(4)">Далі: Опції →</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Options -->
+          <div class="kp-cfg-step" id="step4" data-step="4">
+            <div class="kp-cfg-step__hd">
+              <span class="kp-cfg-step__num">04</span>
+              <h2 class="kp-cfg-step__title">Додаткові опції</h2>
+            </div>
+            <p class="kp-cfg-step__hint">Можна обрати декілька або пропустити цей крок.</p>
+            <div class="kp-cfg-options" id="optionsGrid">
+              <label class="kp-cfg-opt" for="optWindows">
+                <input type="checkbox" id="optWindows" name="options" value="windows" data-price="8000" data-label="Додаткові вікна">
+                <div class="kp-cfg-opt__card">
+                  <div class="kp-cfg-opt__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div>
+                  <span class="kp-cfg-opt__name">Додаткові вікна</span>
+                  <span class="kp-cfg-opt__price">+€8 000</span>
+                  <span class="kp-cfg-opt__check"></span>
+                </div>
+              </label>
+              <label class="kp-cfg-opt" for="optTerrace">
+                <input type="checkbox" id="optTerrace" name="options" value="terrace" data-price="12000" data-label="Тераса 20 м²">
+                <div class="kp-cfg-opt__card">
+                  <div class="kp-cfg-opt__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg></div>
+                  <span class="kp-cfg-opt__name">Тераса 20 м²</span>
+                  <span class="kp-cfg-opt__price">+€12 000</span>
+                  <span class="kp-cfg-opt__check"></span>
+                </div>
+              </label>
+              <label class="kp-cfg-opt" for="optEngineering">
+                <input type="checkbox" id="optEngineering" name="options" value="engineering" data-price="18000" data-label="Інженерія (СВО + ВВ)">
+                <div class="kp-cfg-opt__card">
+                  <div class="kp-cfg-opt__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M20 12h-2M4 12H2M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 20v2M12 2v2"/></svg></div>
+                  <span class="kp-cfg-opt__name">Інженерія (СВО + ВВ)</span>
+                  <span class="kp-cfg-opt__price">+€18 000</span>
+                  <span class="kp-cfg-opt__check"></span>
+                </div>
+              </label>
+              <label class="kp-cfg-opt" for="optSolar">
+                <input type="checkbox" id="optSolar" name="options" value="solar" data-price="11000" data-label="Сонячні панелі">
+                <div class="kp-cfg-opt__card">
+                  <div class="kp-cfg-opt__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/><circle cx="12" cy="12" r="4"/></svg></div>
+                  <span class="kp-cfg-opt__name">Сонячні панелі</span>
+                  <span class="kp-cfg-opt__price">+€11 000</span>
+                  <span class="kp-cfg-opt__check"></span>
+                </div>
+              </label>
+              <label class="kp-cfg-opt" for="optSmart">
+                <input type="checkbox" id="optSmart" name="options" value="smart" data-price="7000" data-label="Smart Home система">
+                <div class="kp-cfg-opt__card">
+                  <div class="kp-cfg-opt__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-linecap="round" stroke-width="2"/></svg></div>
+                  <span class="kp-cfg-opt__name">Smart Home</span>
+                  <span class="kp-cfg-opt__price">+€7 000</span>
+                  <span class="kp-cfg-opt__check"></span>
+                </div>
+              </label>
+              <label class="kp-cfg-opt" for="optFoundation">
+                <input type="checkbox" id="optFoundation" name="options" value="foundation" data-price="9000" data-label="Преміум фундамент">
+                <div class="kp-cfg-opt__card">
+                  <div class="kp-cfg-opt__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="17" width="20" height="4" rx="1"/><path d="M6 17V8M10 17V5M14 17V8M18 17v-5"/></svg></div>
+                  <span class="kp-cfg-opt__name">Преміум фундамент</span>
+                  <span class="kp-cfg-opt__price">+€9 000</span>
+                  <span class="kp-cfg-opt__check"></span>
+                </div>
+              </label>
+            </div>
+            <div class="kp-cfg-step__nav">
+              <button class="kp-btn kp-btn--ghost" onclick="goStep(3)">← Назад</button>
+              <button class="kp-btn kp-btn--primary" onclick="document.getElementById('cfgForm').scrollIntoView({behavior:'smooth'})">Далі: Оформити заявку →</button>
+            </div>
+          </div>
+
+          <!-- STEP 5: FINAL FORM -->
+          <div class="kp-cfg-step kp-cfg-form-step" id="cfgForm">
+            <div class="kp-cfg-step__hd">
+              <span class="kp-cfg-step__num">05</span>
+              <h2 class="kp-cfg-step__title">Оформити заявку</h2>
+            </div>
+            <p class="kp-cfg-step__hint">Ваша конфігурація буде передана менеджеру разом із заявкою.</p>
+            <div class="kp-cfg-summary-inline" id="cfgSummaryInline"></div>
+            <form class="kp-form" id="cfgFormEl" novalidate>
+              <input type="hidden" id="cfgHiddenData" name="config">
+              <div class="kp-form__row">
+                <div class="kp-form__fld"><label for="cfgName" class="kp-form__lbl">Ваше ім'я *</label><input type="text" id="cfgName" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name"></div>
+                <div class="kp-form__fld"><label for="cfgPhone" class="kp-form__lbl">Телефон *</label><input type="tel" id="cfgPhone" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel"></div>
+              </div>
+              <div class="kp-form__fld"><label for="cfgEmail" class="kp-form__lbl">Email *</label><input type="email" id="cfgEmail" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email"></div>
+              <div class="kp-form__fld"><label for="cfgComment" class="kp-form__lbl">Коментар</label><textarea id="cfgComment" name="comment" class="kp-form__ta" placeholder="Додаткові побажання або запитання..." rows="3"></textarea></div>
+              <label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку персональних даних</a></span></label>
+              <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">
+                Надіслати заявку з конфігурацією
+                <svg class="kp-btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: STICKY PREVIEW + PRICE -->
+        <aside class="kp-cfg-panel" id="cfgPanel">
+          <!-- Live Dome Preview -->
+          <div class="kp-cfg-preview">
+            <div class="kp-cfg-preview__title">Ваша конфігурація</div>
+            <div class="kp-cfg-preview__visual" id="cfgPreviewVisual">
+              <div class="kp-cfg-preview__bg kp-cfg-preview__bg--m" id="cfgPreviewBg" aria-hidden="true"></div>
+              <div class="kp-cfg-preview__dome" id="previewDome" aria-label="Візуальний прев'ю конфігурації">
+              <svg class="kp-cfg-dome-svg" id="previewDomeSvg" viewBox="0 0 340 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- Premium glow (tier: premium) -->
+                <circle id="prevGlow" cx="170" cy="160" r="115" fill="rgba(202,187,172,.07)" opacity="0" style="transition:opacity .5s ease"/>
+
+                <!-- Transformable dome group -->
+                <g id="domeGroup" style="transform-origin:170px 250px;transition:transform .55s cubic-bezier(.34,1.1,.64,1)">
+
+                  <!-- Ground shadow -->
+                  <ellipse id="prevGround" cx="170" cy="250" rx="155" ry="14" fill="#1a3828" opacity="0.45"/>
+
+                  <!-- Main dome body -->
+                  <path id="domeBody" d="M42 250 Q42 62 170 62 Q298 62 298 250Z" stroke="#cabbac" stroke-width="1.5" fill="rgba(14,35,25,.32)"/>
+
+                  <!-- Geodesic horizontal curves -->
+                  <path d="M62 200 Q170 175 278 200" stroke="#cabbac" stroke-width=".8" opacity=".5"/>
+                  <path d="M85 158 Q170 132 255 158" stroke="#cabbac" stroke-width=".8" opacity=".5"/>
+                  <path d="M114 116 Q170 96 226 116" stroke="#cabbac" stroke-width=".7" opacity=".45"/>
+                  <path d="M140 84 Q170 73 200 84" stroke="#cabbac" stroke-width=".6" opacity=".38"/>
+
+                  <!-- Geodesic vertical lines from apex -->
+                  <line x1="170" y1="62" x2="42" y2="250" stroke="#cabbac" stroke-width=".7" opacity=".35"/>
+                  <line x1="170" y1="62" x2="97" y2="250" stroke="#cabbac" stroke-width=".7" opacity=".35"/>
+                  <line x1="170" y1="62" x2="170" y2="250" stroke="#cabbac" stroke-width=".7" opacity=".35"/>
+                  <line x1="170" y1="62" x2="243" y2="250" stroke="#cabbac" stroke-width=".7" opacity=".35"/>
+                  <line x1="170" y1="62" x2="298" y2="250" stroke="#cabbac" stroke-width=".7" opacity=".35"/>
+
+                  <!-- Door arch -->
+                  <path d="M149 250 Q149 216 170 216 Q191 216 191 250" stroke="#cabbac" stroke-width="1.5" fill="rgba(14,35,25,.65)"/>
+
+                  <!-- Basic front window (always visible) -->
+                  <ellipse cx="170" cy="150" rx="19" ry="11" stroke="#cabbac" stroke-width="1" fill="rgba(202,187,172,.1)"/>
+
+                  <!-- Panoramic window band (tier: standard / premium) -->
+                  <path id="prevPanoramic" d="M88 162 Q170 142 252 162" stroke="#cabbac" stroke-width="13" stroke-linecap="round" fill="none" opacity="0" style="transition:opacity .5s ease"/>
+                  <!-- Inner glare on panoramic -->
+                  <path d="M96 159 Q170 140 244 159" stroke="rgba(255,255,255,.12)" stroke-width="5" stroke-linecap="round" fill="none" id="prevPanoramicGlare" opacity="0" style="transition:opacity .5s ease"/>
+
+                  <!-- Side windows (option: windows) -->
+                  <g id="prevExtraWin" opacity="0" style="transition:opacity .5s ease">
+                    <ellipse cx="108" cy="180" rx="15" ry="9" stroke="#cabbac" stroke-width=".8" fill="rgba(202,187,172,.09)"/>
+                    <ellipse cx="232" cy="180" rx="15" ry="9" stroke="#cabbac" stroke-width=".8" fill="rgba(202,187,172,.09)"/>
+                  </g>
+
+                  <!-- Engineering vent (option: engineering) -->
+                  <g id="prevEngineering" opacity="0" style="transition:opacity .5s ease">
+                    <circle cx="170" cy="62" r="9" fill="rgba(202,187,172,.22)" stroke="#cabbac" stroke-width="1.2"/>
+                    <line x1="170" y1="46" x2="170" y2="53" stroke="#cabbac" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="165" y1="49" x2="175" y2="49" stroke="#cabbac" stroke-width="1" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Smart Home antenna (option: smart) -->
+                  <g id="prevSmart" opacity="0" style="transition:opacity .5s ease">
+                    <line x1="218" y1="104" x2="218" y2="82" stroke="#cabbac" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="212" y1="87" x2="224" y2="87" stroke="#cabbac" stroke-width=".9" stroke-linecap="round"/>
+                    <circle cx="218" cy="80" r="2.5" fill="#cabbac"/>
+                  </g>
+
+                  <!-- Apex point -->
+                  <circle cx="170" cy="62" r="4.5" fill="#cabbac"/>
+                  <circle cx="170" cy="62" r="11" stroke="#cabbac" stroke-width=".5" opacity=".38"/>
+
+                  <!-- Solar panels (option: solar) -->
+                  <g id="prevSolar" opacity="0" style="transition:opacity .5s ease">
+                    <rect x="126" y="84" width="30" height="18" rx="1.5" stroke="#cabbac" stroke-width=".9" fill="rgba(202,187,172,.22)" stroke-dasharray="3 2"/>
+                    <rect x="160" y="79" width="30" height="18" rx="1.5" stroke="#cabbac" stroke-width=".9" fill="rgba(202,187,172,.22)" stroke-dasharray="3 2"/>
+                    <line x1="126" y1="93" x2="190" y2="93" stroke="#cabbac" stroke-width=".5" opacity=".55"/>
+                  </g>
+
+                  <!-- Foundation line (option: foundation) -->
+                  <path id="prevFoundation" d="M30 252 L35 258 L305 258 L310 252" stroke="rgba(202,187,172,.4)" stroke-width="1" fill="none" opacity="0" style="transition:opacity .5s ease"/>
+
+                  <!-- Trees -->
+                  <g opacity=".5">
+                    <rect x="14" y="221" width="6" height="29" fill="#1a3828"/>
+                    <ellipse cx="17" cy="216" rx="13" ry="17" fill="#2a5040"/>
+                    <rect x="305" y="219" width="6" height="31" fill="#1a3828"/>
+                    <ellipse cx="308" cy="213" rx="14" ry="18" fill="#2a5040"/>
+                    <rect x="294" y="226" width="5" height="24" fill="#1a3828" opacity=".7"/>
+                    <ellipse cx="296" cy="222" rx="10" ry="12" fill="#2a5040" opacity=".7"/>
+                  </g>
+
+                </g><!-- /domeGroup -->
+
+                <!-- Terrace (outside dome group — positioned right) -->
+                <g id="prevTerrace" opacity="0" style="transition:opacity .55s ease">
+                  <rect x="305" y="188" width="28" height="62" stroke="#cabbac" stroke-width="1" fill="rgba(14,35,25,.25)" stroke-dasharray="3 2"/>
+                  <line x1="305" y1="213" x2="333" y2="213" stroke="#cabbac" stroke-width=".6" opacity=".5"/>
+                  <line x1="319" y1="188" x2="319" y2="250" stroke="#cabbac" stroke-width=".6" opacity=".45"/>
+                  <text x="319" y="268" font-family="Inter,sans-serif" font-size="7.5" fill="#cabbac" text-anchor="middle" opacity=".8">Тераса</text>
+                </g>
+
+                <!-- Model badge -->
+                <text id="modelBadge" x="170" y="48" font-family="Cormorant Garamond,serif" font-size="13" fill="rgba(255,255,255,.55)" text-anchor="middle" style="transition:all .3s">KUPOLLA M</text>
+
+                <!-- Diameter dimension line -->
+                <line x1="42" y1="265" x2="162" y2="265" stroke="#cabbac" stroke-width=".8" stroke-dasharray="4 3" opacity=".45"/>
+                <line x1="178" y1="265" x2="298" y2="265" stroke="#cabbac" stroke-width=".8" stroke-dasharray="4 3" opacity=".45"/>
+                <text id="diamText" x="170" y="278" font-family="Inter,sans-serif" font-size="9" fill="#cabbac" text-anchor="middle" opacity=".75">⌀ 7 м</text>
+
+                <!-- Tier badge -->
+                <text id="tierBadge" x="170" y="295" font-family="Inter,sans-serif" font-size="8" fill="rgba(202,187,172,.65)" text-anchor="middle" letter-spacing="1" style="transition:all .3s">СТАНДАРТ</text>
+
+              </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Configuration Summary -->
+          <div class="kp-cfg-summary" id="cfgSummary">
+            <div class="kp-cfg-sum__row"><span class="kp-cfg-sum__k">Модель</span><span class="kp-cfg-sum__v" id="sumModel">KUPOLLA M</span></div>
+            <div class="kp-cfg-sum__row"><span class="kp-cfg-sum__k">Діаметр</span><span class="kp-cfg-sum__v" id="sumDiam">7 м</span></div>
+            <div class="kp-cfg-sum__row"><span class="kp-cfg-sum__k">Комплектація</span><span class="kp-cfg-sum__v" id="sumTier">Стандарт</span></div>
+            <div class="kp-cfg-sum__row" id="sumOptsRow" style="display:none"><span class="kp-cfg-sum__k">Опції</span><span class="kp-cfg-sum__v" id="sumOpts">—</span></div>
+          </div>
+
+          <!-- Price Display -->
+          <div class="kp-cfg-price" id="cfgPrice">
+            <span class="kp-cfg-price__label">Попередня вартість</span>
+            <div class="kp-cfg-price__num" id="priceDisplay">€92 000</div>
+            <span class="kp-cfg-price__note">Орієнтовна ціна. Точна вартість після консультації.</span>
+            <button class="kp-btn kp-btn--primary kp-btn--full" onclick="document.getElementById('cfgForm').scrollIntoView({behavior:'smooth'})">Надіслати заявку</button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="kp-footer">
+  <div class="kp-container">
+    <div class="kp-footer__top">
+      <div class="kp-footer__brand">
+        <a href="index.html" class="kp-logo kp-logo--inv">KUPOLLA</a>
+        <p class="kp-footer__tag">Преміальні купольні будинки</p>
+        <div class="kp-footer__socials">
+          <a href="#" class="kp-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="kp-social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <nav class="kp-footer__nav">
+        <div class="kp-footer__col"><h4 class="kp-footer__col-h">Продукт</h4><a href="index.html#models" class="kp-footer__lnk">Модельний ряд</a><a href="configurator.html" class="kp-footer__lnk">Конфігуратор</a></div>
+        <div class="kp-footer__col"><h4 class="kp-footer__col-h">Компанія</h4><a href="index.html" class="kp-footer__lnk">Головна</a><a href="index.html#contact" class="kp-footer__lnk">Контакти</a></div>
+        <div class="kp-footer__col"><h4 class="kp-footer__col-h">Документи</h4><a href="#" class="kp-footer__lnk">Конфіденційність</a><a href="#" class="kp-footer__lnk">Умови</a></div>
+      </nav>
+    </div>
+    <div class="kp-footer__bot">
+      <p class="kp-footer__copy">© 2026 KUPOLLA. Всі права захищено.</p>
+      <div class="kp-footer__legal"><a href="#" class="kp-footer__leg-lnk">Конфіденційність</a><a href="#" class="kp-footer__leg-lnk">Умови</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/kupolla.js"></script>
+<script src="../../js/kupolla-config.js"></script>
+<script src="../../js/kupolla-config-legacy.js"></script>
+</body>
+</html>

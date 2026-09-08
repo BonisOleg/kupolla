@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+
+{% block content %}
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">{% trans "Матеріали" %}</span>
+    </nav>
+  </div>
+</div>
+
+<section class="kp-inner-hero kp-inner-hero--tech">
+  <div class="kp-container kp-inner-hero__layout">
+    <div class="kp-inner-hero__content">
+      <span class="kp-inner-hero__badge">{% trans "Матеріали" %}</span>
+      <h1 class="kp-inner-hero__title">{% trans "Матеріали" %}<br><em>{% trans "і конструкція купола" %}</em></h1>
+      <p class="kp-inner-hero__desc">{% trans "Наші куполи створені як багатошарова конструкція, де кожен елемент виконує конкретну функцію — від захисту зовнішнього середовища до забезпечення стабільного мікроклімату всередині приміщення." %}</p>
+    </div>
+    <div class="kp-inner-hero__illustration" aria-hidden="true">
+      <img src="{% static 'images/illustrations/dome-tech-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
+
+{# Intro #}
+<section class="kp-section kp-section--white kp-tech-intro">
+  <div class="kp-container">
+    <div class="kp-tech-intro__inner kp-reveal">
+      <p class="kp-tech-intro__lead">{% trans "Під час розробки ми підбирали матеріали не лише за зовнішнім виглядом, а за їхніми технічними характеристиками: міцністю, довговічністю, теплоізоляційними властивостями та відповідністю вимогам сучасного будівництва." %}</p>
+    </div>
+  </div>
+</section>
+
+{# Багатошарова оболонка — placeholder під 3D-розріз #}
+<section class="kp-section kp-tech-shell" id="shell">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Конструкція" %}</span>
+      <h2 class="kp-section__title">{% trans "Багатошарова оболонка купола" %}</h2>
+      <p class="kp-section__sub">{% trans "Кожен шар відповідає за захист, клімат або несучу здатність конструкції" %}</p>
+    </div>
+    <div class="kp-tech-shell__layout">
+      <div class="kp-tech-shell__viz kp-reveal" role="img" aria-label="{% trans 'Схема шарів оболонки купола' %}">
+        <div class="kp-tech-shell__dome">
+          <div class="kp-tech-shell__layer kp-tech-shell__layer--1" data-n="1"></div>
+          <div class="kp-tech-shell__layer kp-tech-shell__layer--2" data-n="2"></div>
+          <div class="kp-tech-shell__layer kp-tech-shell__layer--3" data-n="3"></div>
+          <div class="kp-tech-shell__layer kp-tech-shell__layer--4" data-n="4"></div>
+          <div class="kp-tech-shell__layer kp-tech-shell__layer--5" data-n="5"></div>
+        </div>
+        <p class="kp-tech-shell__note">{% trans "3D-розріз зʼявиться після надання моделі клієнтом" %}</p>
+      </div>
+      <ol class="kp-tech-shell__legend kp-reveal">
+        <li><span class="kp-tech-shell__num">1</span><div><strong>{% trans "Зовнішня оболонка" %}</strong><span>{% trans "ACP-панель із PVDF-покриттям" %}</span></div></li>
+        <li><span class="kp-tech-shell__num">2</span><div><strong>{% trans "Вентиляційний зазор" %}</strong><span>{% trans "Циркуляція повітря та відведення вологи" %}</span></div></li>
+        <li><span class="kp-tech-shell__num">3</span><div><strong>{% trans "Теплоізоляція" %}</strong><span>{% trans "Стабільний мікроклімат у будь-яку пору року" %}</span></div></li>
+        <li><span class="kp-tech-shell__num">4</span><div><strong>{% trans "Несучий каркас" %}</strong><span>{% trans "Геодезична модульна структура" %}</span></div></li>
+        <li><span class="kp-tech-shell__num">5</span><div><strong>{% trans "Внутрішнє оздоблення" %}</strong><span>{% trans "Фінішний шар під експлуатацію" %}</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+{# Матеріали блоками #}
+<section class="kp-section kp-tech-materials" id="materials">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Специфікація" %}</span>
+      <h2 class="kp-section__title">{% trans "Зовнішнє покриття та ключові матеріали" %}</h2>
+      <p class="kp-section__sub">{% trans "Повний перелік матеріалів оновимо після фінальної техспецифікації виробника" %}</p>
+    </div>
+    <div class="kp-tech-mats">
+      <article class="kp-tech-mat kp-tech-mat--featured kp-reveal">
+        <div class="kp-tech-mat__img kp-tech-mat__img--acp">
+          <img src="{% static 'images/materials/aisi316_connectors_card.webp' %}" alt="{% trans 'Алюмінієва композитна панель ACP' %}" loading="lazy" width="600" height="200">
+        </div>
+        <div class="kp-tech-mat__body">
+          <span class="kp-tech-mat__tag">{% trans "Зовнішнє покриття" %}</span>
+          <h3 class="kp-tech-mat__title">{% trans "Алюмінієва композитна панель (ACP)" %}</h3>
+          <p class="kp-tech-mat__desc">{% trans "Зовнішня оболонка купола виконана з алюмінієвої композитної панелі ACP із PVDF-покриттям. PVDF-покриття забезпечує стійкість поверхні до ультрафіолетового випромінювання, атмосферних впливів та температурних змін, зберігаючи естетичний вигляд конструкції протягом тривалого часу." %}</p>
+        </div>
+      </article>
+      <article class="kp-tech-mat kp-reveal">
+        <div class="kp-tech-mat__img kp-tech-mat__img--glass">
+          <img src="{% static 'images/materials/triple_glass_card.webp' %}" alt="{% trans 'Трошарове ізоляційне скло' %}" loading="lazy" width="600" height="200">
+        </div>
+        <div class="kp-tech-mat__body">
+          <h3 class="kp-tech-mat__title">{% trans "Трошарове скло" %}</h3>
+          <p class="kp-tech-mat__desc">{% trans "Ізолювальний склопакет з аргоновим заповненням та Low-E покриттям. Пропускає максимум природного світла за мінімальних тепловтрат." %}</p>
+        </div>
+      </article>
+      <article class="kp-tech-mat kp-reveal">
+        <div class="kp-tech-mat__img kp-tech-mat__img--steel">
+          <img src="{% static 'images/materials/aisi316_connectors_card.webp' %}" alt="{% trans 'З\'єднувачі AISI 316 — нержавіюча сталь' %}" loading="lazy" width="600" height="200">
+        </div>
+        <div class="kp-tech-mat__body">
+          <h3 class="kp-tech-mat__title">{% trans "З'єднувачі AISI 316" %}</h3>
+          <p class="kp-tech-mat__desc">{% trans "Нержавіюча сталь морського класу. Стійка до корозії, вологи та UV-опромінення. Забезпечує надійність каркасу на десятиліття." %}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# Енергоефективність — мʼяко до техспеки #}
+<section class="kp-section kp-tech-energy" id="energy">
+  <div class="kp-container">
+    <div class="kp-tech-energy__inner">
+      <div class="kp-reveal">
+        <span class="kp-label">{% trans "Енергоефективність" %}</span>
+        <h2 class="kp-section__title">{% trans "Комфортний мікроклімат і контроль витрат" %}</h2>
+        <p class="kp-copy kp-copy--spaced">{% trans "Багатошарова конструкція забезпечує високий рівень теплоізоляції та стабільний мікроклімат. Детальні показники (коефіцієнти, товщини шарів, клас енергоефективності) опублікуємо після затвердження технічної специфікації виробника." %}</p>
+        <ul class="kp-points">
+          <li><span class="kp-points__mark" aria-hidden="true">→</span>{% trans "Багатошарова оболонка зі зниженими тепловтратами" %}</li>
+          <li><span class="kp-points__mark" aria-hidden="true">→</span>{% trans "Безперервний захист від вологи та містків холоду" %}</li>
+          <li><span class="kp-points__mark" aria-hidden="true">→</span>{% trans "Комфорт у сезонній та цілорічній експлуатації" %}</li>
+          <li><span class="kp-points__mark" aria-hidden="true">→</span>{% trans "Опції інтеграції інженерних систем під проєкт" %}</li>
+        </ul>
+      </div>
+      <div class="kp-tech-energy__metrics kp-reveal">
+        <div class="kp-energy-m"><div class="kp-energy-m__val">4</div><div class="kp-energy-m__label">{% trans "Сезони експлуатації" %}</div></div>
+        <div class="kp-energy-m"><div class="kp-energy-m__val">ACP</div><div class="kp-energy-m__label">{% trans "Зовнішня оболонка з PVDF" %}</div></div>
+        <div class="kp-energy-m"><div class="kp-energy-m__val">96</div><div class="kp-energy-m__label">{% trans "міс. гарантії на конструкцію*" %}</div></div>
+        <div class="kp-energy-m"><div class="kp-energy-m__val">B2B</div><div class="kp-energy-m__label">{% trans "Орієнтація на готельний сектор" %}</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Гарантії — без фінальних термінів виробника, де ще немає #}
+<section class="kp-section kp-tech-certs" id="quality">
+  <div class="kp-container">
+    <div class="kp-section__hd">
+      <span class="kp-label">{% trans "Якість" %}</span>
+      <h2 class="kp-section__title">{% trans "Стандарти та гарантії" %}</h2>
+      <p class="kp-section__sub">{% trans "Чіткі гарантійні терміни додатково уточнимо після фінального підтвердження виробника" %}</p>
+    </div>
+    <div class="kp-certs kp-reveal">
+      <div class="kp-cert">
+        <div class="kp-cert__name">CE-{% trans "сертифікація" %}</div>
+        <div class="kp-cert__desc">{% trans "Відповідність будівельним нормам ЄС" %}</div>
+      </div>
+      <div class="kp-cert">
+        <div class="kp-cert__name">{% trans "Заводський контроль" %}</div>
+        <div class="kp-cert__desc">{% trans "Виготовлення елементів у контрольованих умовах" %}</div>
+      </div>
+      <div class="kp-cert">
+        <div class="kp-cert__name">{% trans "Гарантія на конструкцію" %}</div>
+        <div class="kp-cert__desc">{% trans "Базовий орієнтир — 96 міс.; фінальні умови — за договором" %}</div>
+      </div>
+      <div class="kp-cert">
+        <div class="kp-cert__name">PVDF / ACP</div>
+        <div class="kp-cert__desc">{% trans "Стійкість зовнішньої оболонки до UV та клімату" %}</div>
+      </div>
+    </div>
+    <div class="kp-center-lg">
+      <button type="button" class="kp-btn kp-btn--primary kp-btn--lg" data-modal-trigger="consult">{% trans "Дізнатись більше" %}</button>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-pages.js' %}" defer></script>
+{% endblock %}

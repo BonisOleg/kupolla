@@ -1,0 +1,11 @@
+{% load i18n %}
+<div class="kp-form__errors" role="alert">
+  <p class="kp-form__error-title">{% trans "Будь ласка, виправте помилки:" %}</p>
+  <ul>
+    {% for field, errors in form.errors.items %}
+      {% for error in errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</div>

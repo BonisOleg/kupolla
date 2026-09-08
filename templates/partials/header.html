@@ -1,0 +1,31 @@
+{% load i18n static %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<header id="header" class="kp-header">
+  <div class="kp-container">
+    <div class="kp-header__inner">
+      <a href="{% url 'core:home' %}" class="kp-logo" aria-label="KUPOLLA — {% trans 'головна' %}">
+        <img src="{% static 'images/brand/kupolla-logo.png' %}" alt="KUPOLLA" class="kp-logo__img">
+      </a>
+      <nav class="kp-nav" aria-label="{% trans 'Головна навігація' %}">
+        <a href="{% url 'about:index' %}" class="kp-nav__link{% if 'about' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">{% trans "Про компанію" %}</a>
+        <a href="{% url 'catalog:list' %}" class="kp-nav__link{% if 'catalog' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">{% trans "Купол" %}</a>
+        <a href="{% url 'configurator:index' %}" class="kp-nav__link{% if 'configurator' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">{% trans "Конфігуратор" %}</a>
+        <a href="{% url 'technologies:index' %}" class="kp-nav__link{% if 'technologies' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">{% trans "Матеріали" %}</a>
+        <a href="{% url 'gallery:index' %}" class="kp-nav__link{% if 'gallery' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">{% trans "Галерея" %}</a>
+        <a href="{% url 'blog:list' %}" class="kp-nav__link{% if 'blog' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">{% trans "Блог" %}</a>
+        <a href="{% url 'faq:index' %}" class="kp-nav__link{% if 'faq' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">FAQ</a>
+        <a href="{% url 'contacts:index' %}" class="kp-nav__link{% if 'contacts' in request.resolver_match.namespaces %} kp-nav__link--active{% endif %}">{% trans "Контакти" %}</a>
+      </nav>
+      <div class="kp-header__actions">
+        {% include "partials/lang_switcher.html" %}
+        <div class="kp-header__ctas">
+          <a href="{% url 'configurator:index' %}" class="kp-btn kp-btn--header-ghost kp-btn--sm">{% trans "Конфігуратор" %}</a>
+          <button class="kp-btn kp-btn--primary kp-btn--sm" data-modal-trigger="consult">{% trans "Консультація" %}</button>
+        </div>
+        <button class="kp-burger" id="burgerBtn" data-qa="menu-open" aria-label="{% trans 'Відкрити меню' %}" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

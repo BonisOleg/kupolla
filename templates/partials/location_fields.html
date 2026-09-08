@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="kp-form__row">
+  <div class="kp-form__fld">
+    <label for="{{ id_prefix }}Country" class="kp-form__lbl">{% trans "Країна" %}</label>
+    <input type="text" id="{{ id_prefix }}Country" name="country" class="kp-form__inp"
+           placeholder="{% trans 'Україна' %}" autocomplete="country-name">
+  </div>
+  <div class="kp-form__fld">
+    <label for="{{ id_prefix }}City" class="kp-form__lbl">{% trans "Місто" %}</label>
+    <input type="text" id="{{ id_prefix }}City" name="city" class="kp-form__inp"
+           placeholder="{% trans 'Київ' %}" autocomplete="address-level2">
+  </div>
+</div>

@@ -1,0 +1,50 @@
+{% load i18n %}
+<div class="kp-modal" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="kp-modal__bd" data-modal-close="consult"></div>
+  <div class="kp-modal__box">
+    <button class="kp-modal__close" data-modal-close="consult" aria-label="{% trans 'Закрити' %}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="kp-modal__hd">
+      <h2 class="kp-modal__title" id="modalTitle">{% trans "Безкоштовна консультація" %}</h2>
+      <p class="kp-modal__desc">{% trans "Наш менеджер зв'яжеться з вами протягом 24 годин." %}</p>
+    </div>
+    <form class="kp-form"
+          id="modalForm"
+          data-qa="lead-form"
+          novalidate
+          hx-post="{% url 'lead_create' %}"
+          hx-target="#modalFormResponse"
+          hx-swap="innerHTML"
+          hx-indicator="#modalSubmitBtn">
+      {% csrf_token %}
+      {% include "partials/honeypot.html" %}
+      <input type="hidden" name="form_type" value="hero">
+      <div id="modalFormResponse"></div>
+      <div class="kp-form__fld">
+        <label for="mName" class="kp-form__lbl">{% trans "Ваше ім'я" %} *</label>
+        <input type="text" id="mName" name="name" class="kp-form__inp"
+               placeholder="{% trans 'Іван Петренко' %}" required autocomplete="name">
+      </div>
+      <div class="kp-form__fld">
+        <label for="mPhone" class="kp-form__lbl">{% trans "Телефон" %} *</label>
+        <input type="tel" id="mPhone" name="phone" class="kp-form__inp"
+               placeholder="+380 XX XXX XX XX" required autocomplete="tel" inputmode="tel">
+      </div>
+      <div class="kp-form__fld">
+        <label for="mEmail" class="kp-form__lbl">{% trans "Email" %}</label>
+        <input type="email" id="mEmail" name="email" class="kp-form__inp"
+               placeholder="ivan@example.com" autocomplete="email">
+      </div>
+      {% include "partials/location_fields.html" with id_prefix="m" %}
+      <label class="kp-checkbox">
+        <input type="checkbox" name="gdpr_consent" required>
+        <span class="kp-checkbox__mark"></span>
+        <span class="kp-checkbox__txt">{% trans "Погоджуюсь на обробку персональних даних" %}</span>
+      </label>
+      <button type="submit" id="modalSubmitBtn" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">
+        {% trans "Надіслати заявку" %}
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-config.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-config-2.css' %}">
+{% endblock %}
+
+{% block title %}{% trans "Конфігуратор купольного будинку" %} — KUPOLLA{% endblock %}
+{% block meta_description %}{% trans "Оберіть наповнення куполу KUPOLLA: комплектацію та додаткові опції — ціна оновлюється одразу." %}{% endblock %}
+
+{% block content %}
+
+<div class="kp-breadcrumbs-wrap">
+  <div class="kp-container">
+    <nav class="kp-breadcrumbs">
+      <a href="{% url 'core:home' %}" class="kp-bc__item">{% trans "Головна" %}</a>
+      <span class="kp-bc__sep">›</span>
+      <span class="kp-bc__item kp-bc__item--cur">{% trans "Конфігуратор" %}</span>
+    </nav>
+  </div>
+</div>
+
+<section class="kp-cfg-hero">
+  <div class="kp-container">
+    <div class="kp-cfg-hero__inner">
+      <div class="kp-cfg-hero__content">
+        <h1 class="kp-cfg-hero__title">{% trans "Оберіть" %}<br><em>{% trans "наповнення куполу" %}</em></h1>
+        <p class="kp-cfg-hero__desc">{% trans "KUPOLLA 36 м² · діаметр 6.8 м — ціна та фото оновлюються одразу" %}</p>
+      </div>
+      <div class="kp-cfg-hero__illustration" aria-hidden="true">
+        <img src="{% static 'images/illustrations/dome-house-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="kp-cfg-layout">
+  <div class="kp-container">
+    <div class="kp-cfg-inner" id="kpConfigurator"
+         data-calc-url="{% url 'configurator_calculate' %}"
+         data-lead-url="{% url 'lead_create' %}"
+         data-product-model="{{ product_slug }}"
+         data-base-price="{{ base_price }}">
+
+      <!-- LEFT: Sections -->
+      <div class="kp-cfg-steps">
+
+        <input type="hidden" name="cfg_model" value="{{ product_slug }}">
+        <input type="hidden" name="cfg_diameter" value="6.8m">
+
+        <!-- Section 1: Наповнення (Tier) -->
+        <div class="kp-cfg-step active">
+          <div class="kp-cfg-step__hd">
+            <span class="kp-cfg-step__num">01</span>
+            <h2 class="kp-cfg-step__title">{% trans "Наповнення куполу" %}</h2>
+          </div>
+          <p class="kp-cfg-step__hint">{% trans "Оберіть рівень оснащення — ціна та фото змінюються одразу" %}</p>
+          <div class="kp-cfg-tiers">
+            {% for opt in tier_options %}
+            <label class="kp-cfg-tier" data-type="tier" data-code="{{ opt.code }}" data-delta="{{ opt.price_delta }}">
+              <input type="radio" name="cfg_tier" value="{{ opt.code }}">
+              <div class="kp-cfg-tier__card">
+                {% if opt.is_popular %}<span class="kp-cfg-tier__pop">{% trans "Хіт" %}</span>{% endif %}
+                <div class="kp-cfg-tier__name">{{ opt.name }}</div>
+                {% if opt.price_delta %}<div class="kp-cfg-tier__price">+€{{ opt.price_delta|floatformat:0 }}</div>{% endif %}
+                {% if opt.features %}<ul class="kp-cfg-tier__list">{% for f in opt.features %}<li>{{ f }}</li>{% endfor %}</ul>{% endif %}
+                <div class="kp-cfg-tier__check">✓</div>
+              </div>
+            </label>
+            {% empty %}
+            <label class="kp-cfg-tier" data-type="tier" data-code="base" data-delta="0">
+              <input type="radio" name="cfg_tier" value="base" checked>
+              <div class="kp-cfg-tier__card">
+                <div class="kp-cfg-tier__name">{% trans "Базова" %}</div>
+                <ul class="kp-cfg-tier__list">
+                  <li>{% trans "CLT каркас" %}</li>
+                  <li>{% trans "Стандартні вікна" %}</li>
+                  <li>{% trans "Монтаж" %}</li>
+                </ul>
+                <div class="kp-cfg-tier__check">✓</div>
+              </div>
+            </label>
+            <label class="kp-cfg-tier" data-type="tier" data-code="standard" data-delta="15000">
+              <input type="radio" name="cfg_tier" value="standard">
+              <div class="kp-cfg-tier__card">
+                <span class="kp-cfg-tier__pop">{% trans "Хіт" %}</span>
+                <div class="kp-cfg-tier__name">{% trans "Стандарт" %}</div>
+                <div class="kp-cfg-tier__price">+€15 000</div>
+                <ul class="kp-cfg-tier__list">
+                  <li>{% trans "Панорамні вікна" %}</li>
+                  <li>{% trans "Тераса 6 м²" %}</li>
+                  <li>{% trans "Система опалення" %}</li>
+                </ul>
+                <div class="kp-cfg-tier__check">✓</div>
+              </div>
+            </label>
+            <label class="kp-cfg-tier" data-type="tier" data-code="premium" data-delta="35000">
+              <input type="radio" name="cfg_tier" value="premium">
+              <div class="kp-cfg-tier__card">
+                <div class="kp-cfg-tier__name">{% trans "Преміум" %}</div>
+                <div class="kp-cfg-tier__price">+€35 000</div>
+                <ul class="kp-cfg-tier__list">
+                  <li>{% trans "Підлогове опалення" %}</li>
+                  <li>{% trans "Smart Home" %}</li>
+                  <li>{% trans "Преміум фінішинг" %}</li>
+                </ul>
+                <div class="kp-cfg-tier__check">✓</div>
+              </div>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Section 2: Addons -->
+        <div class="kp-cfg-step active" id="cfgAddonsSection">
+          <div class="kp-cfg-step__hd">
+            <span class="kp-cfg-step__num">02</span>
+            <h2 class="kp-cfg-step__title">{% trans "Додаткові опції" %}</h2>
+          </div>
+          <p class="kp-cfg-step__hint">{% trans "Можна обрати декілька" %}</p>
+          <div class="kp-cfg-options">
+            {% for opt in addon_options %}
+            <label class="kp-cfg-opt" data-type="addon" data-code="{{ opt.code }}" data-delta="{{ opt.price_delta }}">
+              <input type="checkbox" name="cfg_addon" value="{{ opt.code }}">
+              <div class="kp-cfg-opt__card">
+                <div class="kp-cfg-opt__name">{{ opt.name }}</div>
+                {% if opt.price_delta %}<div class="kp-cfg-opt__price">+€{{ opt.price_delta|floatformat:0 }}</div>{% endif %}
+                <div class="kp-cfg-opt__check"></div>
+              </div>
+            </label>
+            {% empty %}
+            <label class="kp-cfg-opt" data-type="addon" data-code="terrace" data-delta="8500">
+              <input type="checkbox" name="cfg_addon" value="terrace">
+              <div class="kp-cfg-opt__card">
+                <div class="kp-cfg-opt__name">{% trans "Тераса 6 м²" %}</div>
+                <div class="kp-cfg-opt__price">+€8 500</div>
+                <div class="kp-cfg-opt__check"></div>
+              </div>
+            </label>
+            <label class="kp-cfg-opt" data-type="addon" data-code="panoramic" data-delta="12000">
+              <input type="checkbox" name="cfg_addon" value="panoramic">
+              <div class="kp-cfg-opt__card">
+                <div class="kp-cfg-opt__name">{% trans "Панорамні вікна" %}</div>
+                <div class="kp-cfg-opt__price">+€12 000</div>
+                <div class="kp-cfg-opt__check"></div>
+              </div>
+            </label>
+            <label class="kp-cfg-opt" data-type="addon" data-code="solar" data-delta="9000">
+              <input type="checkbox" name="cfg_addon" value="solar">
+              <div class="kp-cfg-opt__card">
+                <div class="kp-cfg-opt__name">{% trans "Сонячні панелі" %}</div>
+                <div class="kp-cfg-opt__price">+€9 000</div>
+                <div class="kp-cfg-opt__check"></div>
+              </div>
+            </label>
+            <label class="kp-cfg-opt" data-type="addon" data-code="smarthome" data-delta="6500">
+              <input type="checkbox" name="cfg_addon" value="smarthome">
+              <div class="kp-cfg-opt__card">
+                <div class="kp-cfg-opt__name">{% trans "Smart Home" %}</div>
+                <div class="kp-cfg-opt__price">+€6 500</div>
+                <div class="kp-cfg-opt__check"></div>
+              </div>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Section 3: Contact form -->
+        <div class="kp-cfg-step kp-cfg-form-step active" id="cfgContactSection">
+          <div class="kp-cfg-step__hd">
+            <span class="kp-cfg-step__num">03</span>
+            <h2 class="kp-cfg-step__title">{% trans "Ваші контакти" %}</h2>
+          </div>
+          <p class="kp-cfg-step__hint">{% trans "Надішліть конфігурацію — менеджер зв'яжеться протягом 24 год" %}</p>
+          <div id="cfgFormResponse" class="kp-cfg-form-response" aria-live="polite"></div>
+          <form class="kp-form"
+                id="cfgForm"
+                data-qa="lead-form"
+                novalidate
+                hx-post="{% url 'lead_create' %}"
+                hx-target="#cfgFormResponse"
+                hx-swap="innerHTML">
+            {% csrf_token %}
+            {% include "partials/honeypot.html" %}
+            <input type="hidden" name="form_type" value="configurator">
+            <input type="hidden" name="configurator_data" id="cfgHiddenData" value="">
+            <div class="kp-form__row">
+              <div class="kp-form__fld">
+                <label for="cfgName" class="kp-form__lbl">{% trans "Ім'я" %} *</label>
+                <input type="text" id="cfgName" name="name" class="kp-form__inp" required autocomplete="name" placeholder="{% trans 'Іван Петренко' %}">
+              </div>
+              <div class="kp-form__fld">
+                <label for="cfgPhone" class="kp-form__lbl">{% trans "Телефон" %} *</label>
+                <input type="tel" id="cfgPhone" name="phone" class="kp-form__inp" required autocomplete="tel" placeholder="+380 XX XXX XX XX" inputmode="tel">
+              </div>
+            </div>
+            <div class="kp-form__fld">
+              <label for="cfgEmail" class="kp-form__lbl">{% trans "Email" %}</label>
+              <input type="email" id="cfgEmail" name="email" class="kp-form__inp" autocomplete="email" placeholder="email@example.com">
+            </div>
+            {% include "partials/location_fields.html" with id_prefix="cfg" %}
+            <label class="kp-checkbox">
+              <input type="checkbox" name="gdpr_consent" required>
+              <span class="kp-checkbox__mark"></span>
+              <span class="kp-checkbox__txt">{% trans "Згода на обробку персональних даних" %}</span>
+            </label>
+            <button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">{% trans "Отримати розрахунок" %}</button>
+          </form>
+        </div>
+
+      </div><!-- /kp-cfg-steps -->
+
+      <!-- RIGHT: Sticky panel -->
+      <div class="kp-cfg-panel">
+
+        <!-- Preview Panel -->
+        <div class="kp-cfg-preview">
+          <div class="kp-cfg-preview__title">KUPOLLA · 36 м²</div>
+          <div class="kp-cfg-preview__photo-wrap">
+            <img id="cfgPreviewImg"
+                 class="kp-cfg-preview__photo"
+                 src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}"
+                 alt="{% trans 'Превʼю комплектації куполу' %}"
+                 width="640"
+                 height="400"
+                 decoding="async">
+          </div>
+          <div class="kp-cfg-preview__dome-strip kp-cfg-preview__dome-strip--full">
+            <svg class="kp-cfg-dome-svg" id="cfgDomeSvg" viewBox="0 60 320 208" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{% trans 'Схема куполу' %}">
+              <ellipse cx="160" cy="248" rx="112" ry="11" fill="rgba(0,0,0,.4)"/>
+              <g id="cfgTerrace" class="kp-cfg-layer">
+                <ellipse cx="253" cy="240" rx="46" ry="7" fill="rgba(0,0,0,.3)"/>
+                <path d="M 212 240 Q 212 218 253 218 Q 294 218 294 240 Z" stroke="#051f43" stroke-width="1" fill="rgba(0,49,30,.25)"/>
+                <path d="M 212 240 L 294 240" stroke="#051f43" stroke-width="1"/>
+                <line x1="224" y1="218" x2="224" y2="240" stroke="#051f43" stroke-width=".7" opacity=".7"/>
+                <line x1="253" y1="218" x2="253" y2="240" stroke="#051f43" stroke-width=".7" opacity=".7"/>
+                <line x1="282" y1="218" x2="282" y2="240" stroke="#051f43" stroke-width=".7" opacity=".7"/>
+              </g>
+              <g id="domeGroup" class="kp-cfg-dome-group">
+                <ellipse cx="160" cy="240" rx="108" ry="13" stroke="#051f43" stroke-width="1.5" fill="rgba(0,49,30,.45)"/>
+                <path id="domeBody" class="kp-cfg-dome-body" d="M 52 240 Q 52 82 160 82 Q 268 82 268 240 Z" stroke="#051f43" stroke-width="1.5" fill="rgba(0,49,30,.2)"/>
+                <path d="M 74 196 Q 160 181 246 196" stroke="#051f43" stroke-width=".8" opacity=".5"/>
+                <path d="M 93 156 Q 160 142 227 156" stroke="#051f43" stroke-width=".8" opacity=".5"/>
+                <path d="M 118 122 Q 160 110 202 122" stroke="#051f43" stroke-width=".75" opacity=".45"/>
+                <path d="M 141 98 Q 160 91 179 98" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <line x1="160" y1="82" x2="52" y2="240" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <line x1="160" y1="82" x2="92" y2="240" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <line x1="160" y1="82" x2="130" y2="240" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <line x1="160" y1="82" x2="160" y2="240" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <line x1="160" y1="82" x2="190" y2="240" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <line x1="160" y1="82" x2="228" y2="240" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <line x1="160" y1="82" x2="268" y2="240" stroke="#051f43" stroke-width=".6" opacity=".35"/>
+                <circle cx="160" cy="82" r="4" fill="#051f43"/>
+                <path d="M 142 240 Q 142 213 160 213 Q 178 213 178 240 Z" stroke="#051f43" stroke-width="1.2" fill="rgba(0,0,0,.55)"/>
+
+                <!-- Panoramic window (right side) -->
+                <g id="cfgWindow" class="kp-cfg-layer">
+                  <circle cx="208" cy="162" r="15" stroke="#051f43" stroke-width="1" fill="rgba(5,31,67,.12)"/>
+                  <line x1="193" y1="162" x2="223" y2="162" stroke="#051f43" stroke-width=".7" opacity=".55"/>
+                  <line x1="208" y1="147" x2="208" y2="177" stroke="#051f43" stroke-width=".7" opacity=".55"/>
+                </g>
+
+                <!-- Solar panels (left side of dome) -->
+                <g id="cfgSolar" class="kp-cfg-layer">
+                  <rect x="86" y="148" width="15" height="10" rx="1" stroke="#051f43" stroke-width=".8" fill="rgba(5,31,67,.15)"/>
+                  <rect x="103" y="145" width="15" height="10" rx="1" stroke="#051f43" stroke-width=".8" fill="rgba(5,31,67,.15)"/>
+                  <line x1="93" y1="148" x2="93" y2="158" stroke="#051f43" stroke-width=".4" opacity=".55"/>
+                  <line x1="86" y1="153" x2="101" y2="153" stroke="#051f43" stroke-width=".4" opacity=".55"/>
+                  <line x1="110" y1="145" x2="110" y2="155" stroke="#051f43" stroke-width=".4" opacity=".55"/>
+                  <line x1="103" y1="150" x2="118" y2="150" stroke="#051f43" stroke-width=".4" opacity=".55"/>
+                </g>
+
+                <!-- Smart Home: WiFi signal arcs above dome apex -->
+                <g id="cfgSmartHome" class="kp-cfg-layer">
+                  <path d="M 155 79 A 7 7 0 0 0 165 79" stroke="#051f43" stroke-width=".9" fill="none"/>
+                  <path d="M 151 74 A 12 12 0 0 0 169 74" stroke="#051f43" stroke-width=".7" fill="none" opacity=".65"/>
+                  <path d="M 147 69 A 17 17 0 0 0 173 69" stroke="#051f43" stroke-width=".55" fill="none" opacity=".35"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="kp-cfg-summary">
+          <div class="kp-cfg-sum__row">
+            <span class="kp-cfg-sum__k">{% trans "Купол" %}</span>
+            <span class="kp-cfg-sum__v" id="sumModel">KUPOLLA · 36 м²</span>
+          </div>
+          <div class="kp-cfg-sum__row">
+            <span class="kp-cfg-sum__k">{% trans "Наповнення" %}</span>
+            <span class="kp-cfg-sum__v" id="sumTier">—</span>
+          </div>
+          <div class="kp-cfg-sum__row">
+            <span class="kp-cfg-sum__k">{% trans "Опції" %}</span>
+            <span class="kp-cfg-sum__v" id="sumAddons">—</span>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="kp-cfg-price">
+          <div class="kp-cfg-price__label">{% trans "Орієнтовна вартість:" %}</div>
+          <div class="kp-cfg-price__num" id="cfgTotal">—</div>
+          <div class="kp-cfg-price__note">{% trans "Фінальна ціна уточнюється після консультації" %}</div>
+        </div>
+
+        <!-- CTA -->
+        <a href="#cfgContactSection"
+           class="kp-btn kp-btn--primary kp-btn--full"
+           data-scroll-target="#cfgContactSection">
+          {% trans "Залишити заявку" %}
+        </a>
+
+      </div><!-- /kp-cfg-panel -->
+
+    </div><!-- /kp-cfg-inner -->
+  </div>
+</div>
+
+<div class="kp-cfg-price-bar" id="cfgPriceBar">
+  <div class="kp-cfg-price-bar__copy">
+    <span class="kp-cfg-price-bar__label">{% trans "Орієнтовно" %}</span>
+    <span class="kp-cfg-price-bar__num" id="cfgBarTotal">—</span>
+  </div>
+  <a href="#cfgContactSection" class="kp-btn kp-btn--primary kp-btn--sm" data-scroll-target="#cfgContactSection">{% trans "Заявка" %}</a>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/kupolla-config.js' %}" defer></script>
+{% endblock %}

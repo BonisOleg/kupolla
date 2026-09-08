@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e2319">
+  <title>Модельний ряд — Каталог купольних будинків KUPOLLA</title>
+  <meta name="description" content="Каталог купольних будинків KUPOLLA: моделі S (36 м²), M (64 м²), L (120 м²) для глемпінгу, проживання та комерції. Фільтри, ціни, деталі.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/kupolla-1.css"><link rel="stylesheet" href="../../css/kupolla-2.css">
+  <link rel="stylesheet" href="../../css/kupolla-3.css"><link rel="stylesheet" href="../../css/kupolla-model.css">
+  <link rel="stylesheet" href="../../css/kupolla-pages-1.css">
+</head>
+<body class="kp-inner-page">
+<header id="header" class="kp-header"><div class="kp-container"><div class="kp-header__inner">
+  <a href="index.html" class="kp-logo">KUPOLLA</a>
+  <nav class="kp-nav"><a href="about.html" class="kp-nav__link">Про компанію</a><a href="models.html" class="kp-nav__link kp-nav__link--active">Модельний ряд</a><a href="configurator.html" class="kp-nav__link">Конфігуратор</a><a href="technologies.html" class="kp-nav__link">Технології</a><a href="gallery.html" class="kp-nav__link">Галерея</a><a href="blog.html" class="kp-nav__link">Блог</a><a href="faq.html" class="kp-nav__link">FAQ</a><a href="contacts.html" class="kp-nav__link">Контакти</a></nav>
+  <div class="kp-header__actions"><div class="kp-lang" id="langSwitcher"><button class="kp-lang__btn" id="langTrigger" aria-expanded="false"><span id="currentLang">UK</span><svg class="kp-lang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="kp-lang__dropdown"><a href="#" class="kp-lang__option active" data-lang="UK">🇺🇦 Українська</a><a href="#" class="kp-lang__option" data-lang="EN">🇬🇧 English</a><a href="#" class="kp-lang__option" data-lang="FR">🇫🇷 Français</a></div></div><button class="kp-btn kp-btn--primary" onclick="openConsultModal()">Отримати консультацію</button><button class="kp-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button></div>
+</div></div></header>
+<div class="kp-mobile-menu" id="mobileMenu" aria-hidden="true"><nav class="kp-mobile-menu__nav"><a href="about.html" class="kp-mobile-menu__link">Про компанію</a><a href="models.html" class="kp-mobile-menu__link">Модельний ряд</a><a href="configurator.html" class="kp-mobile-menu__link">Конфігуратор</a><a href="technologies.html" class="kp-mobile-menu__link">Технології</a><a href="gallery.html" class="kp-mobile-menu__link">Галерея</a><a href="blog.html" class="kp-mobile-menu__link">Блог</a><a href="faq.html" class="kp-mobile-menu__link">FAQ</a><a href="contacts.html" class="kp-mobile-menu__link">Контакти</a></nav><div class="kp-mobile-menu__bottom"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal();closeMobileMenu()">Консультація</button><div class="kp-mobile-menu__langs"><a href="#" class="kp-mlang active">UK</a><a href="#" class="kp-mlang">EN</a><a href="#" class="kp-mlang">FR</a></div></div></div>
+
+<main>
+  <div class="kp-breadcrumbs-wrap"><div class="kp-container"><nav class="kp-breadcrumbs"><a href="index.html" class="kp-bc__item">Головна</a><span class="kp-bc__sep">›</span><span class="kp-bc__item kp-bc__item--cur">Модельний ряд</span></nav></div></div>
+  <section class="kp-inner-hero"><div class="kp-container"><div class="kp-inner-hero__content"><span class="kp-inner-hero__badge">Каталог</span><h1 class="kp-inner-hero__title">Модельний ряд<br><em>KUPOLLA</em></h1><p class="kp-inner-hero__desc">Три базові моделі для будь-яких завдань: від романтичного глемпінгу до просторої сімейної резиденції.</p></div></div></section>
+
+  <!-- CATALOG -->
+  <section class="kp-section kp-catalog">
+    <div class="kp-container">
+      <div class="kp-catalog-filters kp-catalog__filters" id="kpCatalogFilters">
+        <div class="kp-filter-group kp-filters__group" data-filter-group="purpose">
+          <span class="kp-filter-group__label kp-filters__label">Призначення</span>
+          <div class="kp-filters__btns">
+            <button type="button" class="kp-filter-btn active" data-filter-val="">Усі</button>
+            <button type="button" class="kp-filter-btn" data-filter-val="living">Проживання</button>
+            <button type="button" class="kp-filter-btn" data-filter-val="glamping">Глемпінг</button>
+            <button type="button" class="kp-filter-btn" data-filter-val="commercial">Комерція</button>
+          </div>
+        </div>
+        <div class="kp-filter-group kp-filters__group" data-filter-group="size">
+          <span class="kp-filter-group__label kp-filters__label">Розмір</span>
+          <div class="kp-filters__btns">
+            <button type="button" class="kp-filter-btn active" data-filter-val="">Усі</button>
+            <button type="button" class="kp-filter-btn" data-filter-val="small">Малий</button>
+            <button type="button" class="kp-filter-btn" data-filter-val="medium">Середній</button>
+            <button type="button" class="kp-filter-btn" data-filter-val="large">Великий</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="kp-catalog__grid" id="kpCatalogGrid">
+        <!-- KUPOLLA XS -->
+        <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="glamping" data-size="small" data-area="20" data-price="22000">
+          <div class="kp-mcard__img kp-mcard__img--s" style="background:linear-gradient(140deg,#2a5040,#0e2319 60%,#cabbac)"></div>
+          <div class="kp-mcard__body"><div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA XS</span><span class="kp-mcard__area">20 м²</span></div><p class="kp-mcard__desc">Компактна капсула для одного-двох гостей. Ідеально для глемпінг-стоянок та boutique-баз відпочинку.</p><div class="kp-mcard__price">від €22 000</div><a href="model.html" class="kp-btn kp-btn--outline kp-btn--sm">Детальніше</a></div>
+        </div>
+        <!-- KUPOLLA S -->
+        <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="glamping" data-size="small" data-area="36" data-price="35000">
+          <div class="kp-mcard__img kp-mcard__img--s"></div>
+          <div class="kp-mcard__body"><div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA S</span><span class="kp-mcard__area">36 м²</span></div><p class="kp-mcard__desc">Ідеально для глемпінгу та романтичного відпочинку. Компактний, функціональний дизайн.</p><div class="kp-mcard__price">від €35 000</div><a href="model.html" class="kp-btn kp-btn--outline kp-btn--sm">Детальніше</a></div>
+        </div>
+        <!-- KUPOLLA M -->
+        <div class="kp-mcard kp-mcard--feat kp-catalog-card kp-reveal" data-purpose="living" data-size="medium" data-area="64" data-price="65000">
+          <div class="kp-mcard__img kp-mcard__img--m"><span class="kp-mcard__badge kp-mcard__badge--gold">Хіт</span></div>
+          <div class="kp-mcard__body"><div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA M</span><span class="kp-mcard__area">64 м²</span></div><p class="kp-mcard__desc">Оптимальний вибір для сімейного проживання та невеликих туристичних комплексів.</p><div class="kp-mcard__price">від €65 000</div><a href="model.html" class="kp-btn kp-btn--outline kp-btn--sm">Детальніше</a></div>
+        </div>
+        <!-- KUPOLLA M+ -->
+        <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="living" data-size="medium" data-area="80" data-price="88000">
+          <div class="kp-mcard__img" style="background:linear-gradient(140deg,#0e2319,#1a3828 50%,#cabbac);height:240px"></div>
+          <div class="kp-mcard__body"><div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA M+</span><span class="kp-mcard__area">80 м²</span></div><p class="kp-mcard__desc">Розширена версія M з додатковою спальнею та терасою. Для сімей з дітьми.</p><div class="kp-mcard__price">від €88 000</div><a href="model.html" class="kp-btn kp-btn--outline kp-btn--sm">Детальніше</a></div>
+        </div>
+        <!-- KUPOLLA L -->
+        <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="living" data-size="large" data-area="120" data-price="120000">
+          <div class="kp-mcard__img kp-mcard__img--l"></div>
+          <div class="kp-mcard__body"><div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA L</span><span class="kp-mcard__area">120 м²</span></div><p class="kp-mcard__desc">Просторий будинок для постійного проживання або преміального готельного номера.</p><div class="kp-mcard__price">від €120 000</div><a href="model.html" class="kp-btn kp-btn--outline kp-btn--sm">Детальніше</a></div>
+        </div>
+        <!-- KUPOLLA XL -->
+        <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="commercial" data-size="large" data-area="200" data-price="220000">
+          <div class="kp-mcard__img" style="background:linear-gradient(140deg,#000,#0e2319 50%,#cac9bd);height:240px"></div>
+          <div class="kp-mcard__body"><div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA XL</span><span class="kp-mcard__area">200 м²</span></div><p class="kp-mcard__desc">Флагманська модель для великих девелоперських та комерційних проєктів. Індивідуальне планування.</p><div class="kp-mcard__price">від €220 000</div><a href="model.html" class="kp-btn kp-btn--outline kp-btn--sm">Детальніше</a></div>
+        </div>
+      </div>
+
+      <div id="kpCatalogEmpty" class="kp-catalog__empty" style="display:none">
+        <p>За вашими фільтрами нічого не знайдено. Спробуйте змінити параметри.</p>
+        <button class="kp-btn kp-btn--outline" id="kpCatalogReset">Скинути фільтри</button>
+      </div>
+
+      <!-- CTA -->
+      <div class="kp-catalog__cta kp-reveal" style="margin-top:3rem">
+        <h3 class="kp-catalog__cta-title">Не знайшли підходящу модель?</h3>
+        <p class="kp-catalog__cta-desc">Скористайтеся конфігуратором, щоб налаштувати купольний будинок точно під ваші потреби та бюджет.</p>
+        <div class="kp-section__ft" style="margin-top:0"><a href="configurator.html" class="kp-btn kp-btn--gold kp-btn--lg">Відкрити конфігуратор</a><button class="kp-btn kp-btn--ghost-light kp-btn--lg" onclick="openConsultModal()">Проконсультуватись</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="kp-footer"><div class="kp-container"><div class="kp-footer__top"><div class="kp-footer__brand"><a href="index.html" class="kp-logo kp-logo--inv">KUPOLLA</a><p class="kp-footer__tag">Преміальні купольні будинки</p><div class="kp-footer__socials"><a href="#" class="kp-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg></a></div></div><nav class="kp-footer__nav"><div class="kp-footer__col"><h4 class="kp-footer__col-h">Продукт</h4><a href="models.html" class="kp-footer__lnk">Модельний ряд</a><a href="configurator.html" class="kp-footer__lnk">Конфігуратор</a><a href="faq.html" class="kp-footer__lnk">FAQ</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Компанія</h4><a href="about.html" class="kp-footer__lnk">Про нас</a><a href="technologies.html" class="kp-footer__lnk">Технології</a><a href="contacts.html" class="kp-footer__lnk">Контакти</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Мови</h4><a href="#" class="kp-footer__lnk">Українська</a><a href="#" class="kp-footer__lnk">English</a><a href="#" class="kp-footer__lnk">Français</a></div></nav></div><div class="kp-footer__bot"><p class="kp-footer__copy">© 2026 KUPOLLA.</p><div class="kp-footer__legal"><a href="#" class="kp-footer__leg-lnk">Конфіденційність</a><a href="#" class="kp-footer__leg-lnk">Умови</a></div></div></div></footer>
+<div class="kp-modal" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="kp-modal__bd" onclick="closeConsultModal()"></div><div class="kp-modal__box"><button class="kp-modal__close" onclick="closeConsultModal()" aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class="kp-modal__hd"><h2 class="kp-modal__title" id="modalTitle">Безкоштовна консультація</h2></div><form class="kp-form" id="modalForm" novalidate><div class="kp-form__fld"><label class="kp-form__lbl">Ваше ім'я *</label><input type="text" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name"></div><div class="kp-form__fld"><label class="kp-form__lbl">Телефон *</label><input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel"></div><label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку даних</a></span></label><button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">Надіслати</button></form></div></div>
+<div class="kp-mobile-cta" id="mobileCta"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal()">Консультація</button></div>
+<script src="../../js/kupolla.js"></script><script src="../../js/kupolla-pages.js"></script>
+</body></html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="KUPOLLA">
+  <rect x="2" y="2" width="28" height="28" rx="6.5" fill="#00311e"/>
+  <path d="M8.5 22.5 Q16 9 23.5 22.5 Z" fill="#051f43"/>
+  <path d="M8.5 22.5 Q16 9.5 23.5 22.5" fill="none" stroke="#e8ddd4" stroke-width="0.6" stroke-linecap="round"/>
+  <rect x="6.8" y="22.2" width="18.4" height="1.1" rx="0.55" fill="#1a3828"/>
+  <rect x="14.2" y="18.6" width="3.6" height="4.2" rx="0.6" fill="#00311e"/>
+</svg>

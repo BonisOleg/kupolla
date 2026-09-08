@@ -1,0 +1,27 @@
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<div class="kp-mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="kp-mobile-menu__nav" aria-label="{% trans 'Мобільна навігація' %}">
+    <a href="{% url 'about:index' %}" class="kp-mobile-menu__link{% if 'about' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">{% trans "Про компанію" %}</a>
+    <a href="{% url 'catalog:list' %}" class="kp-mobile-menu__link{% if 'catalog' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">{% trans "Купол" %}</a>
+    <a href="{% url 'configurator:index' %}" class="kp-mobile-menu__link{% if 'configurator' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">{% trans "Конфігуратор" %}</a>
+    <a href="{% url 'technologies:index' %}" class="kp-mobile-menu__link{% if 'technologies' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">{% trans "Матеріали" %}</a>
+    <a href="{% url 'gallery:index' %}" class="kp-mobile-menu__link{% if 'gallery' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">{% trans "Галерея" %}</a>
+    <a href="{% url 'blog:list' %}" class="kp-mobile-menu__link{% if 'blog' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">{% trans "Блог" %}</a>
+    <a href="{% url 'faq:index' %}" class="kp-mobile-menu__link{% if 'faq' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">FAQ</a>
+    <a href="{% url 'contacts:index' %}" class="kp-mobile-menu__link{% if 'contacts' in request.resolver_match.namespaces %} kp-mobile-menu__link--active{% endif %}">{% trans "Контакти" %}</a>
+  </nav>
+  <div class="kp-mobile-menu__bottom">
+    <button class="kp-btn kp-btn--primary kp-btn--full" data-modal-trigger="consult">{% trans "Отримати консультацію" %}</button>
+    <div class="kp-mobile-menu__langs" data-qa="lang-switch">
+      {% for item in lang_switcher %}
+      <form class="kp-lang__form" action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ item.url }}">
+        <input type="hidden" name="language" value="{{ item.code }}">
+        <button type="submit" class="kp-mlang{% if item.code == CURRENT_LANGUAGE %} active{% endif %}">{{ item.code|upper }}</button>
+      </form>
+      {% endfor %}
+    </div>
+  </div>
+</div>

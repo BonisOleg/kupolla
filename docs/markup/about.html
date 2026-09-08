@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e2319">
+  <title>KUPOLLA - модульні будинки</title>
+  <meta name="description" content="Дізнайтеся більше про компанію KUPOLLA: місія, цінності, команда та етапи співпраці. Преміальне виробництво купольних будинків.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/kupolla-1.css"><link rel="stylesheet" href="../../css/kupolla-2.css">
+  <link rel="stylesheet" href="../../css/kupolla-3.css"><link rel="stylesheet" href="../../css/kupolla-pages-1.css">
+</head>
+<body class="kp-inner-page">
+<header id="header" class="kp-header"><div class="kp-container"><div class="kp-header__inner">
+  <a href="index.html" class="kp-logo">KUPOLLA</a>
+  <nav class="kp-nav">
+    <a href="about.html" class="kp-nav__link kp-nav__link--active">Про компанію</a>
+    <a href="models.html" class="kp-nav__link">Модельний ряд</a>
+    <a href="configurator.html" class="kp-nav__link">Конфігуратор</a>
+    <a href="technologies.html" class="kp-nav__link">Технології</a>
+    <a href="gallery.html" class="kp-nav__link">Галерея</a>
+    <a href="blog.html" class="kp-nav__link">Блог</a>
+    <a href="faq.html" class="kp-nav__link">FAQ</a>
+    <a href="contacts.html" class="kp-nav__link">Контакти</a>
+  </nav>
+  <div class="kp-header__actions">
+    <div class="kp-lang" id="langSwitcher"><button class="kp-lang__btn" id="langTrigger" aria-expanded="false"><span id="currentLang">UK</span><svg class="kp-lang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="kp-lang__dropdown"><a href="#" class="kp-lang__option active" data-lang="UK">🇺🇦 Українська</a><a href="#" class="kp-lang__option" data-lang="EN">🇬🇧 English</a><a href="#" class="kp-lang__option" data-lang="SK">🇸🇰 Slovenčina</a><a href="#" class="kp-lang__option" data-lang="FR">🇫🇷 Français</a></div></div>
+    <button class="kp-btn kp-btn--primary" onclick="openConsultModal()">Отримати консультацію</button>
+    <button class="kp-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</div></div></header>
+<div class="kp-mobile-menu" id="mobileMenu" aria-hidden="true"><nav class="kp-mobile-menu__nav"><a href="about.html" class="kp-mobile-menu__link">Про компанію</a><a href="models.html" class="kp-mobile-menu__link">Модельний ряд</a><a href="configurator.html" class="kp-mobile-menu__link">Конфігуратор</a><a href="technologies.html" class="kp-mobile-menu__link">Технології</a><a href="gallery.html" class="kp-mobile-menu__link">Галерея</a><a href="blog.html" class="kp-mobile-menu__link">Блог</a><a href="faq.html" class="kp-mobile-menu__link">FAQ</a><a href="contacts.html" class="kp-mobile-menu__link">Контакти</a></nav><div class="kp-mobile-menu__bottom"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal();closeMobileMenu()">Консультація</button><div class="kp-mobile-menu__langs"><a href="#" class="kp-mlang active">UK</a><a href="#" class="kp-mlang">EN</a><a href="#" class="kp-mlang">SK</a><a href="#" class="kp-mlang">FR</a></div></div></div>
+
+<main>
+  <div class="kp-breadcrumbs-wrap"><div class="kp-container"><nav class="kp-breadcrumbs"><a href="index.html" class="kp-bc__item">Головна</a><span class="kp-bc__sep">›</span><span class="kp-bc__item kp-bc__item--cur">Про компанію</span></nav></div></div>
+
+  <!-- HERO -->
+  <section class="kp-inner-hero kp-inner-hero--about">
+    <div class="kp-container kp-inner-hero__layout">
+      <div class="kp-inner-hero__content">
+      <span class="kp-inner-hero__badge">Про KUPOLLA</span>
+      <h1 class="kp-inner-hero__title">Ми будуємо простір<br><em>для нового способу життя</em></h1>
+      <p class="kp-inner-hero__desc">KUPOLLA — виробник преміальних геодезичних купольних будинків. Поєднуємо інноваційні технології, екологічні матеріали та архітектурну красу в кожному будинку.</p>
+    </div>
+    <div class="kp-inner-hero__illustration" aria-hidden="true">
+      <img src="/static/images/illustrations/dome-house-hero.svg" alt="" width="420" height="270" loading="eager" decoding="async">
+    </div>
+    </div>
+  </section>
+
+  <!-- STORY + NUMBERS -->
+  <section class="kp-section kp-about-story">
+    <div class="kp-container"><div class="kp-about-story__inner">
+      <div class="kp-reveal">
+        <span class="kp-label">Наша історія</span>
+        <h2 class="kp-section__title">Від ідеї до готового будинку</h2>
+        <div style="margin-top:1.5rem">
+          <p>KUPOLLA зародилась з переконання, що сучасне житло має бути не лише красивим, а й розумним, екологічним та гармонійним з природою. Геодезичний купол — найдосконаліша структура, яку знає людство, і ми перетворили її на комфортне сучасне житло.</p>
+          <p>Сьогодні ми реалізуємо проєкти по всій Європі: від компактних глемпінг-капсул до розкішних резиденцій. Кожен купольний будинок — це унікальний простір, розроблений разом з клієнтом.</p>
+          <p>Наша команда — це інженери, архітектори та ентузіасти, які щодня вдосконалюють технологію виробництва та монтажу купольних будинків.</p>
+        </div>
+        <div style="margin-top:2rem"><a href="technologies.html" class="kp-btn kp-btn--primary">Наші технології</a></div>
+      </div>
+      <div class="kp-about-story__nums kp-reveal">
+        <div class="kp-about-num"><div class="kp-about-num__val">50+</div><div class="kp-about-num__label">Реалізованих проєктів</div></div>
+        <div class="kp-about-num"><div class="kp-about-num__val">8</div><div class="kp-about-num__label">Країн присутності</div></div>
+        <div class="kp-about-num"><div class="kp-about-num__val">25</div><div class="kp-about-num__label">Років гарантії</div></div>
+        <div class="kp-about-num"><div class="kp-about-num__val">A+</div><div class="kp-about-num__label">Клас енергоефективності</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="kp-section kp-about-values">
+    <div class="kp-container">
+      <div class="kp-section__hd"><span class="kp-label">Наші цінності</span><h2 class="kp-section__title">Що нами рухає</h2></div>
+      <div class="kp-about-vals">
+        <div class="kp-about-val kp-reveal"><div class="kp-about-val__icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 7C24 7 12 17 12 27c0 6.6 5.4 11 12 11s12-4.4 12-11C36 17 24 7 24 7z" stroke="currentColor" stroke-width="1.5"/><path d="M24 16v22M18 23c2-3 4-4 6-4s4 1 6 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><h3 class="kp-about-val__title">Екологічність</h3><p class="kp-about-val__desc">Натуральні матеріали, мінімальний вуглецевий слід, гармонія з природою у кожному рішенні.</p></div>
+        <div class="kp-about-val kp-reveal"><div class="kp-about-val__icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8L40 16v16L24 40 8 32V16z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M24 8v32" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity=".5"/><circle cx="24" cy="24" r="5" fill="currentColor" opacity=".2"/></svg></div><h3 class="kp-about-val__title">Інновації</h3><p class="kp-about-val__desc">Постійний розвиток технологій: від CLT-конструкцій до систем «Розумний будинок» у купольному будинку.</p></div>
+        <div class="kp-about-val kp-reveal"><div class="kp-about-val__icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div><h3 class="kp-about-val__title">Якість</h3><p class="kp-about-val__desc">Контроль на кожному етапі: від заготівлі сировини до передачі ключів клієнту.</p></div>
+        <div class="kp-about-val kp-reveal"><div class="kp-about-val__icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"/><path d="M17 24l5 5 9-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3 class="kp-about-val__title">Прозорість</h3><p class="kp-about-val__desc">Відкрита ціноутворення, чіткі терміни, повна документація та підтримка після монтажу.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COOPERATION STAGES -->
+  <section class="kp-section kp-about-stages">
+    <div class="kp-container">
+      <div class="kp-section__hd"><span class="kp-label">Процес роботи</span><h2 class="kp-section__title">Етапи співпраці</h2><p class="kp-section__sub">Від першого дзвінка до заїзду у новий будинок</p></div>
+      <div class="kp-stages kp-reveal">
+        <div class="kp-stage"><div class="kp-stage__num">1</div><div class="kp-stage__title">Консультація</div><p class="kp-stage__desc">Обговорюємо потреби, бюджет та локацію проєкту</p></div>
+        <div class="kp-stage"><div class="kp-stage__num">2</div><div class="kp-stage__title">Проєктування</div><p class="kp-stage__desc">Розробляємо індивідуальний проєкт та кошторис</p></div>
+        <div class="kp-stage"><div class="kp-stage__num">3</div><div class="kp-stage__title">Виробництво</div><p class="kp-stage__desc">Виготовляємо елементи купола на заводі</p></div>
+        <div class="kp-stage"><div class="kp-stage__num">4</div><div class="kp-stage__title">Доставка</div><p class="kp-stage__desc">Транспортуємо комплект до місця встановлення</p></div>
+        <div class="kp-stage"><div class="kp-stage__num">5</div><div class="kp-stage__title">Монтаж</div><p class="kp-stage__desc">Встановлюємо купол за 7–14 днів нашою командою</p></div>
+        <div class="kp-stage"><div class="kp-stage__num">6</div><div class="kp-stage__title">Підтримка</div><p class="kp-stage__desc">Супроводжуємо весь гарантійний термін</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT SEGMENTS -->
+  <section class="kp-section kp-about-segs">
+    <div class="kp-container">
+      <div class="kp-section__hd" style="position:relative"><span class="kp-label kp-label--gold">Для кого ми працюємо</span><h2 class="kp-section__title kp-section__title--light">Наші клієнти</h2><p class="kp-section__sub" style="color:rgba(255,255,255,.55)">KUPOLLA підходить для різних типів проєктів та цільових груп</p></div>
+      <div class="kp-segs">
+        <div class="kp-seg kp-reveal"><div class="kp-seg__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><h3 class="kp-seg__title">Приватні власники</h3><p class="kp-seg__desc">Власники ділянок, які шукають унікальне, енергоефективне та екологічне постійне або сезонне житло.</p></div>
+        <div class="kp-seg kp-reveal"><div class="kp-seg__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2M8 7V5a2 2 0 014 0v2"/></svg></div><h3 class="kp-seg__title">Глемпінги та бази</h3><p class="kp-seg__desc">Оператори туристичних об'єктів, що розширюють інфраструктуру преміальними капсулами для гостей.</p></div>
+        <div class="kp-seg kp-reveal"><div class="kp-seg__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg></div><h3 class="kp-seg__title">Інвестори</h3><p class="kp-seg__desc">Інвестиційні групи, які шукають швидкий у монтажі та рентабельний туристичний продукт.</p></div>
+        <div class="kp-seg kp-reveal"><div class="kp-seg__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3 class="kp-seg__title">Девелопери</h3><p class="kp-seg__desc">Забудовники туристичних комплексів та готельних об'єктів преміального сегменту.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FORM -->
+  <section class="kp-section kp-contact" style="background:var(--c-white)">
+    <div class="kp-container"><div class="kp-contact__inner">
+      <div class="kp-reveal"><span class="kp-label">Зв'яжіться з нами</span><h2 class="kp-section__title">Готові розпочати?</h2><p class="kp-contact__desc">Розкажіть нам про ваш проєкт — ми підготуємо індивідуальну пропозицію.</p><div class="kp-contact__details"><div class="kp-contact__det"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>+380 (XX) XXX-XX-XX</span></div><div class="kp-contact__det"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>info@kupolla.com</span></div></div></div>
+      <div class="kp-contact__fw kp-reveal"><form class="kp-form" novalidate><div class="kp-form__row"><div class="kp-form__fld"><label class="kp-form__lbl">Ваше ім'я *</label><input type="text" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name"></div><div class="kp-form__fld"><label class="kp-form__lbl">Телефон *</label><input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel"></div></div><div class="kp-form__fld"><label class="kp-form__lbl">Email *</label><input type="email" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email"></div><div class="kp-form__fld"><label class="kp-form__lbl">Повідомлення</label><textarea name="message" class="kp-form__ta" placeholder="Розкажіть про ваш проєкт..." rows="3"></textarea></div><label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку даних</a></span></label><button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">Надіслати<svg class="kp-btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></form></div>
+    </div></div>
+  </section>
+</main>
+
+<footer class="kp-footer"><div class="kp-container"><div class="kp-footer__top"><div class="kp-footer__brand"><a href="index.html" class="kp-logo kp-logo--inv">KUPOLLA</a><p class="kp-footer__tag">Преміальні купольні будинки для сучасного способу життя</p><div class="kp-footer__socials"><a href="#" class="kp-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" class="kp-social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div><nav class="kp-footer__nav"><div class="kp-footer__col"><h4 class="kp-footer__col-h">Компанія</h4><a href="about.html" class="kp-footer__lnk">Про нас</a><a href="technologies.html" class="kp-footer__lnk">Технології</a><a href="gallery.html" class="kp-footer__lnk">Галерея</a><a href="blog.html" class="kp-footer__lnk">Блог</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Продукт</h4><a href="models.html" class="kp-footer__lnk">Модельний ряд</a><a href="configurator.html" class="kp-footer__lnk">Конфігуратор</a><a href="faq.html" class="kp-footer__lnk">FAQ</a><a href="contacts.html" class="kp-footer__lnk">Контакти</a></div><div class="kp-footer__col"><h4 class="kp-footer__col-h">Мови</h4><a href="#" class="kp-footer__lnk">Українська</a><a href="#" class="kp-footer__lnk">English</a><a href="#" class="kp-footer__lnk">Slovenčina</a><a href="#" class="kp-footer__lnk">Français</a></div></nav></div><div class="kp-footer__bot"><p class="kp-footer__copy">© 2026 KUPOLLA. Всі права захищено.</p><div class="kp-footer__legal"><a href="#" class="kp-footer__leg-lnk">Конфіденційність</a><a href="#" class="kp-footer__leg-lnk">Умови</a></div></div></div></footer>
+
+<div class="kp-modal" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="kp-modal__bd" onclick="closeConsultModal()"></div><div class="kp-modal__box"><button class="kp-modal__close" onclick="closeConsultModal()" aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class="kp-modal__hd"><h2 class="kp-modal__title" id="modalTitle">Безкоштовна консультація</h2><p class="kp-modal__desc">Менеджер зв'яжеться протягом 24 годин.</p></div><form class="kp-form" id="modalForm" novalidate><div class="kp-form__fld"><label class="kp-form__lbl">Ваше ім'я *</label><input type="text" name="name" class="kp-form__inp" placeholder="Іван Петренко" required autocomplete="name"></div><div class="kp-form__fld"><label class="kp-form__lbl">Телефон *</label><input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel"></div><label class="kp-checkbox"><input type="checkbox" name="gdpr" required><span class="kp-checkbox__mark"></span><span class="kp-checkbox__txt">Погоджуюсь на <a href="#" class="kp-form__a">обробку даних</a></span></label><button type="submit" class="kp-btn kp-btn--primary kp-btn--full kp-btn--lg">Надіслати</button></form></div></div>
+<div class="kp-mobile-cta" id="mobileCta"><button class="kp-btn kp-btn--primary kp-btn--full" onclick="openConsultModal()">Консультація</button></div>
+<script src="../../js/kupolla.js"></script><script src="../../js/kupolla-pages.js"></script>
+</body></html>

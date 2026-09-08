@@ -1,0 +1,87 @@
+{% load static i18n django_htmx %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<!DOCTYPE html>
+<html lang="{{ CURRENT_LANGUAGE }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#00311e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>{% block title %}{{ page_title|default:"KUPOLLA" }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ meta_description|default:"KUPOLLA — преміальні купольні будинки" }}{% endblock %}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% for code, href in hreflang_abs.items %}
+  <link rel="alternate" hreflang="{{ code }}" href="{{ href }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ hreflang_abs.uk }}">
+  <meta property="og:title" content="{% filter striptags %}{% block og_title %}{{ page_title|default:"KUPOLLA" }}{% endblock %}{% endfilter %}">
+  <meta property="og:description" content="{% filter striptags %}{% block og_description %}{{ meta_description|default:"KUPOLLA — преміальні купольні будинки" }}{% endblock %}{% endfilter %}">
+  <meta property="og:image" content="{{ og_image_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
+  <link rel="icon" href="{% static 'favicon.ico' %}" sizes="any">
+  <link rel="icon" href="{% static 'favicon-32x32.png' %}" type="image/png" sizes="32x32">
+  <link rel="icon" href="{% static 'favicon-16x16.png' %}" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}" sizes="180x180">
+  {% block og_tags %}{% endblock %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/kupolla-fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/kupolla-1.css' %}">
+  <link rel="stylesheet" href="{% static 'css/kupolla-2.css' %}">
+  <link rel="stylesheet" href="{% static 'css/kupolla-3.css' %}">
+  {% block extra_css %}{% endblock %}
+  <script src="{% static 'js/htmx.min.js' %}" defer></script>
+  {% django_htmx_script %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site_settings.company_name|default:"KUPOLLA"|escapejs }}",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "telephone": "{{ site_settings.phone|default:''|escapejs }}",
+    "email": "{{ site_settings.email|default:''|escapejs }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ site_settings.address|default:''|escapejs }}"
+    }
+  }
+  </script>
+  {% block seo_extra %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+{% include "partials/header.html" %}
+{% include "partials/mobile_menu.html" %}
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+{% include "partials/footer.html" %}
+{% include "partials/modal_consult.html" %}
+{% include "partials/mobile_cta.html" %}
+
+{% if site_settings.ga4_measurement_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site_settings.ga4_measurement_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site_settings.ga4_measurement_id }}');
+</script>
+{% endif %}
+
+<script type="application/json" id="kpFormMessages">{"required":"{% filter escapejs %}{% trans 'Заповніть це поле' %}{% endfilter %}","phone":"{% filter escapejs %}{% trans 'Введіть коректний номер телефону' %}{% endfilter %}","email":"{% filter escapejs %}{% trans 'Введіть коректний email' %}{% endfilter %}","gdpr":"{% filter escapejs %}{% trans 'Необхідно надати згоду на обробку даних' %}{% endfilter %}"}</script>
+<script type="module" src="{% static 'js/utils.js' %}"></script>
+<script src="{% static 'js/kupolla.js' %}" defer></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

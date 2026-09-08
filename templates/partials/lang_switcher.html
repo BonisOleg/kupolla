@@ -1,0 +1,24 @@
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<div class="kp-lang" id="langSwitcher" data-qa="lang-switch">
+  <button class="kp-lang__btn" id="langTrigger" type="button" aria-expanded="false" aria-haspopup="listbox">
+    <span id="currentLang">{{ CURRENT_LANGUAGE|upper }}</span>
+    <svg class="kp-lang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="kp-lang__dropdown" id="langDropdown" role="listbox">
+    {% for item in lang_switcher %}
+    <form class="kp-lang__form" action="{% url 'set_language' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ item.url }}">
+      <input type="hidden" name="language" value="{{ item.code }}">
+      <button type="submit"
+              class="kp-lang__option{% if item.code == CURRENT_LANGUAGE %} active{% endif %}"
+              data-lang="{{ item.code|upper }}"
+              role="option"
+              aria-selected="{% if item.code == CURRENT_LANGUAGE %}true{% else %}false{% endif %}">
+        {{ item.name }}
+      </button>
+    </form>
+    {% endfor %}
+  </div>
+</div>
