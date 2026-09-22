@@ -88,7 +88,7 @@ a.kp-ct-card:hover {
   height: 48px;
   border-radius: var(--r-md);
   background: var(--c-forest);
-  color: var(--c-beige);
+  color: var(--c-white);
 }
 
 .kp-ct-card__icon svg {
@@ -242,10 +242,11 @@ a.kp-ct-card .kp-ct-card__val {
   -webkit-tap-highlight-color: transparent;
 }
 
-.kp-contacts-social__link:hover {
+.kp-contacts-social__link:hover,
+.kp-contacts-social__link:focus-visible {
   background: var(--c-forest);
   border-color: var(--c-forest);
-  color: var(--c-beige);
+  color: var(--c-white);
 }
 
 .kp-contacts-social__link svg {
@@ -257,11 +258,11 @@ a.kp-ct-card .kp-ct-card__val {
 .kp-contacts-aside__promo {
   background: linear-gradient(145deg, var(--c-forest), var(--c-green));
   border: 0;
-  color: var(--c-beige);
+  color: var(--c-white);
 }
 
 .kp-contacts-aside__promo .kp-contacts-aside__title {
-  color: var(--c-beige);
+  color: var(--c-white);
 }
 
 .kp-contacts-aside__promo p {

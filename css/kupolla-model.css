@@ -24,15 +24,18 @@
 .kp-mhero__badge {
   display: inline-flex;
   align-items: center;
-  padding: .3rem .875rem;
-  background: var(--c-beige);
-  color: var(--c-forest);
+  padding: .38rem 1rem;
+  background: var(--c-hit);
+  color: var(--c-white);
   font-size: .75rem;
-  font-weight: 500;
-  letter-spacing: .07em;
+  font-weight: 600;
+  letter-spacing: .1em;
   text-transform: uppercase;
   border-radius: var(--r-full);
+  border: 1px solid var(--c-hit);
+  box-shadow: 0 4px 14px rgba(0, 20, 14, .22);
   margin-bottom: 1rem;
+  -webkit-font-smoothing: antialiased;
 }
 .kp-mhero__title {
   font-family: var(--f-serif); text-transform: uppercase; letter-spacing: .01em;
@@ -276,15 +279,9 @@
   gap: .875rem; padding: 2rem;
   color: var(--c-white); text-align: center;
 }
-.kp-rcard__cta-inner svg { width: 40px; height: 40px; color: var(--c-beige); }
+.kp-rcard__cta-inner svg { width: 40px; height: 40px; color: var(--c-white); }
 .kp-rcard__cta-inner span { font-family: var(--f-serif); text-transform: uppercase; letter-spacing: .01em; font-size: 1.375rem; line-height: 1.3; }
 .kp-rcard__cta-link { font-size: .875rem; color: rgba(255,255,255,.65); }
-
-/* 11. ACTIVE NAV */
-.kp-nav__link--active {
-  color: var(--c-beige);
-  font-weight: 500;
-}
 
 /* 12. RESPONSIVE */
 @media (max-width: 1024px) {
@@ -381,16 +378,20 @@
 }
 .kp-tier-table__badge {
   display: inline-block;
-  background: var(--c-beige);
-  color: var(--c-forest);
-  font-size: .625rem;
+  background: var(--c-hit);
+  color: var(--c-white);
+  font-size: .6875rem;
   font-weight: 600;
-  letter-spacing: .06em;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  padding: .15rem .5rem;
+  line-height: 1.2;
+  padding: .22rem .6rem;
   border-radius: var(--r-full);
+  border: 1px solid rgba(255, 255, 255, .22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .28);
   margin-left: 0;
   vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
 }
 .kp-tier-table__price {
   font-family: var(--f-serif); text-transform: uppercase; letter-spacing: .01em;
@@ -418,9 +419,21 @@
 .kp-tier-check--yes { color: var(--c-forest); font-weight: 600; }
 .kp-tier-check--no { color: var(--c-stone); }
 
+@media (max-width: 1024px) {
+  .kp-tier-table__badge {
+    font-size: .6875rem;
+    padding: .2rem .55rem;
+    letter-spacing: .08em;
+  }
+}
+
 @media (max-width: 600px) {
-  .kp-tier-table { overflow-x: auto; }
+  .kp-tier-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .kp-tier-table__head,
   .kp-tier-table__price-row,
   .kp-tier-table__row { min-width: 480px; }
+  .kp-tier-table__badge {
+    font-size: .6875rem;
+    padding: .2rem .5rem;
+  }
 }

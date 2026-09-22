@@ -25,6 +25,7 @@
   --c-muted:     #62666a;
   --c-border:    rgba(32,32,32,.14);
   --c-err:       #c0392b;
+  --c-hit:       #8b1e1e;       /* бордо «хіт продажів» */
 
   --gradient-brand: linear-gradient(135deg, #00311e 0%, #051f43 100%);
 

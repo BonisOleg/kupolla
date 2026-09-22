@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load static i18n %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+{% load static i18n humanize %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=7">{% endblock %}
 
 {% block content %}
 <div class="kp-breadcrumbs-wrap">
@@ -13,12 +13,15 @@
   </div>
 </div>
 
-<section class="kp-inner-hero">
-  <div class="kp-container">
+<section class="kp-inner-hero kp-inner-hero--catalog">
+  <div class="kp-container kp-inner-hero__layout">
     <div class="kp-inner-hero__content">
       <span class="kp-inner-hero__badge">KUPOLLA</span>
       <h1 class="kp-inner-hero__title">{% trans "Модельний ряд" %}</h1>
       <p class="kp-inner-hero__desc">{% trans "Оберіть ідеальний купольний будинок для вашого проєкту" %}</p>
+    </div>
+    <div class="kp-inner-hero__illustration" aria-hidden="true">
+      <img src="{% static 'images/illustrations/dome-house-hero.svg' %}?v=2" alt="" width="420" height="270" loading="eager" decoding="async">
     </div>
   </div>
 </section>
@@ -80,8 +83,12 @@
           {% with dome.images.first as img %}
           {% if img %}
           <img src="{{ img.image.url }}" alt="{{ dome.name }}" loading="lazy">
+          {% elif dome.slug == 'kupolla-compact' %}
+          <img src="{% static 'images/models/kupolla-compact-lake.webp' %}" alt="{{ dome.name }}" loading="lazy">
           {% elif dome.slug == 'kupolla-s' %}
           <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="{{ dome.name }}" loading="lazy">
+          {% elif dome.slug == 'kupolla-grand' %}
+          <img src="{% static 'images/models/kupolla-grand-resort.webp' %}" alt="{{ dome.name }}" loading="lazy">
           {% endif %}
           {% endwith %}
           {% if dome.purpose == 'glamping' %}
@@ -100,7 +107,7 @@
           {% endif %}
           {% if dome.price_from %}
           <div class="kp-mcard__foot">
-            <span class="kp-mcard__price">{% trans "від" %} €{{ dome.price_from|floatformat:0 }}</span>
+            <span class="kp-mcard__price">{% trans "від" %} €{{ dome.price_from|floatformat:0|intcomma }}</span>
           </div>
           {% endif %}
           <div class="kp-catalog-card__actions">
@@ -110,15 +117,15 @@
         </div>
       </article>
       {% empty %}
-      <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="glamping" data-size="small" data-area="36" data-price="35000">
+      <div class="kp-mcard kp-catalog-card kp-reveal" data-purpose="glamping" data-size="small" data-area="24" data-price="40000">
         <div class="kp-mcard__img kp-mcard__img--s">
-          <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="KUPOLLA S" loading="lazy">
+          <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="KUPOLLA Compact" loading="lazy">
           <span class="kp-mcard__badge">{% trans "Глемпінг" %}</span>
         </div>
         <div class="kp-mcard__body">
-          <div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA S</span><span class="kp-mcard__area">36 м²</span></div>
+          <div class="kp-mcard__meta"><span class="kp-mcard__name">KUPOLLA Compact</span><span class="kp-mcard__area">24 м²</span></div>
           <p class="kp-mcard__desc">{% trans "Ідеально для глемпінгу та романтичного відпочинку. Компактний, функціональний дизайн." %}</p>
-          <div class="kp-mcard__price">{% trans "від" %} €35 000</div>
+          <div class="kp-mcard__price">{% trans "від" %} €40 000</div>
           <button class="kp-btn kp-btn--outline kp-btn--sm" data-modal-trigger="consult">{% trans "Отримати пропозицію" %}</button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static i18n %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=7">
 <link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
 {% endblock %}
 
@@ -42,7 +42,7 @@
       <p class="kp-inner-hero__desc">{% trans "Зібрали найпоширеніші питання про купольні будинки KUPOLLA." %}</p>
     </div>
     <div class="kp-inner-hero__illustration" aria-hidden="true">
-      <img src="{% static 'images/illustrations/dome-faq-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+      <img src="{% static 'images/illustrations/dome-faq-hero.svg' %}?v=2" alt="" width="420" height="270" loading="eager" decoding="async">
     </div>
   </div>
 </section>

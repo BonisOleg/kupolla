@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=9">{% endblock %}
 
 {% block content %}
 <div class="kp-breadcrumbs-wrap">
@@ -21,7 +21,7 @@
       <p class="kp-inner-hero__desc">{% trans "Наші куполи створені як багатошарова конструкція, де кожен елемент виконує конкретну функцію — від захисту зовнішнього середовища до забезпечення стабільного мікроклімату всередині приміщення." %}</p>
     </div>
     <div class="kp-inner-hero__illustration" aria-hidden="true">
-      <img src="{% static 'images/illustrations/dome-tech-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+      <img src="{% static 'images/illustrations/dome-tech-hero.svg' %}?v=2" alt="" width="420" height="270" loading="eager" decoding="async">
     </div>
   </div>
 </section>
@@ -35,7 +35,7 @@
   </div>
 </section>
 
-{# Багатошарова оболонка — placeholder під 3D-розріз #}
+{# Багатошарова оболонка — архітектурний розріз з docs/media/Розміри #}
 <section class="kp-section kp-tech-shell" id="shell">
   <div class="kp-container">
     <div class="kp-section__hd">
@@ -44,23 +44,39 @@
       <p class="kp-section__sub">{% trans "Кожен шар відповідає за захист, клімат або несучу здатність конструкції" %}</p>
     </div>
     <div class="kp-tech-shell__layout">
-      <div class="kp-tech-shell__viz kp-reveal" role="img" aria-label="{% trans 'Схема шарів оболонки купола' %}">
-        <div class="kp-tech-shell__dome">
-          <div class="kp-tech-shell__layer kp-tech-shell__layer--1" data-n="1"></div>
-          <div class="kp-tech-shell__layer kp-tech-shell__layer--2" data-n="2"></div>
-          <div class="kp-tech-shell__layer kp-tech-shell__layer--3" data-n="3"></div>
-          <div class="kp-tech-shell__layer kp-tech-shell__layer--4" data-n="4"></div>
-          <div class="kp-tech-shell__layer kp-tech-shell__layer--5" data-n="5"></div>
-        </div>
-        <p class="kp-tech-shell__note">{% trans "3D-розріз зʼявиться після надання моделі клієнтом" %}</p>
+      <div class="kp-tech-shell__viz kp-reveal">
+        <img
+          class="kp-tech-shell__photo"
+          src="{% static 'images/materials/dome-shell-section.webp' %}"
+          alt="{% trans 'Архітектурний розріз купола: оболонка, каркас і внутрішній простір' %}"
+          width="1075"
+          height="635"
+          loading="lazy"
+          decoding="async">
+        <p class="kp-tech-shell__note">{% trans "Архітектурний розріз моделі" %}</p>
       </div>
-      <ol class="kp-tech-shell__legend kp-reveal">
-        <li><span class="kp-tech-shell__num">1</span><div><strong>{% trans "Зовнішня оболонка" %}</strong><span>{% trans "ACP-панель із PVDF-покриттям" %}</span></div></li>
-        <li><span class="kp-tech-shell__num">2</span><div><strong>{% trans "Вентиляційний зазор" %}</strong><span>{% trans "Циркуляція повітря та відведення вологи" %}</span></div></li>
-        <li><span class="kp-tech-shell__num">3</span><div><strong>{% trans "Теплоізоляція" %}</strong><span>{% trans "Стабільний мікроклімат у будь-яку пору року" %}</span></div></li>
-        <li><span class="kp-tech-shell__num">4</span><div><strong>{% trans "Несучий каркас" %}</strong><span>{% trans "Геодезична модульна структура" %}</span></div></li>
-        <li><span class="kp-tech-shell__num">5</span><div><strong>{% trans "Внутрішнє оздоблення" %}</strong><span>{% trans "Фінішний шар під експлуатацію" %}</span></div></li>
-      </ol>
+      <ul class="kp-tech-shell__legend kp-reveal">
+        <li>
+          <strong>{% trans "Зовнішня оболонка" %}</strong>
+          <span>{% trans "ACP-панель із PVDF-покриттям" %}</span>
+        </li>
+        <li>
+          <strong>{% trans "Вентиляційний зазор" %}</strong>
+          <span>{% trans "Циркуляція повітря та відведення вологи" %}</span>
+        </li>
+        <li>
+          <strong>{% trans "Теплоізоляція" %}</strong>
+          <span>{% trans "Стабільний мікроклімат у будь-яку пору року" %}</span>
+        </li>
+        <li>
+          <strong>{% trans "Несучий каркас" %}</strong>
+          <span>{% trans "Геодезична модульна структура" %}</span>
+        </li>
+        <li>
+          <strong>{% trans "Внутрішнє оздоблення" %}</strong>
+          <span>{% trans "Фінішний шар під експлуатацію" %}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -71,7 +87,6 @@
     <div class="kp-section__hd">
       <span class="kp-label">{% trans "Специфікація" %}</span>
       <h2 class="kp-section__title">{% trans "Зовнішнє покриття та ключові матеріали" %}</h2>
-      <p class="kp-section__sub">{% trans "Повний перелік матеріалів оновимо після фінальної техспецифікації виробника" %}</p>
     </div>
     <div class="kp-tech-mats">
       <article class="kp-tech-mat kp-tech-mat--featured kp-reveal">
@@ -113,7 +128,7 @@
       <div class="kp-reveal">
         <span class="kp-label">{% trans "Енергоефективність" %}</span>
         <h2 class="kp-section__title">{% trans "Комфортний мікроклімат і контроль витрат" %}</h2>
-        <p class="kp-copy kp-copy--spaced">{% trans "Багатошарова конструкція забезпечує високий рівень теплоізоляції та стабільний мікроклімат. Детальні показники (коефіцієнти, товщини шарів, клас енергоефективності) опублікуємо після затвердження технічної специфікації виробника." %}</p>
+        <p class="kp-copy kp-copy--spaced">{% trans "Багатошарова конструкція забезпечує високий рівень теплоізоляції та стабільний мікроклімат." %}</p>
         <ul class="kp-points">
           <li><span class="kp-points__mark" aria-hidden="true">→</span>{% trans "Багатошарова оболонка зі зниженими тепловтратами" %}</li>
           <li><span class="kp-points__mark" aria-hidden="true">→</span>{% trans "Безперервний захист від вологи та містків холоду" %}</li>
@@ -137,7 +152,6 @@
     <div class="kp-section__hd">
       <span class="kp-label">{% trans "Якість" %}</span>
       <h2 class="kp-section__title">{% trans "Стандарти та гарантії" %}</h2>
-      <p class="kp-section__sub">{% trans "Чіткі гарантійні терміни додатково уточнимо після фінального підтвердження виробника" %}</p>
     </div>
     <div class="kp-certs kp-reveal">
       <div class="kp-cert">
@@ -150,7 +164,7 @@
       </div>
       <div class="kp-cert">
         <div class="kp-cert__name">{% trans "Гарантія на конструкцію" %}</div>
-        <div class="kp-cert__desc">{% trans "Базовий орієнтир — 96 міс.; фінальні умови — за договором" %}</div>
+        <div class="kp-cert__desc">{% trans "96 міс." %}</div>
       </div>
       <div class="kp-cert">
         <div class="kp-cert__name">PVDF / ACP</div>

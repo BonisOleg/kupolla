@@ -14,9 +14,9 @@ FEATURED_POST_BODY = """
 <p>Коли більшість людей думають про «енергоефективний будинок», вони уявляють товсті стіни, тришарові вікна та сонячні панелі. Але є ще один фундаментальний фактор, який часто ігнорується — сама форма будівлі.</p>
 <h2>Математика сфери</h2>
 <p>Ізоперіметрична нерівність стверджує: серед усіх фігур з однаковою площею поверхні, сфера вміщує найбільший об'єм. Для заданого внутрішнього простору купол потребує значно менше «оболонки», ніж куб або прямокутник.</p>
-<blockquote>Геодезичний купол 6.8 м у діаметрі (36 м² підлоги) має площу зовнішньої поверхні на 28% меншу, ніж прямокутний будинок тієї ж площі.</blockquote>
+<blockquote>Геодезичний купол 6.8 м у діаметрі (35 м² підлоги) має площу зовнішньої поверхні на 28% меншу, ніж прямокутний будинок тієї ж площі.</blockquote>
 <h2>Що це означає для тепловтрат?</h2>
-<p>Теплова енергія губиться через зовнішні поверхні. Менша поверхня при тому ж утепленні означає менші тепловтрати. За нашими замірами, купол KUPOLLA витрачає на 30–35% менше енергії на опалення, ніж прямокутний будинок 36 м² з ідентичним утепленням.</p>
+<p>Теплова енергія губиться через зовнішні поверхні. Менша поверхня при тому ж утепленні означає менші тепловтрати. За нашими замірами, купол KUPOLLA витрачає на 30–35% менше енергії на опалення, ніж прямокутний будинок 35 м² з ідентичним утепленням.</p>
 <h2>Аеродинаміка та вітрове навантаження</h2>
 <p>Кругла форма не має кутів, де вітер може створити турбуленцію. Купол витримує вітровий тиск до 200 км/год без деформацій і не утворює снігових надувів на карнизах.</p>
 <h2>Природна циркуляція повітря</h2>
@@ -35,7 +35,7 @@ BLOG_POSTS = (
         ),
         'body': FEATURED_POST_BODY,
         'category': 'tech',
-        'cover': 'hero/kupolla-dome-forest.webp',
+        'cover': 'blog/cover-energy-dome.webp',
         'published_at': timezone.make_aware(datetime(2026, 6, 14, 10, 0)),
         'seo_title': 'Геодезичний купол і енергоефективність | KUPOLLA',
     },
@@ -54,7 +54,7 @@ BLOG_POSTS = (
             '<li>Мінімальний вплив на ландшафт</li><li>Висока рентабельність інвестицій</li></ul>'
         ),
         'category': 'glamping',
-        'cover': 'gallery/glamping-forest-kupolla-s.webp',
+        'cover': 'blog/cover-glamping-night.webp',
         'published_at': timezone.make_aware(datetime(2026, 6, 10, 9, 0)),
     },
     {
@@ -72,7 +72,7 @@ BLOG_POSTS = (
             'панорамні вікна для акценту на природі.</p>'
         ),
         'category': 'design',
-        'cover': 'models/kupolla-s-exterior-forest.webp',
+        'cover': 'blog/cover-interior-lounge.webp',
         'published_at': timezone.make_aware(datetime(2026, 6, 5, 11, 0)),
     },
     {
@@ -89,7 +89,7 @@ BLOG_POSTS = (
             '<p>KUPOLLA використовує CLT-панелі заводської точності з допуском 0.5 мм.</p>'
         ),
         'category': 'eco',
-        'cover': 'materials/clt_panel_card.png',
+        'cover': 'blog/cover-clt-wood.webp',
         'published_at': timezone.make_aware(datetime(2026, 5, 28, 10, 0)),
     },
     {
@@ -104,7 +104,7 @@ BLOG_POSTS = (
             '<p>Монолітний фундамент рекомендуємо для постійного проживання та важких ґрунтів.</p>'
         ),
         'category': 'tech',
-        'cover': 'dome-geodesic-forest.webp',
+        'cover': 'blog/cover-deck-foundation.webp',
         'published_at': timezone.make_aware(datetime(2026, 5, 20, 9, 0)),
     },
     {
@@ -119,7 +119,7 @@ BLOG_POSTS = (
             'Крок 5 — монтаж та запуск маркетингу.</p>'
         ),
         'category': 'glamping',
-        'cover': 'gallery/glamping-forest-kupolla-s.webp',
+        'cover': 'blog/cover-glamping-park.webp',
         'published_at': timezone.make_aware(datetime(2026, 5, 15, 10, 0)),
     },
     {
@@ -134,7 +134,7 @@ BLOG_POSTS = (
             'глемпінг-об\'єкта.</p>'
         ),
         'category': 'eco',
-        'cover': 'hero/kupolla-dome-mobile.webp',
+        'cover': 'blog/cover-solar-exposure.webp',
         'published_at': timezone.make_aware(datetime(2026, 5, 8, 9, 0)),
     },
 )
@@ -169,6 +169,5 @@ def seed_blog():
                 'seo_description': item['excerpt'][:160],
             },
         )
-        if created or not post.cover_image:
-            assign_image_field(post, 'cover_image', item['cover'], 'blog')
-            post.save()
+        assign_image_field(post, 'cover_image', item['cover'], 'blog')
+        post.save()

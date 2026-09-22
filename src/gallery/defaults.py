@@ -1,9 +1,8 @@
 """Дефолтні дані для галереї KUPOLLA (сторінка 6 з «Правок»).
 
-ТЗ: ділимо галерею на 2 блоки — «Купол» (готова продукція, екстер'єр/
-інтер'єр) та «Виробництво» (процес виготовлення). Фото виробництва клієнт
-надасть пізніше — блок лишаємо порожнім (шаблон показує заглушку), поки
-не з'являться реальні кадри з цеху.
+Два блоки на одній сторінці: «Купол» (екстерʼєр/інтерʼєр) і
+«Виробництво» (проєкт, матеріали, конструктив). Кадрів із цеху
+в медіа немає — у виробництво ставимо технічні та матеріальні фото.
 """
 
 GALLERY_PHOTOS = (
@@ -79,11 +78,51 @@ GALLERY_PHOTOS = (
         'project_type': 'living',
         'order': 90,
     },
+    {
+        'static_path': 'plans/concept-floorplan-top.webp',
+        'title': 'Проєктування планування',
+        'alt': 'KUPOLLA — план купола зверху',
+        'category': 'production',
+        'project_type': 'living',
+        'order': 110,
+    },
+    {
+        'static_path': 'materials/aisi316_connectors_card.webp',
+        'title': 'Зʼєднувачі AISI 316',
+        'alt': 'KUPOLLA — нержавіючі зʼєднувачі каркасу',
+        'category': 'production',
+        'project_type': 'living',
+        'order': 120,
+    },
+    {
+        'static_path': 'materials/triple_glass_card.webp',
+        'title': 'Трошарове скло',
+        'alt': 'KUPOLLA — ізолювальний склопакет',
+        'category': 'production',
+        'project_type': 'living',
+        'order': 130,
+    },
+    {
+        'static_path': 'gallery/concept/concept-int-wall-detail.webp',
+        'title': 'CLT-панелі оболонки',
+        'alt': 'KUPOLLA — геодезичні CLT-панелі внутрішньої оболонки',
+        'category': 'production',
+        'project_type': 'living',
+        'order': 140,
+    },
+    {
+        'static_path': 'materials/dome-shell-section.webp',
+        'title': 'Конструктивний розріз',
+        'alt': 'KUPOLLA — архітектурний розріз оболонки купола',
+        'category': 'production',
+        'project_type': 'living',
+        'order': 150,
+    },
 )
 
 
 def seed_gallery_photos():
-    """Наповнює галерею стартовим набором фото купола (категорія dome)."""
+    """Наповнює галерею блоками «Купол» і «Виробництво»."""
     from src.gallery.models import GalleryPhoto
     from src.core.seed_utils import assign_image_field
 
@@ -99,12 +138,12 @@ def seed_gallery_photos():
                 'project_type': item['project_type'],
             },
         )
-        if not photo.image:
-            assign_image_field(photo, 'image', item['static_path'], 'gallery')
-            photo.title = item['title']
-            photo.title_uk = item['title']
-            photo.alt = item['alt']
-            photo.alt_uk = item['alt']
-            photo.category = item['category']
-            photo.project_type = item['project_type']
-            photo.save()
+        assign_image_field(photo, 'image', item['static_path'], 'gallery')
+        photo.title = item['title']
+        photo.title_uk = item['title']
+        photo.alt = item['alt']
+        photo.alt_uk = item['alt']
+        photo.category = item['category']
+        photo.project_type = item['project_type']
+        photo.is_published = True
+        photo.save()

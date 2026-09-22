@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n humanize %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/kupolla-model.css' %}">
-<link rel="stylesheet" href="{% static 'css/kupolla-model-2.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-model.css' %}?v=4">
+<link rel="stylesheet" href="{% static 'css/kupolla-model-2.css' %}?v=3">
 <link rel="stylesheet" href="{% static 'css/kupolla-model-3.css' %}">
 {% endblock %}
 
@@ -55,10 +55,22 @@
           {% endfor %}
         </div>
         {% endif %}
+        {% elif dome.slug == 'kupolla-compact' %}
+        <div class="kp-model__slider" id="modelSlider">
+          <div class="kp-model__slide active">
+            <img src="{% static 'images/models/kupolla-compact-lake.webp' %}" alt="{{ dome.name }}" loading="eager">
+          </div>
+        </div>
         {% elif dome.slug == 'kupolla-s' or dome.slug == 'kupolla' %}
         <div class="kp-model__slider" id="modelSlider">
           <div class="kp-model__slide active">
             <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="{{ dome.name }}" loading="eager">
+          </div>
+        </div>
+        {% elif dome.slug == 'kupolla-grand' %}
+        <div class="kp-model__slider" id="modelSlider">
+          <div class="kp-model__slide active">
+            <img src="{% static 'images/models/kupolla-grand-resort.webp' %}" alt="{{ dome.name }}" loading="eager">
           </div>
         </div>
         {% endif %}
@@ -106,12 +118,12 @@
           </div>
 
           {% if dome.price_from %}
-          <p class="kp-model__price">{% trans "Вартість від" %} <strong>€{{ dome.price_from|floatformat:0 }}</strong></p>
+          <p class="kp-model__price">{% trans "Вартість від" %} <strong>€{{ dome.price_from|floatformat:0|intcomma }}</strong></p>
           {% endif %}
 
           <div class="kp-model__actions">
             <button class="kp-btn kp-btn--primary kp-btn--lg" data-modal-trigger="consult">{% trans "Отримати консультацію" %}</button>
-            <a href="{% url 'configurator:index' %}" class="kp-btn kp-btn--outline kp-btn--lg">{% trans "Налаштувати комплектацію" %}</a>
+            <a href="{% url 'configurator:index' %}?model={{ dome.slug }}" class="kp-btn kp-btn--outline kp-btn--lg">{% trans "Налаштувати комплектацію" %}</a>
           </div>
         </header>
 
@@ -160,9 +172,9 @@
         </div>
         <div class="kp-tier-table__price-row">
           <div class="kp-tier-table__feat-col kp-tier-table__feat-col--sm">{% trans "Ціна від" %}</div>
-          {% if dome.price_base %}<div class="kp-tier-table__col kp-tier-table__price">€{{ dome.price_base|floatformat:0 }}</div>{% endif %}
-          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat kp-tier-table__price">€{{ dome.price_standard|floatformat:0 }}</div>{% endif %}
-          {% if dome.price_premium %}<div class="kp-tier-table__col kp-tier-table__price">€{{ dome.price_premium|floatformat:0 }}</div>{% endif %}
+          {% if dome.price_base %}<div class="kp-tier-table__col kp-tier-table__price">€{{ dome.price_base|floatformat:0|intcomma }}</div>{% endif %}
+          {% if dome.price_standard %}<div class="kp-tier-table__col kp-tier-table__col--feat kp-tier-table__price">€{{ dome.price_standard|floatformat:0|intcomma }}</div>{% endif %}
+          {% if dome.price_premium %}<div class="kp-tier-table__col kp-tier-table__price">€{{ dome.price_premium|floatformat:0|intcomma }}</div>{% endif %}
         </div>
         <div class="kp-tier-table__row">
           <div class="kp-tier-table__feat-col">{% trans "CLT каркас" %}</div>
@@ -256,9 +268,9 @@
           <label for="miqTier" class="kp-form__lbl">{% trans "Комплектація" %}</label>
           <select id="miqTier" name="tier" class="kp-form__inp">
             <option value="">{% trans "Оберіть комплектацію" %}</option>
-            {% if dome.price_base %}<option value="base">{% trans "Базова" %} — €{{ dome.price_base|floatformat:0 }}</option>{% endif %}
-            {% if dome.price_standard %}<option value="standard">{% trans "Стандарт" %} — €{{ dome.price_standard|floatformat:0 }}</option>{% endif %}
-            {% if dome.price_premium %}<option value="premium">{% trans "Преміум" %} — €{{ dome.price_premium|floatformat:0 }}</option>{% endif %}
+            {% if dome.price_base %}<option value="base">{% trans "Базова" %} — €{{ dome.price_base|floatformat:0|intcomma }}</option>{% endif %}
+            {% if dome.price_standard %}<option value="standard">{% trans "Стандарт" %} — €{{ dome.price_standard|floatformat:0|intcomma }}</option>{% endif %}
+            {% if dome.price_premium %}<option value="premium">{% trans "Преміум" %} — €{{ dome.price_premium|floatformat:0|intcomma }}</option>{% endif %}
           </select>
         </div>
         {% endif %}

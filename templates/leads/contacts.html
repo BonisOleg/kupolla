@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static i18n %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=7">
 <link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
-<link rel="stylesheet" href="{% static 'css/kupolla-contacts.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-contacts.css' %}?v=3">
 {% endblock %}
 
 {% block content %}
@@ -27,7 +27,7 @@
       <p class="kp-inner-hero__desc">{% trans "Маєте питання або хочете розпочати проєкт? Зателефонуйте або напишіть — зручний спосіб зв'язку нижче." %}</p>
     </div>
     <div class="kp-inner-hero__illustration" aria-hidden="true">
-      <img src="{% static 'images/illustrations/dome-contacts-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+      <img src="{% static 'images/illustrations/dome-contacts-hero.svg' %}?v=2" alt="" width="420" height="270" loading="eager" decoding="async">
     </div>
   </div>
 </section>
@@ -81,13 +81,11 @@
       <div class="kp-contacts-drive__body">
         <span class="kp-label">{% trans "Матеріали" %}</span>
         <h2 class="kp-contacts-drive__title">{% trans "Фото та файли проєкту" %}</h2>
-        <p class="kp-contacts-drive__desc">{% trans "Додаткові зображення та матеріали для ознайомлення — на Google Drive. Згодом додамо більше реальних фото." %}</p>
+        <p class="kp-contacts-drive__desc">{% trans "Додаткові зображення та матеріали для ознайомлення — на Google Drive." %}</p>
         {% if site_settings.google_drive_url %}
         <a href="{{ site_settings.google_drive_url }}" class="kp-btn kp-btn--primary" target="_blank" rel="noopener noreferrer">
           {% trans "Відкрити Google Drive" %}
         </a>
-        {% else %}
-        <p class="kp-contacts-drive__hint">{% trans "Посилання на Google Drive зʼявиться після надання клієнтом." %}</p>
         {% endif %}
       </div>
     </div>

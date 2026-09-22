@@ -351,7 +351,8 @@ header.kp-header .kp-btn.kp-btn--primary:hover {
   min-width: 44px; min-height: 44px;
 }
 .kp-social svg { width: 17px; height: 17px; }
-.kp-social:hover { background: var(--c-beige); color: var(--c-forest); }
+.kp-social:hover,
+.kp-social:focus-visible { background: var(--c-forest); color: var(--c-white); }
 
 .kp-footer__nav { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; }
 .kp-footer__col { display: flex; flex-direction: column; gap: .625rem; }
@@ -385,6 +386,26 @@ header.kp-header .kp-btn.kp-btn--primary:hover {
 .kp-footer__legal { display: flex; gap: 1.5rem; }
 .kp-footer__leg-lnk { font-size: .8125rem; color: rgba(255,255,255,.3); transition: color var(--tr-f); }
 .kp-footer__leg-lnk:hover { color: rgba(255,255,255,.65); }
+
+.kp-devcredit {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin: 0;
+  min-height: 44px;
+  font-size: 1rem;
+  color: #888888;
+  -webkit-tap-highlight-color: transparent;
+}
+.kp-devcredit__brand {
+  color: #e65100;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-decoration: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  a.kp-devcredit__brand:hover { color: #b33d00; }
+}
 
 /* 4. MODAL */
 .kp-modal {

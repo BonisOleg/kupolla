@@ -1,7 +1,7 @@
 <svg width="420" height="270" viewBox="0 0 420 270" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
   <defs>
     <radialGradient id="glow" cx="42%" cy="48%" r="55%">
-      <stop offset="0%" stop-color="#051f43" stop-opacity="0.15"/>
+      <stop offset="0%" stop-color="#e8e4dc" stop-opacity="0.15"/>
       <stop offset="100%" stop-color="#00311e" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="domeFill" x1="130" y1="70" x2="130" y2="210" gradientUnits="userSpaceOnUse">
@@ -17,29 +17,29 @@
   <rect x="208" y="78" width="7" height="32" rx="1" fill="#1a3828" opacity="0.45"/>
   <ellipse cx="211" cy="73" rx="12" ry="15" fill="#2a5040" opacity="0.45"/>
 
-  <path d="M68 208 Q68 88 148 78 Q228 88 228 208Z" fill="url(#domeFill)" stroke="#051f43" stroke-width="1.6"/>
+  <path d="M68 208 Q68 88 148 78 Q228 88 228 208Z" fill="url(#domeFill)" stroke="#e8e4dc" stroke-width="1.6"/>
 
-  <path d="M92 176 Q148 152 204 176" stroke="#051f43" stroke-width="0.85" opacity="0.42"/>
-  <path d="M108 142 Q148 122 188 142" stroke="#051f43" stroke-width="0.8" opacity="0.36"/>
-  <line x1="148" y1="78" x2="68" y2="208" stroke="#051f43" stroke-width="0.7" opacity="0.28"/>
-  <line x1="148" y1="78" x2="108" y2="208" stroke="#051f43" stroke-width="0.7" opacity="0.28"/>
-  <line x1="148" y1="78" x2="148" y2="208" stroke="#051f43" stroke-width="0.7" opacity="0.28"/>
-  <line x1="148" y1="78" x2="188" y2="208" stroke="#051f43" stroke-width="0.7" opacity="0.28"/>
-  <line x1="148" y1="78" x2="228" y2="208" stroke="#051f43" stroke-width="0.7" opacity="0.28"/>
+  <path d="M92 176 Q148 152 204 176" stroke="#e8e4dc" stroke-width="0.85" opacity="0.42"/>
+  <path d="M108 142 Q148 122 188 142" stroke="#e8e4dc" stroke-width="0.8" opacity="0.36"/>
+  <line x1="148" y1="78" x2="68" y2="208" stroke="#e8e4dc" stroke-width="0.7" opacity="0.28"/>
+  <line x1="148" y1="78" x2="108" y2="208" stroke="#e8e4dc" stroke-width="0.7" opacity="0.28"/>
+  <line x1="148" y1="78" x2="148" y2="208" stroke="#e8e4dc" stroke-width="0.7" opacity="0.28"/>
+  <line x1="148" y1="78" x2="188" y2="208" stroke="#e8e4dc" stroke-width="0.7" opacity="0.28"/>
+  <line x1="148" y1="78" x2="228" y2="208" stroke="#e8e4dc" stroke-width="0.7" opacity="0.28"/>
 
   <path d="M98 158 Q148 134 198 158" stroke="rgba(255,255,255,0.14)" stroke-width="9" stroke-linecap="round"/>
-  <path d="M118 208 Q118 176 148 176 Q178 176 178 208" stroke="#051f43" stroke-width="1.1" fill="rgba(0,49,30,0.55)"/>
-  <circle cx="148" cy="78" r="4" fill="#051f43" opacity="0.85"/>
+  <path d="M118 208 Q118 176 148 176 Q178 176 178 208" stroke="#e8e4dc" stroke-width="1.1" fill="rgba(0,49,30,0.55)"/>
+  <circle cx="148" cy="78" r="4" fill="#e8e4dc" opacity="0.85"/>
   <ellipse cx="148" cy="208" rx="80" ry="8" fill="#1a3828" opacity="0.35"/>
 
-  <rect x="252" y="58" width="132" height="88" rx="12" fill="rgba(0,49,30,0.55)" stroke="#051f43" stroke-width="1.2"/>
+  <rect x="252" y="58" width="132" height="88" rx="12" fill="rgba(0,49,30,0.55)" stroke="#e8e4dc" stroke-width="1.2"/>
   <path d="M268 118 Q318 82 368 118 L368 130 L268 130 Z" fill="rgba(42,80,64,0.55)"/>
-  <path d="M292 108 Q318 88 344 108" stroke="#051f43" stroke-width="0.8" opacity="0.45"/>
-  <circle cx="318" cy="88" r="2.5" fill="#051f43" opacity="0.5"/>
+  <path d="M292 108 Q318 88 344 108" stroke="#e8e4dc" stroke-width="0.8" opacity="0.45"/>
+  <circle cx="318" cy="88" r="2.5" fill="#e8e4dc" opacity="0.5"/>
 
-  <rect x="278" y="158" width="118" height="82" rx="12" fill="rgba(0,49,30,0.55)" stroke="#051f43" stroke-width="1.2"/>
+  <rect x="278" y="158" width="118" height="82" rx="12" fill="rgba(0,49,30,0.55)" stroke="#e8e4dc" stroke-width="1.2"/>
   <path d="M292 214 Q337 176 382 214 L382 224 L292 224 Z" fill="rgba(42,80,64,0.55)"/>
-  <path d="M308 198 Q337 172 366 198" stroke="#051f43" stroke-width="0.75" opacity="0.4"/>
+  <path d="M308 198 Q337 172 366 198" stroke="#e8e4dc" stroke-width="0.75" opacity="0.4"/>
   <rect x="300" y="168" width="6" height="18" rx="1" fill="#1a3828" opacity="0.5"/>
   <ellipse cx="303" cy="164" rx="8" ry="10" fill="#2a5040" opacity="0.5"/>
 </svg>

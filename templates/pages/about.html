@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=4">{% endblock %}
 
 {% block content %}
 <div class="kp-breadcrumbs-wrap">
@@ -52,7 +52,6 @@
 <section class="kp-section kp-about-team" id="team">
   <div class="kp-container">
     <div class="kp-section__hd">
-      <span class="kp-label">{% trans "Живі люди" %}</span>
       <h2 class="kp-section__title">{% trans "Команда" %}</h2>
       <p class="kp-section__sub">{% trans "Інженери, технологи та менеджери, які щодня створюють KUPOLLA" %}</p>
     </div>
@@ -147,8 +146,8 @@
   <div class="kp-container">
     <div class="kp-showroom__inner">
       <div class="kp-reveal">
-        <span class="kp-label kp-label--gold">{% trans "Де нас знайти" %}</span>
-        <h2 class="kp-section__title kp-section__title--light">{% trans "Шоурум KUPOLLA" %}</h2>
+        <h2 class="kp-showroom__title">{% trans "Де нас знайти?" %}</h2>
+        <p class="kp-showroom__sub">{% trans "Шоурум KUPOLLA" %}</p>
         <p class="kp-showroom__desc">{% trans "Запрошуємо познайомитися з KUPOLLA особисто. Відвідайте наш шоурум, щоб побачити конструкції, матеріали та якість виконання наживо." %}</p>
         {% if site_settings.address %}
         <a

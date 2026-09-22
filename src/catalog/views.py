@@ -1,3 +1,5 @@
+import re
+
 from django.http import HttpResponsePermanentRedirect
 from django.urls import reverse
 from django.views.generic import DetailView, ListView
@@ -5,6 +7,8 @@ from django.utils.translation import gettext_lazy as _
 
 from .constants import DEPRECATED_SLUGS, PRODUCT_SLUG
 from .models import DomeModel
+
+_SLUG_RE = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
 
 
 def get_product_dome():
@@ -14,6 +18,17 @@ def get_product_dome():
         published.filter(is_featured=True).order_by('order', 'pk').first()
         or published.order_by('order', 'pk').first()
     )
+
+
+def get_dome_by_slug(slug):
+    """Опублікована модель за slug або флагман, якщо slug порожній/невідомий."""
+    published = DomeModel.objects.filter(is_published=True)
+    raw = str(slug).strip()[:80] if slug else ''
+    if raw and _SLUG_RE.fullmatch(raw):
+        found = published.filter(slug=raw).first()
+        if found:
+            return found
+    return get_product_dome()
 
 
 class ModelListView(ListView):

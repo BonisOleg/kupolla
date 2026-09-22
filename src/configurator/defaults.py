@@ -4,8 +4,8 @@ CONFIG_OPTIONS = (
     {
         'option_type': 'model',
         'code': 'kupolla-s',
-        'name': 'KUPOLLA 36 м²',
-        'base_price': 35000,
+        'name': 'KUPOLLA Prime 35 м²',
+        'base_price': 55000,
         'price_delta': 0,
         'order': 1,
     },

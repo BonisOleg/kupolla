@@ -64,6 +64,19 @@
         <a href="{{ site_settings.terms_url }}" class="kp-footer__leg-lnk">{% trans "Умови використання" %}</a>
         {% endif %}
       </div>
+      <p class="kp-devcredit">
+        <span class="kp-devcredit__label">{% trans "Сайт створено в" %}</span>
+        {% if request.resolver_match.url_name == 'home' %}
+        <a
+          class="kp-devcredit__brand"
+          href="https://www.prometeylabs.com/corporate-website-v2/"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >PrometeyLabs</a>
+        {% else %}
+        <span class="kp-devcredit__brand">PrometeyLabs</span>
+        {% endif %}
+      </p>
     </div>
   </div>
 </footer>

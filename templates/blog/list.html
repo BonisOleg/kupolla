@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static i18n %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=7">
 <link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
 {% endblock %}
 
@@ -24,7 +24,7 @@
       <p class="kp-inner-hero__desc">{% trans "Статті про купольні будинки, технології будівництва, дизайн інтер'єрів та екологічне проживання." %}</p>
     </div>
     <div class="kp-inner-hero__illustration" aria-hidden="true">
-      <img src="{% static 'images/illustrations/dome-blog-hero.svg' %}" alt="" width="420" height="270" loading="eager" decoding="async">
+      <img src="{% static 'images/illustrations/dome-blog-hero.svg' %}?v=2" alt="" width="420" height="270" loading="eager" decoding="async">
     </div>
   </div>
 </section>
@@ -45,11 +45,13 @@
     <div class="kp-blog-grid">
       {% for post in posts %}
       <article class="kp-blog-card kp-reveal">
-        {% if post.cover_image %}
         <a href="{{ post.get_absolute_url }}" class="kp-blog-card__img-wrap">
+          {% if post.cover_image %}
           <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" class="kp-blog-card__img" loading="lazy">
+          {% else %}
+          <img src="{% static 'images/blog/cover-energy-dome.webp' %}" alt="{{ post.title }}" class="kp-blog-card__img" loading="lazy">
+          {% endif %}
         </a>
-        {% endif %}
         <div class="kp-blog-card__body">
           {% if post.category %}
           <span class="kp-blog-card__cat">{{ post.category.name }}</span>

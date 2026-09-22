@@ -3,7 +3,7 @@
  * Single-page: select filling → price + photo update instantly
  */
 
-const BASE_PRICE = 35000;
+const BASE_PRICE = 55000;
 const PRODUCT_MODEL = 'kupolla-s';
 
 const CFG_PREVIEW_PHOTOS = {
@@ -31,6 +31,15 @@ function initConfigurator() {
   if (root) {
     cfg.model = root.getAttribute('data-product-model') || PRODUCT_MODEL;
     cfg.basePrice = parseFloat(root.getAttribute('data-base-price') || BASE_PRICE);
+    cfg.diameter = root.getAttribute('data-diameter') || cfg.diameter;
+  }
+  const photosEl = document.getElementById('cfgPreviewPhotos');
+  if (photosEl) {
+    try {
+      Object.assign(CFG_PREVIEW_PHOTOS, JSON.parse(photosEl.textContent));
+    } catch (err) {
+      /* лишаємо дефолтні фото Prime */
+    }
   }
   bindTierInputs();
   bindAddonInputs();

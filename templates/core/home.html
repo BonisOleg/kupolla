@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n humanize %}
 {% block body_class %}kp-body--home{% endblock %}
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
 
@@ -94,12 +94,16 @@
           {% with dome.images.first as img %}
           {% if img %}
           <img src="{{ img.image.url }}" alt="{{ dome.name }}" loading="lazy">
+          {% elif dome.slug == 'kupolla-compact' %}
+          <img src="{% static 'images/models/kupolla-compact-lake.webp' %}" alt="{{ dome.name }}" loading="lazy">
           {% elif dome.slug == 'kupolla-s' %}
           <img src="{% static 'images/models/kupolla-s-exterior-forest.webp' %}" alt="{{ dome.name }}" loading="lazy">
+          {% elif dome.slug == 'kupolla-grand' %}
+          <img src="{% static 'images/models/kupolla-grand-resort.webp' %}" alt="{{ dome.name }}" loading="lazy">
           {% endif %}
           {% endwith %}
           {% if dome.is_featured %}
-          <span class="kp-mcard__badge kp-mcard__badge--gold">{% trans "Хіт продажів" %}</span>
+          <span class="kp-mcard__badge kp-mcard__badge--hit">{% trans "Хіт продажів" %}</span>
           {% endif %}
         </div>
         <div class="kp-mcard__body">
@@ -112,7 +116,7 @@
           {% endif %}
           {% if dome.price_from %}
           <div class="kp-mcard__foot">
-            <span class="kp-mcard__price">{% trans "від" %} €{{ dome.price_from|floatformat:0 }}</span>
+            <span class="kp-mcard__price">{% trans "від" %} €{{ dome.price_from|floatformat:0|intcomma }}</span>
           </div>
           {% endif %}
           <div class="kp-catalog-card__actions">
@@ -128,7 +132,7 @@
         <div class="kp-product__body">
           <div class="kp-product__meta">
             <h3 class="kp-product__name">KUPOLLA</h3>
-            <span class="kp-product__area">36 м² · Ø 6.8 {% trans "м" %}</span>
+            <span class="kp-product__area">35 м² · Ø 6.8 {% trans "м" %}</span>
           </div>
           <p class="kp-product__desc">{% trans "Геодезичний купольний будинок для глемпінгу, відпочинку та гостьового проживання." %}</p>
           <div class="kp-product__actions">
@@ -152,37 +156,21 @@
     <div class="kp-section__hd">
       <span class="kp-label">{% trans "Відеогляд" %}</span>
       <h2 class="kp-section__title">{% trans "Подивіться на купол зблизька" %}</h2>
-      <p class="kp-section__sub">{% trans "Короткий огляд простору та атмосфери KUPOLLA" %}</p>
     </div>
     <div class="kp-video-review__grid">
-      {% get_current_language as CUR_LANG %}
-      {% if CUR_LANG == 'en' %}
-      <figure class="kp-video-review__item kp-video-review__item--primary kp-reveal">
-        <video class="kp-video-review__video" controls playsinline preload="metadata" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
-          <source src="{% static 'videos/dome-review-en.mp4' %}" type="video/mp4">
-        </video>
-        <figcaption class="kp-video-review__cap">English</figcaption>
-      </figure>
       <figure class="kp-video-review__item kp-reveal">
-        <video class="kp-video-review__video" controls playsinline preload="none" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
+        <video class="kp-video-review__video" controls playsinline preload="metadata" poster="{% static 'images/models/dome-review-poster-uk.webp' %}">
           <source src="{% static 'videos/dome-review-uk.mp4' %}" type="video/mp4">
         </video>
         <figcaption class="kp-video-review__cap">Українська</figcaption>
       </figure>
-      {% else %}
-      <figure class="kp-video-review__item kp-video-review__item--primary kp-reveal">
-        <video class="kp-video-review__video" controls playsinline preload="metadata" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
-          <source src="{% static 'videos/dome-review-uk.mp4' %}" type="video/mp4">
-        </video>
-        <figcaption class="kp-video-review__cap">Українська</figcaption>
-      </figure>
+      <p class="kp-video-review__mid">{% trans "Короткий огляд простору та атмосфери Kupolla" %}</p>
       <figure class="kp-video-review__item kp-reveal">
-        <video class="kp-video-review__video" controls playsinline preload="none" poster="{% static 'images/models/kupolla-s-exterior-forest.webp' %}">
+        <video class="kp-video-review__video" controls playsinline preload="none" poster="{% static 'images/models/dome-review-poster-en.webp' %}">
           <source src="{% static 'videos/dome-review-en.mp4' %}" type="video/mp4">
         </video>
         <figcaption class="kp-video-review__cap">English</figcaption>
       </figure>
-      {% endif %}
     </div>
   </div>
 </section>
@@ -192,27 +180,23 @@
   <div class="kp-container">
     <div class="kp-tech__hd kp-reveal">
       <span class="kp-label kp-label--gold">{% trans "Технології та матеріали" %}</span>
-      <h2 class="kp-section__title kp-section__title--light">{% trans "Engineering Excellence" %}<br>{% trans "(Відмінна інженерія)" %}</h2>
+      <h2 class="kp-section__title kp-section__title--light">{% trans "Відмінна інженерія" %}</h2>
       <p class="kp-tech__desc">{% trans "Спроєктовано для довготривалої експлуатації." %}</p>
     </div>
     <div class="kp-tech__cards">
       <div class="kp-tcard kp-reveal">
-        <span class="kp-tcard__eyebrow">Structural Engineering</span>
         <h3 class="kp-tcard__title">{% trans "Інженерна конструкція" %}</h3>
         <p class="kp-tcard__desc">{% trans "Кожен купол проєктується як модульна система, що поєднує високу жорсткість конструкції, точність виробництва та можливість швидкого монтажу." %}</p>
       </div>
       <div class="kp-tcard kp-reveal">
-        <span class="kp-tcard__eyebrow">Premium Materials</span>
         <h3 class="kp-tcard__title">{% trans "Преміальні матеріали" %}</h3>
         <p class="kp-tcard__desc">{% trans "Ми використовуємо матеріали, які відповідають вимогам професійного готельного сектору щодо довговічності, енергоефективності та естетики." %}</p>
       </div>
       <div class="kp-tcard kp-reveal">
-        <span class="kp-tcard__eyebrow">Energy Performance</span>
         <h3 class="kp-tcard__title">{% trans "Енергоефективність" %}</h3>
         <p class="kp-tcard__desc">{% trans "Багатошарова конструкція забезпечує високий рівень теплоізоляції, комфортний мікроклімат у будь-яку пору року та зниження експлуатаційних витрат." %}</p>
       </div>
       <div class="kp-tcard kp-reveal">
-        <span class="kp-tcard__eyebrow">Factory Precision</span>
         <h3 class="kp-tcard__title">{% trans "Заводське виробництво" %}</h3>
         <p class="kp-tcard__desc">{% trans "Основні елементи виготовляються у контрольованих виробничих умовах, що гарантує стабільну якість та прогнозований монтаж на об'єкті." %}</p>
       </div>
