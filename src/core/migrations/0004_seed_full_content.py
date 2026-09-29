@@ -2,8 +2,16 @@ from django.db import migrations
 
 
 def forwards(apps, schema_editor):
-    from django.core.management import call_command
-    call_command('seed_content', verbosity=0)
+    from src.blog.defaults import seed_blog
+    from src.catalog.defaults import seed_dome_images
+    from src.core.defaults import seed_site_settings
+    from src.pages.defaults import seed_pages
+
+    seed_dome_images()
+    seed_blog()
+    seed_pages()
+    # Історична модель: у живій SiteSettings вже є поля з пізніших міграцій.
+    seed_site_settings(apps)
 
 
 class Migration(migrations.Migration):
