@@ -1,18 +1,6 @@
 from django.db import models
 
-
-class SingletonModel(models.Model):
-    class Meta:
-        abstract = True
-
-    def save(self, *args, **kwargs):
-        self.__class__.objects.exclude(pk=self.pk).delete()
-        super().save(*args, **kwargs)
-
-    @classmethod
-    def load(cls):
-        obj, _ = cls.objects.get_or_create(pk=1)
-        return obj
+from src.core.models import SingletonModel
 
 
 class AboutPage(SingletonModel):
@@ -26,6 +14,12 @@ class AboutPage(SingletonModel):
     class Meta:
         verbose_name = 'Сторінка «Про компанію»'
         verbose_name_plural = 'Сторінка «Про компанію»'
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(pk=1),
+                name='pages_aboutpage_singleton_pk',
+            ),
+        ]
 
     def __str__(self):
         return 'Про компанію'
@@ -34,6 +28,12 @@ class AboutPage(SingletonModel):
 class TeamMember(models.Model):
     """Член команди KUPOLLA для секції «Команда» на сторінці «Про компанію»."""
 
+    page = models.ForeignKey(
+        AboutPage,
+        on_delete=models.CASCADE,
+        related_name='members',
+        verbose_name='Сторінка',
+    )
     name = models.CharField('Ім\'я та прізвище', max_length=150)
     position = models.CharField('Посада', max_length=150)
     photo = models.ImageField('Фото', upload_to='team/', blank=True)
@@ -65,6 +65,12 @@ class TechnologiesPage(SingletonModel):
     class Meta:
         verbose_name = 'Сторінка «Технології»'
         verbose_name_plural = 'Сторінка «Технології»'
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(pk=1),
+                name='pages_technologiespage_singleton_pk',
+            ),
+        ]
 
     def __str__(self):
         return 'Технології'

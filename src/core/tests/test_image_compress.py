@@ -101,7 +101,9 @@ class ImageCompressTests(TestCase):
             self.assertEqual(handle.read(), raw)
 
     def test_team_photo_is_capped_at_800(self):
+        from src.pages.models import AboutPage
         member = TeamMember.objects.create(
+            page=AboutPage.load(),
             name='Олена Коваль',
             position='Архітектор',
             photo=_upload('face.png', Image.new('RGB', (1200, 900), (30, 30, 30)), 'PNG'),

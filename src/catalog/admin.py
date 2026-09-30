@@ -2,7 +2,7 @@ from django.contrib import admin
 from modeltranslation.admin import TabbedTranslationAdmin
 from unfold.admin import ModelAdmin, TabularInline
 
-from src.core.admin_utils import ImageSizeHelpMixin, TinyMCEAdminMixin, image_size_notice
+from src.core.admin_utils import ImageSizeHelpMixin, TinyMCEAdminMixin, english_ready, image_size_notice
 from src.core.image_specs import FLOOR_PLAN_IMAGE, MODEL_IMAGE
 
 from .models import DomeModel, ModelImage, ModelSpec
@@ -41,7 +41,8 @@ class ModelSpecInline(TabularInline):
 class DomeModelAdmin(ImageSizeHelpMixin, TinyMCEAdminMixin, TabbedTranslationAdmin, ModelAdmin):
     tinymce_fields = ('description', 'floor_plan_note')
     image_size_help = {'floor_plan_image': FLOOR_PLAN_IMAGE}
-    list_display = ('name', 'area_m2', 'purpose', 'size_cat', 'price_from', 'is_published', 'is_featured', 'order')
+    list_display = ('name', 'area_m2', 'purpose', 'size_cat', 'price_from', 'en_ready', 'is_published', 'is_featured', 'order')
+    en_fields = ('name', 'short_description', 'description')
     list_editable = ('is_published', 'is_featured', 'order')
     list_filter = ('purpose', 'size_cat', 'is_published')
     list_filter_submit = True
@@ -76,6 +77,10 @@ class DomeModelAdmin(ImageSizeHelpMixin, TinyMCEAdminMixin, TabbedTranslationAdm
             'description': '«На головній» — показувати в блоці featured на головній сторінці.',
         }),
     )
+
+    @admin.display(boolean=True, description='EN')
+    def en_ready(self, obj):
+        return english_ready(obj, self.en_fields)
 
     def price_from(self, obj):
         return f'€{obj.price_from:,.0f}' if obj.price_from else '—'

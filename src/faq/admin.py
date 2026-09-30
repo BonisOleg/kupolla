@@ -1,28 +1,27 @@
 from django.contrib import admin
-from modeltranslation.admin import TabbedTranslationAdmin
+from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
 from unfold.admin import ModelAdmin, StackedInline
+from unfold.overrides import FORMFIELD_OVERRIDES_INLINE
 
-from src.core.admin_utils import TinyMCEAdminMixin
+from src.core.admin_utils import TinyMCEAdminMixin, english_ready
 
 from .models import FAQGroup, FAQItem
 
 
-class FAQItemInline(StackedInline):
+class FAQItemInline(TinyMCEAdminMixin, TranslationStackedInline, StackedInline):
     model = FAQItem
-    extra = 1
+    formfield_overrides = FORMFIELD_OVERRIDES_INLINE
+    tinymce_fields = ('answer',)
+    extra = 0
     fields = ('question', 'answer', 'order', 'is_published')
     ordering = ('order',)
-    show_change_link = True
-    classes = ('collapse',)
     verbose_name = 'Питання'
-    verbose_name_plural = (
-        'Питання FAQ (відповідь — HTML; для зручного редагування натисніть «Змінити» → окрема форма з редактором)'
-    )
+    verbose_name_plural = 'Питання цієї групи'
 
 
 @admin.register(FAQGroup)
 class FAQGroupAdmin(TabbedTranslationAdmin, ModelAdmin):
-    list_display = ('name', 'item_count', 'order')
+    list_display = ('name', 'item_count', 'en_ready', 'order')
     list_editable = ('order',)
     search_fields = ('name',)
     inlines = [FAQItemInline]
@@ -31,23 +30,9 @@ class FAQGroupAdmin(TabbedTranslationAdmin, ModelAdmin):
         return obj.items.count()
     item_count.short_description = 'Питань'
 
-
-@admin.register(FAQItem)
-class FAQItemAdmin(TinyMCEAdminMixin, TabbedTranslationAdmin, ModelAdmin):
-    tinymce_fields = ('answer',)
-    list_display = ('question', 'group', 'is_published', 'order')
-    list_editable = ('is_published', 'order')
-    list_filter = ('group', 'is_published')
-    list_filter_submit = True
-    search_fields = ('question', 'answer')
-    autocomplete_fields = ('group',)
-
-    fieldsets = (
-        ('Питання', {
-            'fields': ('group', 'question', 'answer'),
-            'description': 'Відповідь підтримує HTML — використовуйте редактор для списків і посилань.',
-        }),
-        ('Публікація', {
-            'fields': ('order', 'is_published'),
-        }),
-    )
+    @admin.display(boolean=True, description='EN')
+    def en_ready(self, obj):
+        items = list(obj.items.all())
+        if not items:
+            return False
+        return all(english_ready(item, ('question', 'answer')) for item in items)

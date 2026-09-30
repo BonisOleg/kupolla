@@ -106,17 +106,27 @@ def seed_team_members(apps=None):
     """Сидить 7 членів команди KUPOLLA (сторінка «Про компанію», блок «Команда»)."""
     if apps is not None:
         TeamMember = apps.get_model('pages', 'TeamMember')
+        AboutPage = apps.get_model('pages', 'AboutPage')
+        has_page = any(field.name == 'page' for field in TeamMember._meta.fields)
     else:
-        from src.pages.models import TeamMember
+        from src.pages.models import AboutPage, TeamMember
+        has_page = True
+
+    page = None
+    if has_page:
+        page, _ = AboutPage.objects.get_or_create(pk=1)
 
     for item in TEAM_MEMBERS:
+        defaults = {
+            'name': item['name'],
+            'position': item['position'],
+            'position_uk': item['position'],
+        }
+        if page is not None:
+            defaults['page'] = page
         TeamMember.objects.get_or_create(
             order=item['order'],
-            defaults={
-                'name': item['name'],
-                'position': item['position'],
-                'position_uk': item['position'],
-            },
+            defaults=defaults,
         )
 
 

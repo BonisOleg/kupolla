@@ -1,6 +1,11 @@
 {% extends "admin/base.html" %}
 
-{% load i18n %}
+{% load i18n static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'admin/css/kupolla-dashboard.css' %}">
+{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
@@ -12,71 +17,55 @@
 
 {% block content %}
     {% if dashboard %}
-        <section class="mb-8">
-            <header class="mb-6">
-                <h1 class="text-xl font-semibold text-font-important-light dark:text-font-important-dark">
-                    {{ dashboard.greeting }}
-                </h1>
-                <p class="mt-1 text-sm text-font-subtle-light dark:text-font-subtle-dark">
-                    Огляд сайту KUPOLLA — швидкий доступ до найважливішого контенту та заявок.
-                </p>
+        <section class="kp-admin-dash">
+            <header class="kp-admin-dash__head">
+                <h1 class="kp-admin-dash__title">{{ dashboard.greeting }}</h1>
+                <p class="kp-admin-dash__lead">Огляд сайту KUPOLLA — швидкий доступ до найважливішого контенту та заявок.</p>
             </header>
 
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5 mb-8">
+            <div class="kp-admin-stats">
                 {% for stat in dashboard.stats %}
-                    <a href="{{ stat.link }}"
-                       class="group block rounded-default border border-base-200 bg-white p-4 shadow-sm transition hover:border-primary-500 dark:border-base-700 dark:bg-base-900 dark:hover:border-primary-500">
-                        <div class="flex items-start justify-between gap-3">
-                            <div>
-                                <p class="text-xs font-medium uppercase tracking-wide text-font-subtle-light dark:text-font-subtle-dark">
-                                    {{ stat.title }}
-                                </p>
-                                <p class="mt-2 text-2xl font-semibold text-font-important-light dark:text-font-important-dark">
-                                    {{ stat.value }}
-                                </p>
-                            </div>
-                            <span class="material-symbols-outlined text-2xl text-base-400 group-hover:text-primary-500 dark:text-base-500">
-                                {{ stat.icon }}
+                    <a class="kp-admin-stat" href="{{ stat.link }}">
+                        <span class="kp-admin-stat__row">
+                            <span>
+                                <span class="kp-admin-stat__label">{{ stat.title }}</span>
+                                <span class="kp-admin-stat__value">{{ stat.value }}</span>
                             </span>
-                        </div>
+                            <span class="material-symbols-outlined kp-admin-stat__icon" aria-hidden="true">{{ stat.icon }}</span>
+                        </span>
                     </a>
                 {% endfor %}
             </div>
 
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                <div class="lg:col-span-2 rounded-default border border-base-200 bg-white p-5 shadow-sm dark:border-base-700 dark:bg-base-900">
-                    <h2 class="mb-4 text-sm font-semibold uppercase tracking-wide text-font-subtle-light dark:text-font-subtle-dark">
-                        Швидкі дії
-                    </h2>
-                    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div class="kp-admin-layout">
+                <div class="kp-admin-card">
+                    <h2 class="kp-admin-card__title">Швидкі дії</h2>
+                    <div class="kp-admin-links">
                         {% for item in dashboard.quick_links %}
-                            <a href="{{ item.link }}"
-                               class="flex items-start gap-3 rounded-default border border-base-200 p-3 transition hover:border-primary-500 hover:bg-primary-500/5 dark:border-base-700 dark:hover:border-primary-500 dark:hover:bg-primary-500/10">
-                                <span class="material-symbols-outlined mt-0.5 text-primary-600 dark:text-primary-400">{{ item.icon }}</span>
+                            <a class="kp-admin-link" href="{{ item.link }}">
+                                <span class="material-symbols-outlined kp-admin-link__icon" aria-hidden="true">{{ item.icon }}</span>
                                 <span>
-                                    <span class="block font-medium text-font-important-light dark:text-font-important-dark">{{ item.title }}</span>
-                                    <span class="mt-0.5 block text-xs text-font-subtle-light dark:text-font-subtle-dark">{{ item.hint }}</span>
+                                    <span class="kp-admin-link__title">{{ item.title }}</span>
+                                    <span class="kp-admin-link__hint">{{ item.hint }}</span>
                                 </span>
                             </a>
                         {% endfor %}
                     </div>
                 </div>
 
-                <div class="rounded-default border border-base-200 bg-white p-5 shadow-sm dark:border-base-700 dark:bg-base-900">
-                    <h2 class="mb-4 text-sm font-semibold uppercase tracking-wide text-font-subtle-light dark:text-font-subtle-dark">
-                        Заявки за статусом
-                    </h2>
+                <div class="kp-admin-card">
+                    <h2 class="kp-admin-card__title">Заявки за статусом</h2>
                     {% if dashboard.lead_status_stats %}
-                        <ul class="space-y-3">
+                        <ul class="kp-admin-status">
                             {% for row in dashboard.lead_status_stats %}
-                                <li class="flex items-center justify-between gap-3 text-sm">
-                                    <span class="text-font-default-light dark:text-font-default-dark">{{ row.label }}</span>
-                                    <span class="rounded-full bg-base-100 px-2.5 py-0.5 font-medium dark:bg-base-800">{{ row.total }}</span>
+                                <li class="kp-admin-status__row">
+                                    <span>{{ row.label }}</span>
+                                    <span class="kp-admin-status__count">{{ row.total }}</span>
                                 </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <p class="text-sm text-font-subtle-light dark:text-font-subtle-dark">Заявок ще немає.</p>
+                        <p class="kp-admin-empty">Заявок ще немає.</p>
                     {% endif %}
                 </div>
             </div>

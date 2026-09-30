@@ -229,8 +229,17 @@
   overflow-wrap: anywhere;
 }
 
-.kp-model__desc p { margin-bottom: .75rem; }
-.kp-model__desc p:last-child { margin-bottom: 0; }
+.kp-model__desc p,
+.kp-model__plan-note p { margin: 0; }
+.kp-model__desc p:empty,
+.kp-model__plan-note p:empty { min-height: 1.75em; }
+.kp-model__plan-note {
+  margin-top: 1rem;
+  font-size: .9375rem;
+  line-height: 1.75;
+  color: var(--c-muted);
+  overflow-wrap: anywhere;
+}
 .kp-model__desc ul,
 .kp-model__desc ol { padding-left: 1.25rem; margin-bottom: .75rem; }
 .kp-model__desc li { margin-bottom: .35rem; }

@@ -302,6 +302,22 @@ UNFOLD = {
                     },
                 ],
             },
+            {
+                'title': 'Доступ',
+                'separator': True,
+                'items': [
+                    {
+                        'title': 'Користувачі',
+                        'icon': 'person',
+                        'link': reverse_lazy('admin:auth_user_changelist'),
+                    },
+                    {
+                        'title': 'Групи',
+                        'icon': 'group',
+                        'link': reverse_lazy('admin:auth_group_changelist'),
+                    },
+                ],
+            },
         ],
     },
 }

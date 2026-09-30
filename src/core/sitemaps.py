@@ -3,9 +3,15 @@ from django.urls import reverse
 
 from src.catalog.models import DomeModel
 from src.blog.models import Post
+from src.core.i18n import enabled_language_codes
 
 
-class StaticSitemap(Sitemap):
+class _PublicLanguagesMixin:
+    def get_languages_for_item(self, item):
+        return enabled_language_codes()
+
+
+class StaticSitemap(_PublicLanguagesMixin, Sitemap):
     changefreq = 'weekly'
     priority = 0.8
     i18n = True
@@ -26,7 +32,7 @@ class StaticSitemap(Sitemap):
         return reverse(item)
 
 
-class DomeModelSitemap(Sitemap):
+class DomeModelSitemap(_PublicLanguagesMixin, Sitemap):
     changefreq = 'weekly'
     priority = 0.9
     i18n = True
@@ -38,7 +44,7 @@ class DomeModelSitemap(Sitemap):
         return obj.updated_at
 
 
-class BlogPostSitemap(Sitemap):
+class BlogPostSitemap(_PublicLanguagesMixin, Sitemap):
     changefreq = 'monthly'
     priority = 0.6
     i18n = True

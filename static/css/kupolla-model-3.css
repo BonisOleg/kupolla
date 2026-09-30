@@ -150,7 +150,8 @@
     font-size: 1rem;
   }
 
-  .kp-model__desc {
+  .kp-model__desc,
+  .kp-model__plan-note {
     font-size: 1rem;
     max-width: 34rem;
   }

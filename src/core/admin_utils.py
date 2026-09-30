@@ -74,6 +74,14 @@ class ImagePreviewMixin:
     get_image_preview.short_description = preview_label
 
 
+def english_ready(obj, fields) -> bool:
+    """Чи заповнені англійські переклади перелічених полів."""
+    for field in fields:
+        if not (getattr(obj, f'{field}_en', '') or '').strip():
+            return False
+    return True
+
+
 def image_size_notice(*lines):
     """Текст для description fieldset з рекомендаціями."""
     return ' '.join(lines)

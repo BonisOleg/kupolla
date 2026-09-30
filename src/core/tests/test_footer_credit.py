@@ -12,7 +12,7 @@ class FooterDeveloperLinkTests(TestCase):
         self.assertContains(response, '>PrometeyLabs</a>')
 
     def test_localized_home_keeps_credit_link(self):
-        for path in ('/uk/', '/en/'):
+        for path in ('/', '/en/'):
             response = self.client.get(path)
             self.assertContains(response, CREDIT_URL)
 

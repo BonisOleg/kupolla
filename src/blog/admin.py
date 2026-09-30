@@ -2,7 +2,7 @@ from django.contrib import admin
 from modeltranslation.admin import TabbedTranslationAdmin
 from unfold.admin import ModelAdmin
 
-from src.core.admin_utils import ImageSizeHelpMixin, TinyMCEAdminMixin, image_size_notice
+from src.core.admin_utils import ImageSizeHelpMixin, TinyMCEAdminMixin, english_ready, image_size_notice
 from src.core.image_specs import BLOG_COVER_IMAGE
 
 from .models import Category, Tag, Post
@@ -34,7 +34,8 @@ class TagAdmin(TabbedTranslationAdmin, ModelAdmin):
 class PostAdmin(ImageSizeHelpMixin, TinyMCEAdminMixin, TabbedTranslationAdmin, ModelAdmin):
     tinymce_fields = ('body',)
     image_size_help = {'cover_image': BLOG_COVER_IMAGE}
-    list_display = ('title', 'category', 'is_published', 'published_at', 'cover_preview')
+    list_display = ('title', 'category', 'en_ready', 'is_published', 'published_at', 'cover_preview')
+    en_fields = ('title', 'excerpt', 'body')
     list_filter = ('is_published', 'category', 'tags')
     list_filter_submit = True
     search_fields = ('title', 'excerpt', 'body')
@@ -61,6 +62,10 @@ class PostAdmin(ImageSizeHelpMixin, TinyMCEAdminMixin, TabbedTranslationAdmin, M
             'description': 'Дата публікації впливає на сортування в списку статей.',
         }),
     )
+
+    @admin.display(boolean=True, description='EN')
+    def en_ready(self, obj):
+        return english_ready(obj, self.en_fields)
 
     def cover_preview(self, obj):
         if obj.cover_image:

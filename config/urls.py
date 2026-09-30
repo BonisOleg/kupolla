@@ -41,7 +41,7 @@ urlpatterns += i18n_patterns(
     path('blog/', include('src.blog.urls')),
     path('faq/', include('src.faq.urls')),
     path('contacts/', include('src.leads.urls_contacts')),
-    prefix_default_language=True,
+    prefix_default_language=False,
 )
 
 if settings.DEBUG:

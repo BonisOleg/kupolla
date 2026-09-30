@@ -249,7 +249,9 @@
 .kp-post__content h3,
 .kp-prose h3 { font-family: var(--f-serif); text-transform: uppercase; letter-spacing: .01em; font-size: 1.375rem; color: var(--c-dark); margin: 2rem 0 .75rem; font-weight: 400; }
 .kp-post__content p,
-.kp-prose p { font-size: 1rem; color: var(--c-muted); line-height: 1.8; margin-bottom: 1.25rem; }
+.kp-prose p { font-size: 1rem; color: var(--c-muted); line-height: 1.8; margin: 0; }
+.kp-post__content p:empty,
+.kp-prose p:empty { min-height: 1.8em; }
 .kp-post__content ul,
 .kp-prose ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
 .kp-post__content li,

@@ -114,7 +114,8 @@
       </article>
       <article class="kp-tech-mat kp-reveal">
         <div class="kp-tech-mat__img kp-tech-mat__img--steel">
-          <img src="{% static 'images/materials/aisi316_connectors_card.webp' %}" alt="{% trans 'З\'єднувачі AISI 316 — нержавіюча сталь' %}" loading="lazy" width="600" height="200">
+          {% trans "З'єднувачі AISI 316 — нержавіюча сталь" as connector_alt %}
+          <img src="{% static 'images/materials/aisi316_connectors_card.webp' %}" alt="{{ connector_alt }}" loading="lazy" width="600" height="200">
         </div>
         <div class="kp-tech-mat__body">
           <h3 class="kp-tech-mat__title">{% trans "З'єднувачі AISI 316" %}</h3>

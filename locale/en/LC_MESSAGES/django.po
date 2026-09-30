@@ -1,0 +1,1505 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 07:48-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/blog/views.py:25 templates/blog/list.html:24
+msgid "Блог KUPOLLA"
+msgstr "KUPOLLA blog"
+#: src/blog/views.py:26
+msgid ""
+"Корисні статті про купольні будинки, технології, глемпінг та нерухомість."
+msgstr "Articles on dome houses, building methods, glamping and property."
+#: src/catalog/views.py:50
+msgid "Модельний ряд купольних будинків — KUPOLLA"
+msgstr "Dome house range — KUPOLLA"
+#: src/catalog/views.py:52
+msgid ""
+"Compact, Prime або Grand — оберіть купольний будинок KUPOLLA під ваш проєкт "
+"та бюджет."
+msgstr ""
+"Compact, Prime or Grand — choose a KUPOLLA dome house for your project and"
+" budget."
+#: src/catalog/views.py:57
+msgid "до 50 м²"
+msgstr "up to 50 m²"
+#: src/catalog/views.py:58
+msgid "50–100 м²"
+msgstr "50–100 m²"
+#: src/catalog/views.py:59
+msgid "100+ м²"
+msgstr "100+ m²"
+#: src/catalog/views.py:62
+msgid "до €50 000"
+msgstr "up to €50,000"
+#: src/catalog/views.py:63
+msgid "€50 000–120 000"
+msgstr "€50,000–120,000"
+#: src/catalog/views.py:64
+msgid "від €120 000"
+msgstr "from €120,000"
+#: src/configurator/views.py:30
+msgid "Конфігуратор куполу — KUPOLLA"
+msgstr "Dome configurator — KUPOLLA"
+#: src/configurator/views.py:32
+msgid ""
+"Налаштуйте комплектацію купола KUPOLLA: оберіть рівень оснащення та "
+"додаткові опції."
+msgstr ""
+"Configure a KUPOLLA dome: choose the equipment level and extra options."
+#: src/core/views.py:14
+msgid "KUPOLLA — Купольні будинки нового покоління"
+msgstr "KUPOLLA — Dome houses of a new generation"
+#: src/core/views.py:16
+msgid ""
+"Виробник купольних будинків KUPOLLA. Екологічні, енергоефективні, сучасні "
+"куполи для проживання, глемпінгу та комерції."
+msgstr ""
+"KUPOLLA builds dome houses: low-impact, energy-efficient domes for living,"
+" glamping and commercial use."
+#: src/faq/views.py:13
+msgid "FAQ — Часті запитання — KUPOLLA"
+msgstr "FAQ — KUPOLLA"
+#: src/faq/views.py:14
+msgid ""
+"Відповіді на часті запитання про купольні будинки KUPOLLA: монтаж, ціна, "
+"дозволи, експлуатація."
+msgstr ""
+"Answers to common questions about KUPOLLA dome houses: installation, price,"
+" permits and use."
+#: src/gallery/views.py:12
+msgid "Галерея реалізованих проєктів — KUPOLLA"
+msgstr "Project gallery — KUPOLLA"
+#: src/gallery/views.py:13
+msgid "Фотогалерея купольних будинків KUPOLLA у природному оточенні."
+msgstr "Photographs of KUPOLLA dome houses in natural settings."
+#: src/leads/forms.py:14 src/leads/forms.py:16 src/leads/forms.py:19
+#: src/leads/forms.py:22 src/leads/forms.py:24 templates/base.html:84
+msgid "Введіть коректний номер телефону"
+msgstr "Enter a valid phone number"
+#: src/leads/forms.py:31
+msgid "Я погоджуюся з обробкою персональних даних"
+msgstr "I agree to the processing of personal data"
+#: src/leads/forms.py:32 templates/base.html:84
+msgid "Необхідно надати згоду на обробку даних"
+msgstr "You need to consent to data processing"
+#: src/leads/forms.py:48 templates/core/home.html:268
+#: templates/leads/contacts.html:112 templates/pages/about.html:231
+#: templates/partials/modal_consult.html:25
+msgid "Ваше ім'я"
+msgstr "Your name"
+#: src/leads/forms.py:49
+msgid "+380 XX XXX XX XX"
+msgstr "+380 XX XXX XX XX"
+#: src/leads/forms.py:50
+msgid "email@example.com"
+msgstr "email@example.com"
+#: src/leads/forms.py:51 templates/faq/index.html:133
+#: templates/leads/contacts.html:46 templates/partials/location_fields.html:6
+msgid "Україна"
+msgstr "Ukraine"
+#: src/leads/forms.py:52 templates/partials/location_fields.html:11
+msgid "Київ"
+msgstr "Kyiv"
+#: src/leads/forms.py:53 templates/core/home.html:282
+msgid "Ваше повідомлення..."
+msgstr "Your message..."
+#: src/leads/views.py:66
+msgid "Контакти — KUPOLLA"
+msgstr "Contacts — KUPOLLA"
+#: src/leads/views.py:67
+msgid "Контакти KUPOLLA: адреса, телефон, email, форма зворотного зв'язку."
+msgstr "KUPOLLA contacts: address, phone, email and an enquiry form."
+#: src/pages/views.py:12
+msgid "KUPOLLA - модульні будинки"
+msgstr "KUPOLLA — modular houses"
+#: src/pages/views.py:13
+msgid ""
+"Виробник купольних будинків KUPOLLA: місія, команда, виробництво та шоурум."
+msgstr ""
+"KUPOLLA builds dome houses: our work, the team, production and the showroom."
+#: src/pages/views.py:24
+msgid "Матеріали — KUPOLLA"
+msgstr "Materials — KUPOLLA"
+#: src/pages/views.py:25
+msgid ""
+"Багатошарова оболонка купола, ACP-покриття, матеріали, енергоефективність та "
+"гарантії KUPOLLA."
+msgstr ""
+"The layered dome shell, ACP cladding, materials, energy performance and"
+" KUPOLLA warranties."
+#: templates/admin/index.html:12
+msgid "Django site admin"
+msgstr "Django site admin"
+#: templates/base.html:84
+msgid "Заповніть це поле"
+msgstr "Fill in this field"
+#: templates/base.html:84
+msgid "Введіть коректний email"
+msgstr "Enter a valid email"
+#: templates/blog/list.html:14 templates/blog/post.html:20
+#: templates/catalog/detail.html:32 templates/catalog/list.html:13
+#: templates/configurator/index.html:16 templates/faq/index.html:32
+#: templates/gallery/index.html:14 templates/leads/contacts.html:17
+#: templates/pages/about.html:13 templates/pages/technologies.html:13
+msgid "Головна"
+msgstr "Home"
+#: templates/blog/list.html:16 templates/blog/post.html:22
+#: templates/partials/footer.html:40 templates/partials/header.html:15
+#: templates/partials/mobile_menu.html:10
+msgid "Блог"
+msgstr "Blog"
+#: templates/blog/list.html:25
+msgid "Знання,"
+msgstr "Knowledge,"
+#: templates/blog/list.html:25
+msgid "натхнення, архітектура"
+msgstr "inspiration, architecture"
+#: templates/blog/list.html:26
+msgid ""
+"Статті про купольні будинки, технології будівництва, дизайн інтер'єрів та "
+"екологічне проживання."
+msgstr ""
+"Articles on dome houses, construction, interior design and low-impact"
+" living."
+#: templates/blog/list.html:40 templates/catalog/list.html:40
+#: templates/catalog/list.html:50
+msgid "Усі"
+msgstr "All"
+#: templates/blog/list.html:68
+msgid "Читати"
+msgstr "Read"
+#: templates/blog/list.html:75
+msgid "Сторінки"
+msgstr "Pages"
+#: templates/blog/list.html:88
+msgid "Усі статті"
+msgstr "All articles"
+#: templates/blog/list.html:89 templates/blog/list.html:98
+#: templates/blog/list.html:136
+msgid "Технології"
+msgstr "Technology"
+#: templates/blog/list.html:90 templates/blog/list.html:118
+msgid "Дизайн"
+msgstr "Design"
+#: templates/blog/list.html:91 templates/blog/list.html:109
+#: templates/blog/list.html:145 templates/catalog/detail.html:86
+#: templates/catalog/list.html:99 templates/catalog/list.html:127
+msgid "Глемпінг"
+msgstr "Glamping"
+#: templates/blog/list.html:92 templates/blog/list.html:127
+#: templates/blog/list.html:154
+msgid "Екологія"
+msgstr "Ecology"
+#: templates/blog/list.html:99
+msgid "Чому геодезичний купол — ідеальна форма для енергоефективного будинку"
+msgstr "Why a geodesic dome is an efficient shape for a low-energy house"
+#: templates/blog/list.html:100
+#, python-format
+msgid ""
+"Пояснюємо математику та фізику за геодезичною сферою, і чому ця форма "
+"дозволяє знизити витрати на опалення на 30%% порівняно з прямокутними "
+"будівлями."
+msgstr ""
+"The geometry of a geodesic sphere, and why this shape can cut heating use"
+" by about 30%% compared with a rectangular building."
+#: templates/blog/list.html:101
+msgid "червня"
+msgstr "June"
+#: templates/blog/list.html:101
+msgid "хв читання"
+msgstr "min read"
+#: templates/blog/list.html:110
+msgid "5 причин, чому купол — найкращий варіант для глемпінгу"
+msgstr "Five reasons a dome works well for glamping"
+#: templates/blog/list.html:111
+msgid ""
+"Розбираємо, чому туристичні комплекси по всій Європі переходять на купольні "
+"будиночки замість традиційних бунгало."
+msgstr ""
+"Why hospitality sites across Europe are choosing dome cabins instead of"
+" conventional bungalows."
+#: templates/blog/list.html:112 templates/blog/list.html:121
+msgid "черв."
+msgstr "Jun"
+#: templates/blog/list.html:112 templates/blog/list.html:121
+#: templates/blog/list.html:130 templates/blog/list.html:139
+#: templates/blog/list.html:148 templates/blog/list.html:157
+msgid "хв"
+msgstr "min"
+#: templates/blog/list.html:119
+msgid "Інтер'єр купольного будинку: як організувати простір без кутів"
+msgstr "Dome interiors: planning a room without corners"
+#: templates/blog/list.html:120
+msgid ""
+"Практичні поради від наших архітекторів щодо зонування, меблів та освітлення "
+"в круглому просторі."
+msgstr ""
+"Notes from our architects on zoning, furniture and light in a round room."
+#: templates/blog/list.html:128
+msgid "CLT vs традиційна деревина: що краще для екологічного будівництва?"
+msgstr "CLT or ordinary timber: which suits low-carbon building?"
+#: templates/blog/list.html:129
+msgid ""
+"Порівнюємо вуглецевий слід, міцність та довговічність клеєної та звичайної "
+"деревини."
+msgstr ""
+"Carbon, strength and durability of cross-laminated timber compared with"
+" sawn wood."
+#: templates/blog/list.html:130 templates/blog/list.html:139
+#: templates/blog/list.html:148 templates/blog/list.html:157
+msgid "трав."
+msgstr "May"
+#: templates/blog/list.html:137
+msgid "Гвинтові палі vs монолітний фундамент: що обрати під купол?"
+msgstr "Screw piles or a concrete foundation under a dome?"
+#: templates/blog/list.html:138
+msgid ""
+"Детальне порівняння двох типів фундаменту для різних умов ґрунту та клімату."
+msgstr "How the two foundations compare for different soils and climates."
+#: templates/blog/list.html:146
+msgid "Як відкрити глемпінг з купольними будиночками: покроковий гайд"
+msgstr "How to open a glamping site with dome cabins"
+#: templates/blog/list.html:147
+msgid ""
+"Від ідеї до першого гостя: дозволи, інвестиції, маркетинг та вибір моделей "
+"куполів."
+msgstr ""
+"From the idea to the first guest: permits, investment, marketing and the"
+" choice of dome."
+#: templates/blog/list.html:155
+msgid "Нульова енергія: як інтегрувати сонячні панелі в купольний будинок"
+msgstr "Very low energy use: solar panels on a dome house"
+#: templates/blog/list.html:156
+msgid ""
+"Практичний огляд рішень для автономного енергопостачання та накопичення "
+"енергії."
+msgstr "A practical look at on-site power and storage."
+#: templates/blog/list.html:162
+msgid "Підписатись на оновлення"
+msgstr "Subscribe to updates"
+#: templates/blog/post.html:19 templates/catalog/detail.html:31
+msgid "Хлібні крихти"
+msgstr "Breadcrumbs"
+#: templates/blog/post.html:67 templates/catalog/detail.html:125
+#: templates/core/home.html:44 templates/core/home.html:252
+#: templates/gallery/index.html:83 templates/gallery/index.html:115
+#: templates/partials/mobile_cta.html:3 templates/partials/mobile_menu.html:15
+msgid "Отримати консультацію"
+msgstr "Request a consultation"
+#: templates/blog/post.html:76
+msgid "Читайте також"
+msgstr "Read also"
+#: templates/catalog/detail.html:52
+msgid "Фото"
+msgstr "Photo"
+#: templates/catalog/detail.html:84 templates/catalog/list.html:101
+#: templates/catalog/list.html:138 templates/core/home.html:110
+msgid "Хіт продажів"
+msgstr "Bestseller"
+#: templates/catalog/detail.html:88
+msgid "Комерція"
+msgstr "Commercial"
+#: templates/catalog/detail.html:96 templates/catalog/detail.html:150
+msgid "Діаметр"
+msgstr "Diameter"
+#: templates/catalog/detail.html:96 templates/catalog/detail.html:98
+#: templates/configurator/index.html:30 templates/core/home.html:139
+msgid "м"
+msgstr "m"
+#: templates/catalog/detail.html:98 templates/catalog/detail.html:151
+msgid "Висота"
+msgstr "Height"
+#: templates/catalog/detail.html:108 templates/core/home.html:200
+#: templates/pages/technologies.html:134
+msgid "Енергоефективність"
+msgstr "Energy performance"
+#: templates/catalog/detail.html:112
+msgid "Років гарантія"
+msgstr "Years of warranty"
+#: templates/catalog/detail.html:116
+msgid "мм утеплення"
+msgstr "mm of insulation"
+#: templates/catalog/detail.html:121
+msgid "Вартість від"
+msgstr "Price from"
+#: templates/catalog/detail.html:126
+msgid "Налаштувати комплектацію"
+msgstr "Configure the specification"
+#: templates/catalog/detail.html:132 templates/catalog/detail.html:134
+#: templates/catalog/detail.html:136 templates/gallery/index.html:98
+msgid "Планування"
+msgstr "Floor plan"
+#: templates/catalog/detail.html:147
+msgid "Технічні характеристики"
+msgstr "Technical data"
+#: templates/catalog/detail.html:149 templates/catalog/list.html:58
+msgid "Площа"
+msgstr "Floor area"
+#: templates/catalog/detail.html:152
+msgid "Утеплення"
+msgstr "Insulation"
+#: templates/catalog/detail.html:165
+msgid "Комплектації"
+msgstr "Packages"
+#: templates/catalog/detail.html:169 templates/catalog/detail.html:271
+#: templates/configurator/index.html:103
+msgid "Базова"
+msgstr "Base"
+#: templates/catalog/detail.html:170 templates/catalog/detail.html:272
+#: templates/configurator/index.html:116
+msgid "Стандарт"
+msgstr "Standard"
+#: templates/catalog/detail.html:170 templates/configurator/index.html:92
+#: templates/configurator/index.html:115
+msgid "Хіт"
+msgstr "Popular"
+#: templates/catalog/detail.html:171 templates/catalog/detail.html:273
+#: templates/configurator/index.html:129
+msgid "Преміум"
+msgstr "Premium"
+#: templates/catalog/detail.html:174
+msgid "Ціна від"
+msgstr "Price from"
+#: templates/catalog/detail.html:180 templates/configurator/index.html:105
+msgid "CLT каркас"
+msgstr "CLT frame"
+#: templates/catalog/detail.html:186
+msgid "Утеплення 200 мм"
+msgstr "200 mm insulation"
+#: templates/catalog/detail.html:192 templates/configurator/index.html:106
+msgid "Стандартні вікна"
+msgstr "Standard windows"
+#: templates/catalog/detail.html:198
+msgid "Монтаж каркасу"
+msgstr "Frame assembly"
+#: templates/catalog/detail.html:204 templates/configurator/index.html:119
+#: templates/configurator/index.html:172
+msgid "Панорамні вікна"
+msgstr "Panoramic windows"
+#: templates/catalog/detail.html:210
+msgid "Тераса (6 м²)"
+msgstr "Terrace (6 m²)"
+#: templates/catalog/detail.html:216 templates/configurator/index.html:121
+msgid "Система опалення"
+msgstr "Heating system"
+#: templates/catalog/detail.html:222 templates/configurator/index.html:132
+msgid "Підлогове опалення"
+msgstr "Underfloor heating"
+#: templates/catalog/detail.html:228 templates/configurator/index.html:133
+#: templates/configurator/index.html:188
+msgid "Smart Home"
+msgstr "Smart Home"
+#: templates/catalog/detail.html:239
+msgid "Заявка на консультацію по моделі"
+msgstr "Enquiry about this model"
+#: templates/catalog/detail.html:253 templates/configurator/index.html:218
+#: templates/faq/index.html:165
+msgid "Ім'я"
+msgstr "Name"
+#: templates/catalog/detail.html:257 templates/configurator/index.html:222
+#: templates/core/home.html:272 templates/faq/index.html:169
+#: templates/leads/contacts.html:116 templates/pages/about.html:235
+#: templates/partials/modal_consult.html:30
+msgid "Телефон"
+msgstr "Phone"
+#: templates/catalog/detail.html:261 templates/configurator/index.html:227
+#: templates/core/home.html:276 templates/pages/about.html:240
+#: templates/partials/modal_consult.html:35
+msgid "Email"
+msgstr "Email"
+#: templates/catalog/detail.html:268
+msgid "Комплектація"
+msgstr "Package"
+#: templates/catalog/detail.html:270
+msgid "Оберіть комплектацію"
+msgstr "Choose a package"
+#: templates/catalog/detail.html:280 templates/faq/index.html:180
+msgid "Згода на обробку даних"
+msgstr "Consent to data processing"
+#: templates/catalog/detail.html:282 templates/core/home.html:290
+#: templates/partials/modal_consult.html:46
+msgid "Надіслати заявку"
+msgstr "Send enquiry"
+#: templates/catalog/list.html:15 templates/catalog/list.html:24
+msgid "Модельний ряд"
+msgstr "Range"
+#: templates/catalog/list.html:25
+msgid "Оберіть ідеальний купольний будинок для вашого проєкту"
+msgstr "Choose a dome house for your project"
+#: templates/catalog/list.html:38
+msgid "Призначення"
+msgstr "Use"
+#: templates/catalog/list.html:48
+msgid "Розмір"
+msgstr "Size"
+#: templates/catalog/list.html:60 templates/catalog/list.html:70
+msgid "Будь-яка"
+msgstr "Any"
+#: templates/catalog/list.html:68
+msgid "Ціна"
+msgstr "Price"
+#: templates/catalog/list.html:114 templates/catalog/list.html:132
+#: templates/catalog/list.html:143 templates/catalog/list.html:152
+#: templates/catalog/list.html:161 templates/core/home.html:123
+msgid "від"
+msgstr "from"
+#: templates/catalog/list.html:118 templates/core/home.html:127
+msgid "Детальніше"
+msgstr "Details"
+#: templates/catalog/list.html:119
+msgid "Налаштувати"
+msgstr "Configure"
+#: templates/catalog/list.html:131
+msgid ""
+"Ідеально для глемпінгу та романтичного відпочинку. Компактний, "
+"функціональний дизайн."
+msgstr "A compact plan for glamping and a short stay."
+#: templates/catalog/list.html:133 templates/catalog/list.html:144
+#: templates/catalog/list.html:153 templates/catalog/list.html:162
+msgid "Отримати пропозицію"
+msgstr "Request a proposal"
+#: templates/catalog/list.html:142
+msgid ""
+"Оптимальний вибір для сімейного проживання та невеликих туристичних "
+"комплексів."
+msgstr "A practical choice for a family home or a small hospitality cluster."
+#: templates/catalog/list.html:151
+msgid ""
+"Просторий будинок для постійного проживання або преміального готельного "
+"номера."
+msgstr "A spacious house for year-round living or a premium hotel suite."
+#: templates/catalog/list.html:160
+msgid ""
+"Преміальна резиденція або комерційний об'єкт. Максимальний простір та "
+"свобода планування."
+msgstr ""
+"A premium residence or a commercial building, with the most room to plan."
+#: templates/catalog/list.html:168
+msgid ""
+"За вашими фільтрами нічого не знайдено. Спробуйте змінити параметри пошуку."
+msgstr "Nothing matches these filters. Try different search settings."
+#: templates/catalog/list.html:169
+msgid "Скинути фільтри"
+msgstr "Reset filters"
+#: templates/catalog/list.html:174
+msgid "Налаштувати у конфігураторі"
+msgstr "Open the configurator"
+#: templates/configurator/index.html:8
+msgid "Конфігуратор купольного будинку"
+msgstr "Dome house configurator"
+#: templates/configurator/index.html:9
+msgid ""
+"Оберіть наповнення куполу KUPOLLA: комплектацію та додаткові опції — ціна "
+"оновлюється одразу."
+msgstr ""
+"Choose the fit-out of a KUPOLLA dome: the package and extra options. The"
+" price updates at once."
+#: templates/configurator/index.html:18 templates/partials/footer.html:45
+#: templates/partials/header.html:12 templates/partials/header.html:22
+#: templates/partials/mobile_menu.html:7
+msgid "Конфігуратор"
+msgstr "Configurator"
+#: templates/configurator/index.html:27
+msgid "Оберіть"
+msgstr "Choose"
+#: templates/configurator/index.html:27
+msgid "наповнення куполу"
+msgstr "the dome fit-out"
+#: templates/configurator/index.html:30
+msgid "діаметр"
+msgstr "diameter"
+#: templates/configurator/index.html:30
+msgid "ціна та фото оновлюються одразу"
+msgstr "the price and photos update at once"
+#: templates/configurator/index.html:32
+msgid "KUPOLLA Prime 35 м² — ціна та фото оновлюються одразу"
+msgstr "KUPOLLA Prime 35 m² — the price and photos update at once"
+#: templates/configurator/index.html:37
+msgid "Детальніше про модель"
+msgstr "More about this model"
+#: templates/configurator/index.html:66
+msgid "Модель"
+msgstr "Model"
+#: templates/configurator/index.html:67
+msgid "Модель куполу"
+msgstr "Dome model"
+#: templates/configurator/index.html:84
+msgid "Наповнення куполу"
+msgstr "Dome fit-out"
+#: templates/configurator/index.html:86
+msgid "Оберіть рівень оснащення — ціна та фото змінюються одразу"
+msgstr "Choose the equipment level — the price and photos change at once"
+#: templates/configurator/index.html:107 templates/pages/about.html:140
+msgid "Монтаж"
+msgstr "Installation"
+#: templates/configurator/index.html:120 templates/configurator/index.html:164
+msgid "Тераса 6 м²"
+msgstr "Terrace 6 m²"
+#: templates/configurator/index.html:134
+msgid "Преміум фінішинг"
+msgstr "Premium finish"
+#: templates/configurator/index.html:147
+msgid "Додаткові опції"
+msgstr "Extra options"
+#: templates/configurator/index.html:149
+msgid "Можна обрати декілька"
+msgstr "You can choose more than one"
+#: templates/configurator/index.html:180
+msgid "Сонячні панелі"
+msgstr "Solar panels"
+#: templates/configurator/index.html:201
+msgid "Ваші контакти"
+msgstr "Your contact details"
+#: templates/configurator/index.html:203
+msgid "Надішліть конфігурацію — менеджер зв'яжеться протягом 24 год"
+msgstr "Send this configuration — a manager will reply within 24 hours"
+#: templates/configurator/index.html:219 templates/core/home.html:269
+#: templates/leads/contacts.html:113 templates/pages/about.html:232
+#: templates/partials/modal_consult.html:27
+msgid "Іван Петренко"
+msgstr "Ivan Petrenko"
+#: templates/configurator/index.html:234
+msgid "Згода на обробку персональних даних"
+msgstr "Consent to the processing of personal data"
+#: templates/configurator/index.html:236
+msgid "Отримати розрахунок"
+msgstr "Get a quote"
+#: templates/configurator/index.html:252
+msgid "Превʼю комплектації куполу"
+msgstr "Preview of the dome specification"
+#: templates/configurator/index.html:258
+msgid "Схема куполу"
+msgstr "Dome diagram"
+#: templates/configurator/index.html:316 templates/gallery/index.html:39
+#: templates/partials/header.html:11 templates/partials/mobile_menu.html:6
+msgid "Купол"
+msgstr "Dome"
+#: templates/configurator/index.html:320
+msgid "Наповнення"
+msgstr "Fit-out"
+#: templates/configurator/index.html:324
+msgid "Опції"
+msgstr "Options"
+#: templates/configurator/index.html:331
+msgid "Орієнтовна вартість:"
+msgstr "Indicative price:"
+#: templates/configurator/index.html:333
+msgid "Фінальна ціна уточнюється після консультації"
+msgstr "The final price is confirmed after a consultation"
+#: templates/configurator/index.html:340
+msgid "Залишити заявку"
+msgstr "Leave an enquiry"
+#: templates/configurator/index.html:351
+msgid "Орієнтовно"
+msgstr "About"
+#: templates/configurator/index.html:354
+msgid "Заявка"
+msgstr "Enquiry"
+#: templates/core/home.html:33
+msgid "Виробник купольних будинків"
+msgstr "Manufacturer of dome houses"
+#: templates/core/home.html:34
+msgid "Купольні будинки"
+msgstr "Dome houses"
+#: templates/core/home.html:34
+msgid "нового покоління"
+msgstr "of a new generation"
+#: templates/core/home.html:35
+msgid ""
+"Рішення для готелів, курортів і глемпінгів, де дизайн, якість і "
+"функціональність працюють разом."
+msgstr ""
+"A building for hotels, resorts and glamping, where design, quality and"
+" function work together."
+#: templates/core/home.html:37
+msgid "сезони експлуатації"
+msgstr "seasons of use"
+#: templates/core/home.html:39
+msgid "міс."
+msgstr "mo."
+#: templates/core/home.html:39
+msgid "гарантія на конструкцію"
+msgstr "structural warranty"
+#: templates/core/home.html:41
+msgid "рік"
+msgstr "year"
+#: templates/core/home.html:41
+msgid "термін окупності"
+msgstr "payback period"
+#: templates/core/home.html:45
+msgid "Дізнатись про купол"
+msgstr "About the dome"
+#: templates/core/home.html:56
+msgid "Чому KUPOLLA"
+msgstr "Why KUPOLLA"
+#: templates/core/home.html:57
+msgid "Переваги купольних будинків"
+msgstr "What a dome house offers"
+#: templates/core/home.html:58
+msgid ""
+"Поєднання передових технологій та природних матеріалів для вашого комфорту"
+msgstr "Advanced construction and natural materials, specified for comfort"
+#: templates/core/home.html:63
+msgid "Новий формат гостинності"
+msgstr "A new kind of hospitality"
+#: templates/core/home.html:64
+msgid ""
+"Створюйте унікальні простори, які стають головною перевагою вашого "
+"туристичного об'єкта."
+msgstr "Spaces that become the reason guests choose your site."
+#: templates/core/home.html:68
+msgid "Інвестиція в додатковий дохід"
+msgstr "Income from the same land"
+#: templates/core/home.html:69
+msgid ""
+"Збільшуйте номерний фонд та отримуйте нові можливості монетизації території."
+msgstr "Add rooms and new ways to earn from the site."
+#: templates/core/home.html:73
+msgid "Швидке масштабування"
+msgstr "Grow in stages"
+#: templates/core/home.html:74
+msgid "Розширюйте готель чи глемпінг поступово, адаптуючись до потреб ринку."
+msgstr "Add domes to a hotel or glamping site as demand grows."
+#: templates/core/home.html:78
+msgid "Мінімальний вплив на природу"
+msgstr "A light touch on the site"
+#: templates/core/home.html:79
+msgid ""
+"Компактна модульна конструкція дозволяє зберігати особливості локації та "
+"природний ландшафт."
+msgstr "A compact modular structure that leaves the landscape in place."
+#: templates/core/home.html:89
+msgid "Наш продукт"
+msgstr "Our product"
+#: templates/core/home.html:90
+msgid "Модельний ряд KUPOLLA"
+msgstr "The KUPOLLA range"
+#: templates/core/home.html:91
+msgid ""
+"Три готові рішення під ваш проєкт та бюджет — від компактного глемпінгу до "
+"преміальної резиденції"
+msgstr ""
+"Three ready models for your project and budget — from a compact glamping"
+" unit to a premium residence"
+#: templates/core/home.html:141
+msgid ""
+"Геодезичний купольний будинок для глемпінгу, відпочинку та гостьового "
+"проживання."
+msgstr "A geodesic dome house for glamping, leisure and guest stays."
+#: templates/core/home.html:143
+msgid "Детальніше про купол"
+msgstr "More about the dome"
+#: templates/core/home.html:151
+msgid "Весь модельний ряд"
+msgstr "Full range"
+#: templates/core/home.html:161
+msgid "Відеогляд"
+msgstr "Video tour"
+#: templates/core/home.html:162
+msgid "Подивіться на купол зблизька"
+msgstr "See the dome up close"
+#: templates/core/home.html:171
+msgid "Короткий огляд простору та атмосфери Kupolla"
+msgstr "A short look at the space and the atmosphere of Kupolla"
+#: templates/core/home.html:186
+msgid "Технології та матеріали"
+msgstr "Technology and materials"
+#: templates/core/home.html:187
+msgid "Відмінна інженерія"
+msgstr "Careful engineering"
+#: templates/core/home.html:188
+msgid "Спроєктовано для довготривалої експлуатації."
+msgstr "Designed for a long service life."
+#: templates/core/home.html:192
+msgid "Інженерна конструкція"
+msgstr "Engineered structure"
+#: templates/core/home.html:193
+msgid ""
+"Кожен купол проєктується як модульна система, що поєднує високу жорсткість "
+"конструкції, точність виробництва та можливість швидкого монтажу."
+msgstr ""
+"Each dome is designed as a modular system: a stiff structure, factory"
+" accuracy and a short installation."
+#: templates/core/home.html:196
+msgid "Преміальні матеріали"
+msgstr "Premium materials"
+#: templates/core/home.html:197
+msgid ""
+"Ми використовуємо матеріали, які відповідають вимогам професійного "
+"готельного сектору щодо довговічності, енергоефективності та естетики."
+msgstr ""
+"Materials specified for professional hospitality: durability, energy"
+" performance and appearance."
+#: templates/core/home.html:201
+msgid ""
+"Багатошарова конструкція забезпечує високий рівень теплоізоляції, комфортний "
+"мікроклімат у будь-яку пору року та зниження експлуатаційних витрат."
+msgstr ""
+"The layered build gives strong insulation, a stable interior climate"
+" through the year and lower running costs."
+#: templates/core/home.html:204
+msgid "Заводське виробництво"
+msgstr "Factory production"
+#: templates/core/home.html:205
+msgid ""
+"Основні елементи виготовляються у контрольованих виробничих умовах, що "
+"гарантує стабільну якість та прогнозований монтаж на об'єкті."
+msgstr ""
+"The main elements are made under controlled conditions, so quality is"
+" consistent and installation on site is predictable."
+#: templates/core/home.html:209
+msgid "Дізнатись більше про технології"
+msgstr "More about the technology"
+#: templates/core/home.html:219
+msgid "Останні новини"
+msgstr "Latest news"
+#: templates/core/home.html:220
+msgid ""
+"Наші нові проєкти та новини з виробництва, якими ми регулярно ділимось на "
+"нашому сайті."
+msgstr "New projects and news from the factory, published on this site."
+#: templates/core/home.html:240
+msgid "Усі статті блогу"
+msgstr "All blog articles"
+#: templates/core/home.html:251 templates/leads/contacts.html:27
+msgid "Зв'яжіться з нами"
+msgstr "Contact us"
+#: templates/core/home.html:253
+msgid "Залиште заявку — менеджер зв'яжеться з вами протягом 24 годин."
+msgstr "Leave an enquiry — a manager will reply within 24 hours."
+#: templates/core/home.html:281 templates/leads/contacts.html:126
+#: templates/pages/about.html:245
+msgid "Повідомлення"
+msgstr "Message"
+#: templates/core/home.html:287
+msgid "Я погоджуюсь на обробку персональних даних відповідно до GDPR"
+msgstr "I agree to the processing of personal data under the GDPR"
+#: templates/core/home.html:293 templates/leads/contacts.html:138
+msgid "Відповідаємо протягом 24 годин у робочі дні"
+msgstr "We reply within 24 hours on working days"
+#: templates/faq/index.html:42
+msgid "Часті запитання"
+msgstr "FAQ"
+#: templates/faq/index.html:43
+msgid "Відповіді на"
+msgstr "Answers to"
+#: templates/faq/index.html:43
+msgid "ваші запитання"
+msgstr "your questions"
+#: templates/faq/index.html:44
+msgid "Зібрали найпоширеніші питання про купольні будинки KUPOLLA."
+msgstr "Common questions about KUPOLLA dome houses."
+#: templates/faq/index.html:82
+msgid "Монтаж та виробництво"
+msgstr "Installation and production"
+#: templates/faq/index.html:84
+msgid "Скільки часу займає монтаж купольного будинку?"
+msgstr "How long does it take to install a dome house?"
+#: templates/faq/index.html:84
+msgid ""
+"Монтаж каркасу займає від 3 до 7 робочих днів залежно від розміру моделі. "
+"Повний цикл включаючи утеплення, вікна та зовнішнє оздоблення — 10–14 днів. "
+"Це один з найшвидших способів побудувати повноцінне житло."
+msgstr ""
+"The frame takes 3 to 7 working days depending on the model. The full cycle,"
+" including insulation, windows and the outer finish, takes 10–14 days."
+#: templates/faq/index.html:85
+msgid "Які умови потрібні для монтажу? Чи потрібен фундамент?"
+msgstr "What does installation require? Is a foundation needed?"
+#: templates/faq/index.html:85
+msgid ""
+"Для більшості ґрунтів ми використовуємо гвинтові палі — швидко, без земляних "
+"робіт та придатно для складного рельєфу. Для постійного проживання "
+"рекомендуємо стрічковий або плитний фундамент. Наші інженери рекомендують "
+"оптимальне рішення після аналізу геології ділянки."
+msgstr ""
+"On most soils we use screw piles: fast, with no excavation, and suitable"
+" for uneven ground. For year-round living we recommend a strip or slab"
+" foundation. Our engineers confirm the choice after a look at the site"
+" geology."
+#: templates/faq/index.html:86
+msgid "Чи можна встановити купол на схилі або нерівній ділянці?"
+msgstr "Can a dome be built on a slope or uneven ground?"
+#: templates/faq/index.html:86
+msgid ""
+"Так, гвинтові палі дозволяють компенсувати нахил до 15°. Для більших ухилів "
+"ми проєктуємо висоту паль індивідуально. Це дає змогу зберегти природний "
+"рельєф без масштабних земляних робіт."
+msgstr ""
+"Yes. Screw piles can take a slope of up to 15°. For steeper sites we design"
+" the pile lengths individually, so the natural ground can stay in place."
+#: templates/faq/index.html:87
+msgid "Хто проводить монтаж? Чи можу я зробити це самостійно?"
+msgstr "Who installs the dome? Can I do it myself?"
+#: templates/faq/index.html:87
+msgid ""
+"Монтаж проводить наша сертифікована бригада. Ми не рекомендуємо самостійний "
+"монтаж, оскільки від якості збірки залежить довговічність конструкції та дія "
+"гарантії. Монтажники доїжджають до будь-якої точки Європи."
+msgstr ""
+"A certified KUPOLLA crew installs the dome. We do not recommend self-build:"
+" assembly quality affects durability and the warranty. Crews travel across"
+" Europe."
+#: templates/faq/index.html:93
+msgid "Ціноутворення та оплата"
+msgstr "Pricing and payment"
+#: templates/faq/index.html:95
+msgid "Що включає ціна «від...»?"
+msgstr "What does the “from” price include?"
+#: templates/faq/index.html:95
+msgid ""
+"Базова ціна включає: CLT-каркас, утеплення 200 мм, зовнішнє покриття, вікна "
+"та двері стандартної комплектації, монтаж каркасу. Не включено: фундамент, "
+"внутрішнє оздоблення, доставка, підведення комунікацій, тераса (якщо не "
+"обрана як опція)."
+msgstr ""
+"The base price includes the CLT frame, 200 mm insulation, the outer shell,"
+" standard windows and doors, and frame assembly. It does not include the"
+" foundation, interior finishes, delivery, utilities or a terrace unless"
+" that option is selected."
+#: templates/faq/index.html:96
+msgid "Як здійснюється оплата? Чи є розстрочка?"
+msgstr "How do you pay? Is instalment available?"
+#: templates/faq/index.html:96
+#, python-format
+msgid ""
+"Стандартна схема: 30%% передоплата при підписанні договору, 50%% перед "
+"відвантаженням, 20%% після завершення монтажу. Ми також співпрацюємо з "
+"банками-партнерами для фінансування через кредит або лізинг."
+msgstr ""
+"The usual schedule is 30%% on signing, 50%% before shipment and 20%% after"
+" installation. We also work with partner banks on a loan or lease."
+#: templates/faq/index.html:97
+msgid "Чи змінюється ціна після укладення договору?"
+msgstr "Does the price change after the contract is signed?"
+#: templates/faq/index.html:97
+msgid ""
+"Ціна фіксується у договорі на момент підписання та не підлягає перегляду. "
+"Будь-які зміни в конфігурації після підписання договору оформляються "
+"додатковою угодою з фіксованою вартістю змін."
+msgstr ""
+"The contract price is fixed at signing. Any later change of configuration"
+" is a written addendum with its own fixed cost."
+#: templates/faq/index.html:103
+msgid "Дозволи та документи"
+msgstr "Permits and documents"
+#: templates/faq/index.html:105
+msgid "Чи потрібен дозвіл на будівництво для купола?"
+msgstr "Does a dome need a building permit?"
+#: templates/faq/index.html:105
+msgid ""
+"Залежить від країни, площі та класифікації об'єкта. Для тимчасових "
+"конструкцій (до 50 м²) у більшості країн ЄС дозвіл не потрібен або достатньо "
+"повідомлення. Для постійного житла — стандартна процедура отримання "
+"будівельного дозволу. Ми надаємо повний пакет проєктної документації для "
+"подачі."
+msgstr ""
+"It depends on the country, the floor area and how the building is"
+" classified. Temporary structures under 50 m² in much of the EU need no"
+" permit, or only a notification. A permanent home follows the normal permit"
+" process. We supply the project documents for the application."
+#: templates/faq/index.html:106
+msgid "Яку документацію ви надаєте?"
+msgstr "What documents do you provide?"
+#: templates/faq/index.html:106
+msgid ""
+"Ми надаємо: архітектурний проєкт, конструктивні розрахунки, специфікації "
+"матеріалів, сертифікати відповідності CE, паспорт об'єкта, інструкцію з "
+"технічного обслуговування. За запитом — підготовка пакету для отримання "
+"будівельного дозволу."
+msgstr ""
+"We provide the architectural design, structural calculations, material"
+" specifications, CE certificates, a building passport and a maintenance"
+" guide. On request we prepare the package for a building permit."
+#: templates/faq/index.html:112
+msgid "Експлуатація та обслуговування"
+msgstr "Use and maintenance"
+#: templates/faq/index.html:114
+msgid "Як часто потрібне технічне обслуговування?"
+msgstr "How often is maintenance needed?"
+#: templates/faq/index.html:114
+msgid ""
+"Рекомендуємо щорічний огляд у перші 5 років, далі — кожні 3 роки. Основне "
+"обслуговування: перевірка герметичності стиків, стан покриття та "
+"з'єднувачів. Ми пропонуємо контракт на технічне обслуговування з виїздом "
+"спеціалістів."
+msgstr ""
+"We recommend a yearly inspection for the first five years, then every three"
+" years. The main checks are joint tightness, the shell and the connectors."
+" A service contract with a site visit is available."
+#: templates/faq/index.html:115
+msgid "Чи придатний купол для проживання взимку?"
+msgstr "Is the dome suitable for winter living?"
+#: templates/faq/index.html:115
+#, python-format
+msgid ""
+"Так, повністю. Система утеплення 200 мм та клас A+ забезпечують комфортне "
+"проживання при температурах до -30°C. Купол відмінно підходить для "
+"скандинавського та альпійського клімату. Витрати на опалення нижчі за "
+"традиційний будинок на 30%%."
+msgstr ""
+"Yes. 200 mm of insulation and energy class A+ keep the interior comfortable"
+" down to −30°C. The dome suits a Nordic or Alpine climate. Heating use is"
+" about 30%% lower than in a conventional house."
+#: templates/faq/index.html:116
+msgid "Чи можна розширити або змінити купол після встановлення?"
+msgstr "Can the dome be extended or altered after installation?"
+#: templates/faq/index.html:116
+msgid ""
+"Купол може бути розширений через добудову тераси або з'єднання двох куполів "
+"тунелем. Внутрішнє перепланування можливе без обмежень — несучу функцію "
+"виконує тільки зовнішній каркас. Ми консультуємо щодо можливих модифікацій."
+msgstr ""
+"You can add a terrace or link two domes with a tunnel. Interior partitions"
+" can change freely: only the outer frame is structural. We advise on what"
+" is possible."
+#: templates/faq/index.html:117
+msgid "Що відбувається після закінчення терміну служби?"
+msgstr "What happens at the end of the service life?"
+#: templates/faq/index.html:117
+msgid ""
+"CLT-деревина та сталеві з'єднувачі повністю переробляються. Термін служби "
+"конструкції при правильному обслуговуванні — 50+ років. Купол може бути "
+"демонтований та переміщений на інше місце без суттєвих втрат матеріалів."
+msgstr ""
+"CLT timber and the steel connectors can be recycled. With maintenance the"
+" structure lasts 50+ years. The dome can also be dismantled and moved."
+#: templates/faq/index.html:130
+msgid "Залишились запитання?"
+msgstr "Still have a question?"
+#: templates/faq/index.html:137 templates/leads/contacts.html:56
+msgid "Європа та інші країни"
+msgstr "Europe and other countries"
+#: templates/faq/index.html:143
+msgid "Написати нам"
+msgstr "Write to us"
+#: templates/faq/index.html:144 templates/leads/contacts.html:19
+#: templates/partials/footer.html:47 templates/partials/header.html:17
+#: templates/partials/mobile_menu.html:12
+msgid "Контакти"
+msgstr "Contacts"
+#: templates/faq/index.html:153
+msgid "Є ще питання?"
+msgstr "Another question?"
+#: templates/faq/index.html:174
+msgid "Ваше питання"
+msgstr "Your question"
+#: templates/faq/index.html:182
+msgid "Надіслати питання"
+msgstr "Send question"
+#: templates/gallery/index.html:16 templates/gallery/index.html:25
+#: templates/partials/footer.html:39 templates/partials/header.html:14
+#: templates/partials/mobile_menu.html:9
+msgid "Галерея"
+msgstr "Gallery"
+#: templates/gallery/index.html:24
+msgid "Реалізовані проєкти"
+msgstr "Completed projects"
+#: templates/gallery/index.html:25
+msgid "наших об'єктів"
+msgstr "of our buildings"
+#: templates/gallery/index.html:43 templates/gallery/index.html:65
+msgid "Переглянути"
+msgstr "View"
+#: templates/gallery/index.html:53
+msgid "Фото купола зʼявляться незабаром"
+msgstr "Dome photos will appear soon"
+#: templates/gallery/index.html:61 templates/pages/about.html:84
+#: templates/pages/about.html:122
+msgid "Виробництво"
+msgstr "Production"
+#: templates/gallery/index.html:75
+msgid "Фото виробництва додамо найближчим часом"
+msgstr "Factory photos will be added soon"
+#: templates/gallery/index.html:86
+msgid "Інтер'єр вітальні"
+msgstr "Living-room interior"
+#: templates/gallery/index.html:87
+msgid "Мінімалістичний інтер'єр"
+msgstr "A quiet interior"
+#: templates/gallery/index.html:89 templates/gallery/index.html:90
+msgid "Лісовий глемпінг"
+msgstr "Forest glamping"
+#: templates/gallery/index.html:93
+msgid "Панорамний фасад"
+msgstr "Panoramic facade"
+#: templates/gallery/index.html:97
+msgid "Планування 35 м²"
+msgstr "35 m² floor plan"
+#: templates/gallery/index.html:101
+msgid "В оточенні соснового лісу"
+msgstr "Among pine trees"
+#: templates/gallery/index.html:102
+msgid "Сосновий ліс"
+msgstr "Pine forest"
+#: templates/gallery/index.html:105
+msgid "Деревʼяна тераса"
+msgstr "Timber terrace"
+#: templates/gallery/index.html:126 templates/partials/modal_consult.html:5
+msgid "Закрити"
+msgstr "Close"
+#: templates/leads/contacts.html:28
+msgid "Ми завжди"
+msgstr "We are"
+#: templates/leads/contacts.html:28
+msgid "на зв'язку"
+msgstr "here"
+#: templates/leads/contacts.html:29
+msgid ""
+"Маєте питання або хочете розпочати проєкт? Зателефонуйте або напишіть — "
+"зручний спосіб зв'язку нижче."
+msgstr ""
+"Have a question or a project to start? Call or write — the contact details"
+" are below."
+#: templates/leads/contacts.html:76
+msgid "Матеріали та фото KUPOLLA"
+msgstr "KUPOLLA materials and photos"
+#: templates/leads/contacts.html:84 templates/pages/about.html:46
+#: templates/pages/technologies.html:15 templates/pages/technologies.html:23
+#: templates/pages/technologies.html:24 templates/partials/footer.html:38
+#: templates/partials/header.html:13 templates/partials/mobile_menu.html:8
+msgid "Матеріали"
+msgstr "Materials"
+#: templates/leads/contacts.html:85
+msgid "Фото та файли проєкту"
+msgstr "Project photos and files"
+#: templates/leads/contacts.html:86
+msgid "Додаткові зображення та матеріали для ознайомлення — на Google Drive."
+msgstr "Further images and files are on Google Drive."
+#: templates/leads/contacts.html:89
+msgid "Відкрити Google Drive"
+msgstr "Open Google Drive"
+#: templates/leads/contacts.html:98
+msgid "Напишіть нам"
+msgstr "Write to us"
+#: templates/leads/contacts.html:99
+msgid ""
+"Заповніть форму — менеджер зв'яжеться з вами протягом 24 годин у робочі дні."
+msgstr ""
+"Fill in the form — a manager will reply within 24 hours on working days."
+#: templates/leads/contacts.html:127
+msgid "Опишіть ваш запит..."
+msgstr "Describe your request..."
+#: templates/leads/contacts.html:132 templates/pages/about.html:251
+#: templates/partials/modal_consult.html:43
+msgid "Погоджуюсь на обробку персональних даних"
+msgstr "I agree to the processing of personal data"
+#: templates/leads/contacts.html:135
+msgid "Надіслати повідомлення"
+msgstr "Send message"
+#: templates/leads/contacts.html:144
+msgid "Графік роботи"
+msgstr "Opening hours"
+#: templates/leads/contacts.html:154
+msgid "Пн–Пт"
+msgstr "Mon–Fri"
+#: templates/leads/contacts.html:158
+msgid "Субота"
+msgstr "Saturday"
+#: templates/leads/contacts.html:162
+msgid "Неділя"
+msgstr "Sunday"
+#: templates/leads/contacts.html:163
+msgid "Вихідний"
+msgstr "Closed"
+#: templates/leads/contacts.html:170
+msgid "Месенджери"
+msgstr "Messengers"
+#: templates/leads/contacts.html:190
+msgid "Швидка консультація"
+msgstr "A quick consultation"
+#: templates/leads/contacts.html:191
+msgid ""
+"Хочете розрахувати вартість купола або обговорити проєкт? Зателефонуйте — "
+"перша консультація безкоштовна."
+msgstr ""
+"Want a price for a dome, or to talk through a project? Call us — the first"
+" consultation is free."
+#: templates/leads/contacts.html:193
+msgid "Зателефонувати"
+msgstr "Call"
+#: templates/leads/contacts.html:205
+msgid "Реквізити компанії"
+msgstr "Company details"
+#: templates/leads/contacts.html:209
+msgid "Повна назва"
+msgstr "Full name"
+#: templates/leads/contacts.html:220
+msgid "Платник ПДВ"
+msgstr "VAT payer"
+#: templates/leads/partials/form_errors.html:3
+msgid "Будь ласка, виправте помилки:"
+msgstr "Please correct the errors:"
+#: templates/leads/partials/form_success.html:7
+msgid "Дякуємо!"
+msgstr "Thank you!"
+#: templates/leads/partials/form_success.html:8
+msgid "Ваша заявка прийнята. Менеджер зв'яжеться з вами протягом 24 годин."
+msgstr "Your enquiry is in. A manager will contact you within 24 hours."
+#: templates/pages/about.html:15 templates/partials/footer.html:37
+#: templates/partials/header.html:10 templates/partials/mobile_menu.html:5
+msgid "Про компанію"
+msgstr "About the company"
+#: templates/pages/about.html:40
+msgid "Хто ми"
+msgstr "Who we are"
+#: templates/pages/about.html:41
+msgid ""
+"KUPOLLA створює модульні купольні рішення для готелів, курортів та "
+"інвестиційних проєктів."
+msgstr ""
+"KUPOLLA designs modular dome buildings for hotels, resorts and investment"
+" projects."
+#: templates/pages/about.html:43
+msgid ""
+"Ми розвиваємо напрям купольної архітектури, поєднуючи сучасний дизайн із "
+"практичними вимогами комерційної експлуатації."
+msgstr ""
+"We develop dome architecture that meets the practical demands of commercial"
+" use."
+#: templates/pages/about.html:44
+msgid ""
+"Використання алюмінієвого композиту як основи зовнішньої оболонки дозволяє "
+"створювати конструкції з високими експлуатаційними характеристиками та "
+"виразною архітектурою."
+msgstr ""
+"An aluminium-composite outer shell gives the building durable performance"
+" and a clear architectural form."
+#: templates/pages/about.html:49
+msgid "Алюмінієвий композит та матеріали оболонки"
+msgstr "Aluminium composite and shell materials"
+#: templates/pages/about.html:50
+msgid "Композитна оболонка — основа зовнішнього покриття"
+msgstr "The composite shell is the outer skin of the dome"
+#: templates/pages/about.html:59
+msgid "Команда"
+msgstr "Team"
+#: templates/pages/about.html:60
+msgid "Інженери, технологи та менеджери, які щодня створюють KUPOLLA"
+msgstr "Engineers, technologists and managers who build KUPOLLA"
+#: templates/pages/about.html:85
+msgid "Як ми працюємо"
+msgstr "How we work"
+#: templates/pages/about.html:86
+msgid "Від проєктування до монтажу — усі етапи під нашим контролем"
+msgstr "From design to installation — every stage is ours"
+#: templates/pages/about.html:102
+msgid "Власне виробництво"
+msgstr "Our own production"
+#: templates/pages/about.html:103
+msgid ""
+"Основні елементи виготовляються у контрольованих умовах заводу — це гарантує "
+"стабільну якість і прогнозований монтаж на об'єкті."
+msgstr ""
+"The main elements are made in controlled factory conditions, so quality is"
+" consistent and installation on site is predictable."
+#: templates/pages/about.html:113
+msgid "Проєктування"
+msgstr "Design"
+#: templates/pages/about.html:114
+msgid "Розробляємо індивідуальний проєкт та конструктивну документацію."
+msgstr "We prepare the project and the structural documents."
+#: templates/pages/about.html:123
+msgid ""
+"Виготовляємо елементи купола на власному заводі під контролем інженерів."
+msgstr ""
+"We manufacture the dome elements at our factory, under engineering control."
+#: templates/pages/about.html:131
+msgid "Контроль якості"
+msgstr "Quality control"
+#: templates/pages/about.html:132
+msgid "Перевіряємо кожен елемент перед відправкою на об'єкт."
+msgstr "We check every element before it leaves for the site."
+#: templates/pages/about.html:141
+msgid "Встановлюємо купол на об'єкті силами власної монтажної бригади."
+msgstr "Our own crew installs the dome on site."
+#: templates/pages/about.html:153
+msgid "Де нас знайти?"
+msgstr "Where to find us"
+#: templates/pages/about.html:154 templates/pages/about.html:172
+msgid "Шоурум KUPOLLA"
+msgstr "KUPOLLA showroom"
+#: templates/pages/about.html:155
+msgid ""
+"Запрошуємо познайомитися з KUPOLLA особисто. Відвідайте наш шоурум, щоб "
+"побачити конструкції, матеріали та якість виконання наживо."
+msgstr ""
+"Visit the showroom to see the structure, the materials and the quality of"
+" the work in person."
+#: templates/pages/about.html:167 templates/pages/about.html:254
+msgid "Запланувати візит"
+msgstr "Book a visit"
+#: templates/pages/about.html:184
+msgid "Карта шоуруму KUPOLLA"
+msgstr "Map of the KUPOLLA showroom"
+#: templates/pages/about.html:199
+msgid "Візит"
+msgstr "Visit"
+#: templates/pages/about.html:200
+msgid "Запрошуємо познайомитися з KUPOLLA особисто."
+msgstr "Come and see KUPOLLA in person."
+#: templates/pages/about.html:201
+msgid ""
+"Залиште заявку — підберемо зручний час для візиту в шоурум або онлайн-"
+"консультації."
+msgstr ""
+"Leave an enquiry — we will suggest a time for a showroom visit or an online"
+" call."
+#: templates/pages/about.html:246
+msgid "Коли зручно відвідати шоурум..."
+msgstr "When you would like to visit the showroom..."
+#: templates/pages/technologies.html:24
+msgid "і конструкція купола"
+msgstr "and the dome structure"
+#: templates/pages/technologies.html:25
+msgid ""
+"Наші куполи створені як багатошарова конструкція, де кожен елемент виконує "
+"конкретну функцію — від захисту зовнішнього середовища до забезпечення "
+"стабільного мікроклімату всередині приміщення."
+msgstr ""
+"Our domes are a layered construction. Each layer has a job, from weather"
+" protection to a stable interior climate."
+#: templates/pages/technologies.html:37
+msgid ""
+"Під час розробки ми підбирали матеріали не лише за зовнішнім виглядом, а за "
+"їхніми технічними характеристиками: міцністю, довговічністю, "
+"теплоізоляційними властивостями та відповідністю вимогам сучасного "
+"будівництва."
+msgstr ""
+"We chose materials for their technical performance — strength, durability,"
+" insulation and compliance with current building practice — not only for"
+" their appearance."
+#: templates/pages/technologies.html:46
+msgid "Конструкція"
+msgstr "Structure"
+#: templates/pages/technologies.html:47
+msgid "Багатошарова оболонка купола"
+msgstr "Layered dome shell"
+#: templates/pages/technologies.html:48
+msgid "Кожен шар відповідає за захист, клімат або несучу здатність конструкції"
+msgstr "Each layer handles weather, climate or the structural load"
+#: templates/pages/technologies.html:55
+msgid "Архітектурний розріз купола: оболонка, каркас і внутрішній простір"
+msgstr "Architectural section of the dome: shell, frame and interior"
+#: templates/pages/technologies.html:60
+msgid "Архітектурний розріз моделі"
+msgstr "Architectural section of the model"
+#: templates/pages/technologies.html:64
+msgid "Зовнішня оболонка"
+msgstr "Outer shell"
+#: templates/pages/technologies.html:65
+msgid "ACP-панель із PVDF-покриттям"
+msgstr "ACP panel with a PVDF coating"
+#: templates/pages/technologies.html:68
+msgid "Вентиляційний зазор"
+msgstr "Ventilation gap"
+#: templates/pages/technologies.html:69
+msgid "Циркуляція повітря та відведення вологи"
+msgstr "Air movement and moisture leaving the wall"
+#: templates/pages/technologies.html:72
+msgid "Теплоізоляція"
+msgstr "Thermal insulation"
+#: templates/pages/technologies.html:73
+msgid "Стабільний мікроклімат у будь-яку пору року"
+msgstr "A stable interior climate through the year"
+#: templates/pages/technologies.html:76
+msgid "Несучий каркас"
+msgstr "Load-bearing frame"
+#: templates/pages/technologies.html:77
+msgid "Геодезична модульна структура"
+msgstr "A modular geodesic structure"
+#: templates/pages/technologies.html:80
+msgid "Внутрішнє оздоблення"
+msgstr "Interior finish"
+#: templates/pages/technologies.html:81
+msgid "Фінішний шар під експлуатацію"
+msgstr "The finish layer for daily use"
+#: templates/pages/technologies.html:92
+msgid "Специфікація"
+msgstr "Specification"
+#: templates/pages/technologies.html:93
+msgid "Зовнішнє покриття та ключові матеріали"
+msgstr "Outer cladding and the main materials"
+#: templates/pages/technologies.html:98
+msgid "Алюмінієва композитна панель ACP"
+msgstr "Aluminium composite panel, ACP"
+#: templates/pages/technologies.html:101
+msgid "Зовнішнє покриття"
+msgstr "Outer cladding"
+#: templates/pages/technologies.html:102
+msgid "Алюмінієва композитна панель (ACP)"
+msgstr "Aluminium composite panel (ACP)"
+#: templates/pages/technologies.html:103
+msgid ""
+"Зовнішня оболонка купола виконана з алюмінієвої композитної панелі ACP із "
+"PVDF-покриттям. PVDF-покриття забезпечує стійкість поверхні до "
+"ультрафіолетового випромінювання, атмосферних впливів та температурних змін, "
+"зберігаючи естетичний вигляд конструкції протягом тривалого часу."
+msgstr ""
+"The outer shell is an aluminium composite panel (ACP) with a PVDF coating."
+" The coating resists ultraviolet light, weather and temperature change, and"
+" keeps the appearance of the building for a long time."
+#: templates/pages/technologies.html:108
+msgid "Трошарове ізоляційне скло"
+msgstr "Triple insulating glass"
+#: templates/pages/technologies.html:111
+msgid "Трошарове скло"
+msgstr "Triple glazing"
+#: templates/pages/technologies.html:112
+msgid ""
+"Ізолювальний склопакет з аргоновим заповненням та Low-E покриттям. Пропускає "
+"максимум природного світла за мінімальних тепловтрат."
+msgstr ""
+"An insulating glass unit, argon-filled, with a low-E coating. It admits"
+" daylight and limits heat loss."
+#: templates/pages/technologies.html:117
+msgid "З'єднувачі AISI 316 — нержавіюча сталь"
+msgstr "AISI 316 connectors — stainless steel"
+#: templates/pages/technologies.html:121
+msgid "З'єднувачі AISI 316"
+msgstr "AISI 316 connectors"
+#: templates/pages/technologies.html:122
+msgid ""
+"Нержавіюча сталь морського класу. Стійка до корозії, вологи та UV-"
+"опромінення. Забезпечує надійність каркасу на десятиліття."
+msgstr ""
+"Marine-grade stainless steel. Resistant to corrosion, moisture and UV, and"
+" specified for a long service life of the frame."
+#: templates/pages/technologies.html:135
+msgid "Комфортний мікроклімат і контроль витрат"
+msgstr "A stable interior climate and controlled running costs"
+#: templates/pages/technologies.html:136
+msgid ""
+"Багатошарова конструкція забезпечує високий рівень теплоізоляції та "
+"стабільний мікроклімат."
+msgstr ""
+"The layered build gives strong insulation and a stable interior climate."
+#: templates/pages/technologies.html:138
+msgid "Багатошарова оболонка зі зниженими тепловтратами"
+msgstr "A layered shell with lower heat loss"
+#: templates/pages/technologies.html:139
+msgid "Безперервний захист від вологи та містків холоду"
+msgstr "Continuous protection from moisture and thermal bridges"
+#: templates/pages/technologies.html:140
+msgid "Комфорт у сезонній та цілорічній експлуатації"
+msgstr "Comfortable in seasonal and year-round use"
+#: templates/pages/technologies.html:141
+msgid "Опції інтеграції інженерних систем під проєкт"
+msgstr "Options to integrate building services for the project"
+#: templates/pages/technologies.html:145
+msgid "Сезони експлуатації"
+msgstr "Seasons of use"
+#: templates/pages/technologies.html:146
+msgid "Зовнішня оболонка з PVDF"
+msgstr "Outer shell with PVDF"
+#: templates/pages/technologies.html:147
+msgid "міс. гарантії на конструкцію*"
+msgstr "mo. structural warranty*"
+#: templates/pages/technologies.html:148
+msgid "Орієнтація на готельний сектор"
+msgstr "Specified for the hotel sector"
+#: templates/pages/technologies.html:158
+msgid "Якість"
+msgstr "Quality"
+#: templates/pages/technologies.html:159
+msgid "Стандарти та гарантії"
+msgstr "Standards and warranties"
+#: templates/pages/technologies.html:163
+msgid "сертифікація"
+msgstr "certification"
+#: templates/pages/technologies.html:164
+msgid "Відповідність будівельним нормам ЄС"
+msgstr "Compliance with EU construction rules"
+#: templates/pages/technologies.html:167
+msgid "Заводський контроль"
+msgstr "Factory control"
+#: templates/pages/technologies.html:168
+msgid "Виготовлення елементів у контрольованих умовах"
+msgstr "Elements made under controlled conditions"
+#: templates/pages/technologies.html:171
+msgid "Гарантія на конструкцію"
+msgstr "Structural warranty"
+#: templates/pages/technologies.html:172
+msgid "96 міс."
+msgstr "96 mo."
+#: templates/pages/technologies.html:176
+msgid "Стійкість зовнішньої оболонки до UV та клімату"
+msgstr "Outer shell resistant to UV and climate"
+#: templates/pages/technologies.html:180
+msgid "Дізнатись більше"
+msgstr "Learn more"
+#: templates/partials/footer.html:7 templates/partials/header.html:6
+msgid "головна"
+msgstr "home"
+#: templates/partials/footer.html:10
+msgid "Преміальні купольні будинки для сучасного способу життя"
+msgstr "Premium dome houses for the way people live now"
+#: templates/partials/footer.html:34
+msgid "Footer навігація"
+msgstr "Footer navigation"
+#: templates/partials/footer.html:36
+msgid "Компанія"
+msgstr "Company"
+#: templates/partials/footer.html:43
+msgid "Продукт"
+msgstr "Product"
+#: templates/partials/footer.html:44
+msgid "Купол KUPOLLA"
+msgstr "KUPOLLA dome"
+#: templates/partials/footer.html:50
+msgid "Мови"
+msgstr "Languages"
+#: templates/partials/footer.html:58
+msgid "Всі права захищено."
+msgstr "All rights reserved."
+#: templates/partials/footer.html:61
+msgid "Політика конфіденційності"
+msgstr "Privacy policy"
+#: templates/partials/footer.html:64
+msgid "Умови використання"
+msgstr "Terms of use"
+#: templates/partials/footer.html:68
+msgid "Сайт створено в"
+msgstr "Site by"
+#: templates/partials/header.html:9
+msgid "Головна навігація"
+msgstr "Main navigation"
+#: templates/partials/header.html:23
+msgid "Консультація"
+msgstr "Consultation"
+#: templates/partials/header.html:25
+msgid "Відкрити меню"
+msgstr "Open menu"
+#: templates/partials/honeypot.html:3
+msgid "Не заповнюйте це поле"
+msgstr "Do not fill in this field"
+#: templates/partials/location_fields.html:4
+msgid "Країна"
+msgstr "Country"
+#: templates/partials/location_fields.html:9
+msgid "Місто"
+msgstr "City"
+#: templates/partials/mobile_menu.html:4
+msgid "Мобільна навігація"
+msgstr "Mobile navigation"
+#: templates/partials/modal_consult.html:9
+msgid "Безкоштовна консультація"
+msgstr "Free consultation"
+#: templates/partials/modal_consult.html:10
+msgid "Наш менеджер зв'яжеться з вами протягом 24 годин."
+msgstr "Our manager will contact you within 24 hours."

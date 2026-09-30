@@ -5,7 +5,7 @@ class PublicUrlSmokeTests(TestCase):
     """Перевірка доступності ключових сторінок."""
 
     def test_home_page(self):
-        response = self.client.get('/uk/')
+        response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
     def test_healthcheck(self):
@@ -19,11 +19,11 @@ class PublicUrlSmokeTests(TestCase):
         self.assertIn('/static/favicon.ico', response['Location'])
 
     def test_contacts_page(self):
-        response = self.client.get('/uk/contacts/')
+        response = self.client.get('/contacts/')
         self.assertEqual(response.status_code, 200)
 
     def test_configurator_page(self):
-        response = self.client.get('/uk/configurator/')
+        response = self.client.get('/configurator/')
         self.assertEqual(response.status_code, 200)
 
     def test_calculate_api(self):
@@ -37,7 +37,7 @@ class PublicUrlSmokeTests(TestCase):
 
     def test_models_list_page(self):
         """/models/ — модельний ряд (Compact/Prime/Grand), а не редірект."""
-        response = self.client.get('/uk/models/', follow=False)
+        response = self.client.get('/models/', follow=False)
         self.assertEqual(response.status_code, 200)
         self.assertIn('models', response.context)
         slugs = {dome.slug for dome in response.context['models']}

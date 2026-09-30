@@ -1,15 +1,28 @@
 from django.db import models
+from django.db.models import ProtectedError
+
+
+class SingletonQuerySet(models.QuerySet):
+    def delete(self):
+        if not self.exists():
+            return 0, {}
+        raise ProtectedError('Єдиний запис видаляти не можна.', set(self))
 
 
 class SingletonModel(models.Model):
-    """Базовий клас для singleton-моделей (лише один запис)."""
+    """Єдиний запис: завжди pk=1, видалення заборонене."""
+
+    objects = SingletonQuerySet.as_manager()
 
     class Meta:
         abstract = True
 
     def save(self, *args, **kwargs):
-        self.__class__.objects.exclude(pk=self.pk).delete()
+        self.pk = 1
         super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        raise ProtectedError('Єдиний запис видаляти не можна.', {self})
 
     @classmethod
     def load(cls):
@@ -48,9 +61,23 @@ class SiteSettings(SingletonModel):
         help_text='Матеріали / фото для сторінки Контакти',
     )
 
+    en_enabled = models.BooleanField('English на сайті', default=True)
+    sk_enabled = models.BooleanField('Slovenčina на сайті', default=False)
+    cs_enabled = models.BooleanField('Čeština на сайті', default=False)
+    nl_enabled = models.BooleanField('Nederlands на сайті', default=False)
+    ru_enabled = models.BooleanField('Русский на сайті', default=False)
+    es_enabled = models.BooleanField('Español на сайті', default=False)
+    fr_enabled = models.BooleanField('Français на сайті', default=False)
+
     class Meta:
         verbose_name = 'Налаштування сайту'
         verbose_name_plural = 'Налаштування сайту'
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(pk=1),
+                name='core_sitesettings_singleton_pk',
+            ),
+        ]
 
     def __str__(self):
         return 'Налаштування сайту'

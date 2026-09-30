@@ -114,7 +114,7 @@ class ConfiguratorPageTests(TestCase):
         )
 
     def test_page_renders_with_selected_model(self):
-        response = self.client.get('/uk/configurator/?model=test-dome-page')
+        response = self.client.get('/configurator/?model=test-dome-page')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-qa="lead-form"')
         self.assertContains(response, 'id="cfgPriceBar"')
@@ -122,6 +122,6 @@ class ConfiguratorPageTests(TestCase):
         self.assertContains(response, 'kupolla-config-2.css')
 
     def test_unknown_model_falls_back_to_published_dome(self):
-        response = self.client.get('/uk/configurator/?model=<script>')
+        response = self.client.get('/configurator/?model=<script>')
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, '<script>alert')

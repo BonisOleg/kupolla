@@ -8,8 +8,8 @@ SITE_SETTINGS = {
     'email': 'office@kupolla.com',
     'working_hours': 'Пн–Пт: 9:00–18:00 (EET)',
     'address': 'Україна, Київ',
-    'privacy_policy_url': '/uk/privacy/',
-    'terms_url': '/uk/terms/',
+    'privacy_policy_url': '/privacy/',
+    'terms_url': '/terms/',
     'telegram': 'https://t.me/kupolla',
     'instagram': 'https://instagram.com/kupolla',
 }

@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.utils.translation import gettext_lazy as _
 
-from .models import AboutPage, TeamMember, TechnologiesPage
+from .models import AboutPage, TechnologiesPage
 
 
 class AboutView(TemplateView):
@@ -12,7 +12,7 @@ class AboutView(TemplateView):
         ctx['page_title'] = _('KUPOLLA - модульні будинки')
         ctx['meta_description'] = _('Виробник купольних будинків KUPOLLA: місія, команда, виробництво та шоурум.')
         ctx['about'] = AboutPage.load()
-        ctx['team_members'] = TeamMember.objects.filter(is_published=True)
+        ctx['team_members'] = ctx['about'].members.filter(is_published=True)
         return ctx
 
 

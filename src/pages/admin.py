@@ -1,16 +1,32 @@
 from django.contrib import admin
-from modeltranslation.admin import TabbedTranslationAdmin
-from unfold.admin import ModelAdmin
+from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
+from unfold.admin import ModelAdmin, StackedInline
+from unfold.overrides import FORMFIELD_OVERRIDES_INLINE
 
-from src.core.admin_utils import ImagePreviewMixin, ImageSizeHelpMixin, SingletonModelAdminMixin, TinyMCEAdminMixin, image_size_notice
+from src.core.admin_utils import ImagePreviewMixin, ImageSizeHelpMixin, SingletonModelAdminMixin, TinyMCEAdminMixin
 from src.core.image_specs import TEAM_PHOTO_IMAGE
 
 from .models import AboutPage, TeamMember, TechnologiesPage
 
 
+class TeamMemberInline(ImagePreviewMixin, ImageSizeHelpMixin, TranslationStackedInline, StackedInline):
+    model = TeamMember
+    formfield_overrides = FORMFIELD_OVERRIDES_INLINE
+    extra = 0
+    image_field = 'photo'
+    preview_height = 72
+    image_size_help = {'photo': TEAM_PHOTO_IMAGE}
+    fields = ('photo', 'get_image_preview', 'name', 'position', 'is_published', 'order')
+    readonly_fields = ('get_image_preview',)
+    ordering = ('order', 'pk')
+    verbose_name = 'Член команди'
+    verbose_name_plural = 'Команда на сторінці «Про компанію»'
+
+
 @admin.register(AboutPage)
 class AboutPageAdmin(SingletonModelAdminMixin, TinyMCEAdminMixin, TabbedTranslationAdmin, ModelAdmin):
     tinymce_fields = ('mission_body', 'values_body', 'team_body', 'cooperation_body')
+    inlines = [TeamMemberInline]
 
     fieldsets = (
         ('Місія', {
@@ -18,29 +34,12 @@ class AboutPageAdmin(SingletonModelAdminMixin, TinyMCEAdminMixin, TabbedTranslat
             'description': 'Головний блок сторінки «Про компанію».',
         }),
         ('Цінності', {'fields': ('values_body',)}),
-        ('Команда', {'fields': ('team_body',)}),
+        ('Команда', {
+            'fields': ('team_body',),
+            'description': 'Текст секції. Картки людей — одразу під цією формою.',
+        }),
         ('Етапи співпраці', {'fields': ('cooperation_body',)}),
         ('CTA', {'fields': ('cta_title',), 'description': 'Заклик до дії внизу сторінки.'}),
-    )
-
-
-@admin.register(TeamMember)
-class TeamMemberAdmin(ImagePreviewMixin, ImageSizeHelpMixin, TabbedTranslationAdmin, ModelAdmin):
-    image_size_help = {'photo': TEAM_PHOTO_IMAGE}
-    preview_height = 60
-    list_display = ('get_image_preview', 'name', 'position', 'is_published', 'order')
-    list_editable = ('is_published', 'order')
-    list_filter = ('is_published',)
-    search_fields = ('name', 'position')
-    readonly_fields = ('get_image_preview',)
-
-    fieldsets = (
-        ('Фото', {
-            'fields': ('photo', 'get_image_preview'),
-            'description': image_size_notice('Рекомендований розмір:', TEAM_PHOTO_IMAGE),
-        }),
-        ('Дані', {'fields': ('name', 'position')}),
-        ('Публікація', {'fields': ('is_published', 'order')}),
     )
 
 
