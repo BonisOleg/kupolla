@@ -235,7 +235,7 @@
 .kp-cfg-model__img--s {
   background:
     linear-gradient(140deg, rgba(14,35,25,.25), rgba(42,80,64,.25)),
-    url('../images/models/kupolla-s-exterior-forest.png') center / cover no-repeat;
+    url('../images/models/kupolla-s-exterior-forest.webp') center / cover no-repeat;
 }
 .kp-cfg-model__img--m { background: linear-gradient(140deg, #00311e, #051f43); }
 .kp-cfg-model__img--l { background: linear-gradient(140deg, #202020, #00311e); }

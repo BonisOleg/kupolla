@@ -1,0 +1,15 @@
+# Override для HTTPS на Droplet. Використовувати ЛИШЕ разом з базовим файлом:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# Передумова: certbot на хості вже випустив /etc/letsencrypt/live/kupolla.com/.
+
+services:
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx/docker.prod.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_volume:/app/staticfiles:ro
+      - media_volume:/app/media:ro
+      - certbot_www:/var/www/certbot:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro

@@ -26,10 +26,16 @@ python3 manage.py collectstatic --noinput
 echo "=== Compiling translations ==="
 python3 manage.py compilemessages --ignore=venv 2>/dev/null || true
 
+STATIC_COUNT=$(find /app/staticfiles -type f 2>/dev/null | wc -l | tr -d ' ')
+echo "=== static files: ${STATIC_COUNT} ==="
+if [ "${STATIC_COUNT:-0}" -lt 10 ]; then
+  echo "WARN: staticfiles майже порожній — перевір STATIC_ROOT / collectstatic"
+fi
+
 echo "=== Starting gunicorn ==="
 exec gunicorn config.wsgi:application \
   --bind 0.0.0.0:8000 \
-  --workers 3 \
+  --workers "${GUNICORN_WORKERS:-2}" \
   --timeout 120 \
   --access-logfile - \
   --error-logfile -

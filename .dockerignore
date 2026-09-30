@@ -13,6 +13,10 @@ media/
 db.sqlite3
 .DS_Store
 deploy/nginx/
+deploy/docker/
+docker-compose*.yml
+Dockerfile
+.cursor/
 README*
 *.md
 docs/
