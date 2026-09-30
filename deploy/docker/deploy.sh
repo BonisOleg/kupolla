@@ -52,10 +52,13 @@ fi
 echo "==> Up (перший прохід нефатальний: web чекає міграції)"
 ${COMPOSE} up -d --remove-orphans || true
 
-echo "==> Чекаю /healthz/ (до 5 хв)"
+HEALTH_URL="http://127.0.0.1/healthz/"
+[ "${MODE}" = "prod" ] && HEALTH_URL="https://127.0.0.1/healthz/"
+
+echo "==> Чекаю ${HEALTH_URL} (до 5 хв)"
 HEALTH_OK=0
 for _ in $(seq 1 60); do
-  if curl -sf -H "Host: ${DOMAIN}" http://127.0.0.1/healthz/ >/dev/null 2>&1; then
+  if curl -skf -H "Host: ${DOMAIN}" "${HEALTH_URL}" >/dev/null 2>&1; then
     HEALTH_OK=1
     break
   fi
@@ -84,13 +87,10 @@ for svc in db web nginx; do
 done
 
 if [ "${MODE}" = "prod" ]; then
-  echo "==> HTTPS перевірка"
+  echo "==> nginx -t та redirect 80→443"
   ${COMPOSE} exec -T nginx nginx -t 2>&1 | sed 's/^/    /'
-  if curl -skf https://127.0.0.1/healthz/ -H "Host: ${DOMAIN}" >/dev/null; then
-    echo "    HTTPS healthz OK"
-  else
-    echo "    WARN: HTTPS healthz не відповідає" >&2
-  fi
+  REDIRECT_CODE=$(curl -s -o /dev/null -w '%{http_code}' -H "Host: ${DOMAIN}" http://127.0.0.1/healthz/)
+  echo "    HTTP /healthz/ → ${REDIRECT_CODE} (очікується 301)"
 fi
 
 echo "==> Прибираю dangling images"
