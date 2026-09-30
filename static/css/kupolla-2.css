@@ -250,7 +250,7 @@ header.kp-header .kp-btn.kp-btn--primary:hover {
   padding-bottom: calc(2rem + var(--safe-b));
   padding-left:  calc(1.75rem + var(--safe-l));
   padding-right: calc(1.75rem + var(--safe-r));
-  clip-path: inset(0 0 0 100%);
+  clip-path: inset(0 100% 0 0);
   transform: none;
   visibility: hidden;
   pointer-events: none;

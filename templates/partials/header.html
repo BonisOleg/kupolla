@@ -3,6 +3,9 @@
 <header id="header" class="kp-header">
   <div class="kp-container">
     <div class="kp-header__inner">
+      <button class="kp-burger" id="burgerBtn" data-qa="menu-open" aria-label="{% trans 'Відкрити меню' %}" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <a href="{% url 'core:home' %}" class="kp-logo" aria-label="KUPOLLA — {% trans 'головна' %}">
         <img src="{% static 'images/brand/kupolla-logo.png' %}" alt="KUPOLLA" class="kp-logo__img">
       </a>
@@ -22,9 +25,6 @@
           <a href="{% url 'configurator:index' %}" class="kp-btn kp-btn--header-ghost kp-btn--sm">{% trans "Конфігуратор" %}</a>
           <button class="kp-btn kp-btn--primary kp-btn--sm" data-modal-trigger="consult">{% trans "Консультація" %}</button>
         </div>
-        <button class="kp-burger" id="burgerBtn" data-qa="menu-open" aria-label="{% trans 'Відкрити меню' %}" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </div>
   </div>
