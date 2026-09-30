@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% load static i18n humanize %}
 {% block body_class %}kp-body--home{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}">{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-3.css' %}?v=10">
+{% endblock %}
 
 {% block content %}
 <!-- HERO -->
@@ -270,7 +274,7 @@
           </div>
           <div class="kp-form__fld">
             <label for="cEmail" class="kp-form__lbl">{% trans "Email" %}</label>
-            <input type="email" id="cEmail" name="email" class="kp-form__inp" placeholder="ivan@example.com" autocomplete="email">
+            <input type="email" id="cEmail" name="email" class="kp-form__inp" placeholder="ivan@example.com" autocomplete="email" inputmode="email">
           </div>
           {% include "partials/location_fields.html" with id_prefix="c" %}
           <div class="kp-form__fld">

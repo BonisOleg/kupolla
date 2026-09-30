@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static i18n %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=7">
-<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-3.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-4.css' %}?v=10">
 <link rel="stylesheet" href="{% static 'css/kupolla-contacts.css' %}?v=3">
 {% endblock %}
 
@@ -38,7 +40,7 @@
     <div class="kp-contacts__cards">
       <a href="tel:+380671737578" class="kp-ct-card">
         <span class="kp-ct-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         </span>
         <span class="kp-ct-card__body">
           <span class="kp-ct-card__label">{% trans "Україна" %}</span>
@@ -48,7 +50,7 @@
 
       <a href="tel:+420737306111" class="kp-ct-card">
         <span class="kp-ct-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.77a19.79 19.79 0 01-3.07-8.67A2 2 0 011.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         </span>
         <span class="kp-ct-card__body">
           <span class="kp-ct-card__label">{% trans "Європа та інші країни" %}</span>
@@ -58,7 +60,7 @@
 
       <a href="mailto:{{ email }}" class="kp-ct-card">
         <span class="kp-ct-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </span>
         <span class="kp-ct-card__body">
           <span class="kp-ct-card__label">Email</span>

@@ -134,12 +134,8 @@ MODELTRANSLATION_FALLBACK_LANGUAGES = ('uk',)
 # Static & Media
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-    # Existing frontend assets (css/, js/ at project root)
-    ('css', BASE_DIR / 'css'),
-    ('js', BASE_DIR / 'js'),
-]
+# Єдине дерево статики (ERR-138): static/{css,js,images,fonts,videos}
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = config('MEDIA_URL', default='/media/')
 MEDIA_ROOT = BASE_DIR / 'media'

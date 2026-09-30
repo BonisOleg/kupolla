@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileCta();
   initSmoothScroll();
   initGa4CtaTracking();
-  initHeroRotate();
   initHeroVideo();
 });
 
@@ -55,7 +54,7 @@ function openMobileMenu() {
   btn.setAttribute('aria-expanded', 'true');
   menu.classList.add('open');
   menu.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('is-locked');
 }
 
 function closeMobileMenu() {
@@ -66,7 +65,7 @@ function closeMobileMenu() {
   menu.classList.remove('open');
   menu.setAttribute('aria-hidden', 'true');
   if (!document.getElementById('consultModal')?.classList.contains('open')) {
-    document.body.style.overflow = '';
+    document.body.classList.remove('is-locked');
   }
 }
 
@@ -122,7 +121,7 @@ function openConsultModal() {
   if (!modal) return;
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('is-locked');
   setTimeout(() => {
     const first = modal.querySelector('input');
     if (first) first.focus();
@@ -136,7 +135,7 @@ function closeConsultModal() {
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
   const menuOpen = document.getElementById('mobileMenu')?.classList.contains('open');
-  if (!menuOpen) document.body.style.overflow = '';
+  if (!menuOpen) document.body.classList.remove('is-locked');
 }
 
 window.openConsultModal  = openConsultModal;
@@ -362,9 +361,7 @@ function initMobileCta() {
   if (!cta || !hero) return;
 
   const obs = new IntersectionObserver(entries => {
-    const visible = entries[0].isIntersecting;
-    cta.style.opacity       = visible ? '0' : '1';
-    cta.style.pointerEvents = visible ? 'none' : 'auto';
+    cta.classList.toggle('is-faded', entries[0].isIntersecting);
   }, { threshold: 0.25 });
 
   obs.observe(hero);
@@ -393,41 +390,6 @@ function initGa4CtaTracking() {
       const label = btn.textContent.trim().slice(0, 60);
       trackGa4('cta_click', { cta_label: label });
     });
-  });
-}
-
-/* ─── HERO ROTATING TEXT ─── */
-function initHeroRotate() {
-  const el = document.getElementById('heroRotate');
-  if (!el) return;
-
-  const words = [
-    'глемпінг',
-    'сімейний дім',
-    'туристичний бізнес',
-    'Airbnb',
-    'офіс',
-    'гостьовий будинок',
-  ];
-  let idx = 0;
-
-  const rotate = () => {
-    el.classList.add('kp-rot-out');
-    setTimeout(() => {
-      idx = (idx + 1) % words.length;
-      el.textContent = words[idx];
-      el.classList.remove('kp-rot-out');
-      el.classList.add('kp-rot-in');
-      setTimeout(() => el.classList.remove('kp-rot-in'), 400);
-    }, 340);
-  };
-
-  const interval = setInterval(rotate, 2800);
-
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (reduced.matches) clearInterval(interval);
-  reduced.addEventListener('change', e => {
-    if (e.matches) clearInterval(interval);
   });
 }
 

@@ -1,6 +1,7 @@
 /**
  * KUPOLLA — Inner Pages JS
- * FAQ accordion, Gallery lightbox + filter, Blog filter
+ * FAQ accordion, Gallery lightbox + filter, Blog filter, Catalog filter.
+ * Форми: валідація і HTMX-submit централізовано в kupolla.js.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initGallery();
   initBlogFilter();
   initCatalogFilter();
-  initPageForms();
 });
 
 /* ─── FAQ ACCORDION ─── */
@@ -50,9 +50,7 @@ function initGalleryFilter() {
       items.forEach(item => {
         const cat = item.getAttribute('data-cat');
         const show = filter === 'all' || cat === filter;
-        item.style.opacity       = show ? '1' : '0';
-        item.style.pointerEvents = show ? '' : 'none';
-        item.style.display       = show ? '' : 'none';
+        item.toggleAttribute('hidden', !show);
       });
     });
   });
@@ -62,8 +60,7 @@ function initLightbox() {
   const lb = document.getElementById('lightbox') || document.getElementById('kpLightbox');
   if (!lb) return;
 
-  const lbImgEl   = lb.querySelector('.kp-lightbox__img-el');
-  const lbImg     = lb.querySelector('#lightboxImg') || lb.querySelector('.kp-lightbox__img:not(.kp-lightbox__img-el)');
+  const lbImg     = lb.querySelector('#lightboxImg') || lb.querySelector('.kp-lightbox__img');
   const lbCaption = lb.querySelector('.kp-lightbox__caption');
   const lbClose   = lb.querySelector('.kp-lightbox__close') || document.getElementById('lightboxCloseBtn');
   const lbBackdrop = lb.querySelector('.kp-lightbox__bd') || lb;
@@ -71,25 +68,20 @@ function initLightbox() {
   function showItem(item) {
     const btn     = item.querySelector('[data-lightbox]');
     const photo   = item.querySelector('.kp-gallery-item__img');
-    const bg      = item.querySelector('.kp-gallery-item__bg');
     const caption = item.getAttribute('data-caption')
       || btn?.getAttribute('data-alt')
       || photo?.getAttribute('alt')
       || '';
 
-    if (btn && lbImg) {
+    if (!lbImg) return;
+    if (btn) {
       lbImg.src = btn.getAttribute('data-lightbox') || '';
       lbImg.alt = btn.getAttribute('data-alt') || caption;
-      lbImg.style.display = '';
-    } else if (photo && lbImg) {
+    } else if (photo) {
       lbImg.src = photo.currentSrc || photo.src;
       lbImg.alt = photo.alt || caption;
-      lbImg.style.display = '';
-      if (lbImgEl) lbImgEl.style.display = 'none';
-    } else if (bg && lbImgEl) {
-      lbImgEl.style.background = getComputedStyle(bg).background;
-      lbImgEl.style.display = '';
-      if (lbImg) lbImg.style.display = 'none';
+    } else {
+      return;
     }
 
     if (lbCaption) lbCaption.textContent = caption;
@@ -113,13 +105,13 @@ function openLightbox(lb) {
   const box = lb || document.getElementById('lightbox') || document.getElementById('kpLightbox');
   box?.classList.add('open');
   box?.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('is-locked');
 }
 function closeLightbox(lb) {
   const box = lb || document.getElementById('lightbox') || document.getElementById('kpLightbox');
   box?.classList.remove('open');
   box?.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+  document.body.classList.remove('is-locked');
 }
 
 /* ─── BLOG CATEGORY FILTER ─── */
@@ -135,7 +127,7 @@ function initBlogFilter() {
 
       cards.forEach(card => {
         const show = filter === 'all' || card.getAttribute('data-cat') === filter;
-        card.style.display = show ? '' : 'none';
+        card.toggleAttribute('hidden', !show);
       });
     });
   });
@@ -251,40 +243,4 @@ function runCatalogFilter() {
   Object.entries(state).forEach(([k, v]) => { if (v) params.set(k, v); });
   const qs = params.toString();
   history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
-}
-
-/* ─── FORMS (contacts + about CTA) ─── */
-function initPageForms() {
-  document.querySelectorAll('.kp-form:not(#modalForm):not(#contactForm):not(#modalInquiryForm):not(#cfgFormEl)').forEach(form => {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      let valid = true;
-      form.querySelectorAll('.kp-form__inp, .kp-form__ta').forEach(f => {
-        const val = f.value.trim(); let ok = true;
-        if (f.hasAttribute('required') && !val) ok = false;
-        else if (f.type === 'email' && val) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-        else if (f.type === 'tel'   && val) ok = /^[+\d\s\-()\u00A0]{7,22}$/.test(val);
-        f.classList.toggle('err', !ok);
-        if (!ok) valid = false;
-      });
-      const gdpr = form.querySelector('input[name="gdpr"]');
-      if (gdpr && !gdpr.checked) { valid = false; gdpr.closest('.kp-checkbox')?.classList.add('err'); }
-      if (!valid) { form.querySelector('.err')?.focus?.(); return; }
-      const btn  = form.querySelector('[type="submit"]');
-      const orig = btn.innerHTML;
-      btn.disabled = true; btn.textContent = 'Надсилається…';
-      setTimeout(() => {
-        btn.textContent = '✓ Відправлено!'; btn.style.background = '#2a5040';
-        setTimeout(() => { form.reset(); btn.disabled = false; btn.innerHTML = orig; btn.style.background = ''; }, 2500);
-      }, 1000);
-    });
-    form.querySelectorAll('.kp-form__inp, .kp-form__ta').forEach(f => {
-      f.addEventListener('blur', () => {
-        const val = f.value.trim(); let ok = true;
-        if (f.hasAttribute('required') && !val) ok = false;
-        else if (f.type === 'email' && val) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-        f.classList.toggle('err', !ok);
-      });
-    });
-  });
 }

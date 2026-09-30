@@ -1,11 +1,10 @@
 /**
  * KUPOLLA — Model Page JS
- * Gallery slider logic + scroll reveal
+ * Gallery slider. Форма запиту: валідація і HTMX-submit у kupolla.js.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initSlider();
-  initModelForms();
 });
 
 /* ─── GALLERY SLIDER ─── */
@@ -98,64 +97,4 @@ function initSlider() {
   });
 
   startAuto();
-}
-
-/* ─── MODEL FORM SUBMISSION ─── */
-function initModelForms() {
-  const form = document.getElementById('modelInquiryForm');
-  if (!form) return;
-  form.addEventListener('submit', handleSubmit);
-
-  form.querySelectorAll('.kp-form__inp, .kp-form__ta').forEach(field => {
-    field.addEventListener('blur',  () => validateField(field));
-    field.addEventListener('input', () => {
-      if (field.classList.contains('err')) validateField(field);
-    });
-  });
-}
-
-function validateField(field) {
-  const val  = field.value.trim();
-  const type = field.type;
-  let ok = true;
-  if (field.hasAttribute('required') && !val) ok = false;
-  else if (type === 'email' && val) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-  else if (type === 'tel' && val)   ok = /^[+\d\s\-()\u00A0]{7,22}$/.test(val);
-  field.classList.toggle('err', !ok);
-  return ok;
-}
-
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  let valid = true;
-
-  form.querySelectorAll('.kp-form__inp, .kp-form__ta').forEach(f => {
-    if (!validateField(f)) valid = false;
-  });
-
-  const gdpr = form.querySelector('input[name="gdpr"]');
-  if (gdpr && !gdpr.checked) {
-    valid = false;
-    gdpr.closest('.kp-checkbox')?.classList.add('err');
-  }
-
-  if (!valid) { form.querySelector('.err')?.focus?.(); return; }
-
-  const btn  = form.querySelector('[type="submit"]');
-  const orig = btn.innerHTML;
-  btn.disabled = true;
-  btn.textContent = 'Надсилається…';
-
-  setTimeout(() => {
-    btn.textContent = '✓ Заявку надіслано!';
-    btn.style.background = '#2a5040';
-    setTimeout(() => {
-      form.reset();
-      btn.disabled = false;
-      btn.innerHTML = orig;
-      btn.style.background = '';
-      if (form.closest('.kp-modal')) closeConsultModal?.();
-    }, 2500);
-  }, 1000);
 }

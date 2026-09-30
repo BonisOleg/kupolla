@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════
-   KUPOLLA — Inner Pages CSS Part 2
+   KUPOLLA — Inner Pages CSS Part 4
    Gallery, Blog, Blog-post, FAQ, Contacts
-   kupolla-pages-2.css
+   kupolla-pages-4.css
 ════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════
@@ -417,6 +417,7 @@
     top: calc(var(--hh) + var(--safe-t) + 1rem);
     aspect-ratio: 4 / 5;
     max-height: min(620px, calc(100vh - var(--hh) - var(--safe-t) - 2rem));
+    max-height: min(620px, calc(100dvh - var(--hh) - var(--safe-t) - 2rem));
     align-self: start;
   }
   .kp-post__content { padding-top: .5rem; }

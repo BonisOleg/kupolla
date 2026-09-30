@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static i18n humanize %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=7">{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-3.css' %}?v=10">
+{% endblock %}
 
 {% block content %}
 <div class="kp-breadcrumbs-wrap">
@@ -28,7 +32,7 @@
 
 <section class="kp-section kp-catalog">
   <div class="kp-container">
-    <div class="kp-catalog__filters" id="kpCatalogFilters">
+    <div class="kp-catalog__filters" id="kpCatalogFilters" data-qa="filter-form">
 
       <div class="kp-filters__group" data-filter-group="purpose">
         <label class="kp-filters__label">{% trans "Призначення" %}</label>

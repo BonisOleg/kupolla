@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static i18n %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=4">{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-1.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-2.css' %}?v=10">
+<link rel="stylesheet" href="{% static 'css/kupolla-pages-3.css' %}?v=10">
+{% endblock %}
 
 {% block content %}
 <div class="kp-breadcrumbs-wrap">
@@ -229,12 +233,12 @@
             </div>
             <div class="kp-form__fld">
               <label class="kp-form__lbl">{% trans "Телефон" %} *</label>
-              <input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel">
+              <input type="tel" name="phone" class="kp-form__inp" placeholder="+380 XX XXX XX XX" required autocomplete="tel" inputmode="tel">
             </div>
           </div>
           <div class="kp-form__fld">
             <label class="kp-form__lbl">{% trans "Email" %} *</label>
-            <input type="email" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email">
+            <input type="email" name="email" class="kp-form__inp" placeholder="ivan@example.com" required autocomplete="email" inputmode="email">
           </div>
           {% include "partials/location_fields.html" with id_prefix="ab" %}
           <div class="kp-form__fld">
